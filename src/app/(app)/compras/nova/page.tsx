@@ -73,10 +73,10 @@ export default function NovaCompraPage() {
     startTransition(async () => {
       try {
         await createPurchase(activeFarm.farmId, values)
-        toast.success("Compra registrada com sucesso")
+        toast.success("Compra registrada con éxito")
         router.push("/compras")
       } catch (error) {
-        toast.error("Erro ao registrar compra")
+        toast.error("Error al registrar compra")
       }
     })
   }
@@ -84,20 +84,20 @@ export default function NovaCompraPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Compra</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nueva Compra</h1>
         <p className="text-muted-foreground mt-1">
-          Registre uma nova ordem de compra
+          Registre una nueva orden de compra
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Informacoes do Fornecedor e Nota */}
+          {/* Información del Proveedor y Factura */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ShoppingCart className="h-5 w-5" />
-                Dados da Compra
+                Datos de la Compra
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -107,10 +107,10 @@ export default function NovaCompraPage() {
                   name="supplierId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Fornecedor</FormLabel>
+                      <FormLabel>Proveedor</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="ID do fornecedor"
+                          placeholder="ID del proveedor"
                           disabled={isPending}
                           {...field}
                         />
@@ -125,7 +125,7 @@ export default function NovaCompraPage() {
                   name="purchaseDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data da Compra</FormLabel>
+                      <FormLabel>Fecha de Compra</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -144,7 +144,7 @@ export default function NovaCompraPage() {
                   name="deliveryDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data de Entrega</FormLabel>
+                      <FormLabel>Fecha de Entrega</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -163,10 +163,10 @@ export default function NovaCompraPage() {
                   name="invoiceNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Numero da Nota Fiscal</FormLabel>
+                      <FormLabel>Número de Factura</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Ex: 001234"
+                          placeholder="Ej: 001234"
                           disabled={isPending}
                           {...field}
                         />
@@ -181,10 +181,10 @@ export default function NovaCompraPage() {
                   name="invoiceKey"
                   render={({ field }) => (
                     <FormItem className="md:col-span-2">
-                      <FormLabel>Chave da Nota Fiscal</FormLabel>
+                      <FormLabel>Clave de la Factura</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Chave de acesso da NF-e (44 digitos)"
+                          placeholder="Clave de acceso de la NF-e (44 dígitos)"
                           disabled={isPending}
                           {...field}
                         />
@@ -199,10 +199,10 @@ export default function NovaCompraPage() {
                   name="paymentTerms"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Condicoes de Pagamento</FormLabel>
+                      <FormLabel>Condiciones de Pago</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Ex: 30/60/90 dias"
+                          placeholder="Ej: 30/60/90 días"
                           disabled={isPending}
                           {...field}
                         />
@@ -217,7 +217,7 @@ export default function NovaCompraPage() {
                   name="discountAmount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Desconto (R$)</FormLabel>
+                      <FormLabel>Descuento (R$)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -238,7 +238,7 @@ export default function NovaCompraPage() {
                   name="freightAmount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Frete (R$)</FormLabel>
+                      <FormLabel>Flete (R$)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -257,12 +257,12 @@ export default function NovaCompraPage() {
             </CardContent>
           </Card>
 
-          {/* Itens da Compra */}
+          {/* Ítems de la Compra */}
           <Card>
             <CardHeader>
-              <CardTitle>Itens da Compra</CardTitle>
+              <CardTitle>Ítems de la Compra</CardTitle>
               <CardDescription>
-                Adicione os produtos e insumos desta compra
+                Agregue los productos e insumos de esta compra
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -272,7 +272,7 @@ export default function NovaCompraPage() {
                   className="rounded-md border p-4 space-y-3"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Item {index + 1}</span>
+                    <span className="text-sm font-medium">Ítem {index + 1}</span>
                     {fields.length > 1 && (
                       <Button
                         type="button"
@@ -293,10 +293,10 @@ export default function NovaCompraPage() {
                       name={`items.${index}.description`}
                       render={({ field }) => (
                         <FormItem className="md:col-span-2 lg:col-span-1">
-                          <FormLabel className="text-xs">Descricao</FormLabel>
+                          <FormLabel className="text-xs">Descripción</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Descricao do item"
+                              placeholder="Descripción del ítem"
                               disabled={isPending}
                               {...field}
                             />
@@ -314,7 +314,7 @@ export default function NovaCompraPage() {
                           <FormLabel className="text-xs">Insumo (ID)</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="ID do insumo (opcional)"
+                              placeholder="ID del insumo (opcional)"
                               disabled={isPending}
                               {...field}
                             />
@@ -329,11 +329,11 @@ export default function NovaCompraPage() {
                       name={`items.${index}.unit`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-xs">Unidade</FormLabel>
+                          <FormLabel className="text-xs">Unidad</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="h-9">
-                                <SelectValue placeholder="Unidade" />
+                                <SelectValue placeholder="Unidad" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -354,7 +354,7 @@ export default function NovaCompraPage() {
                       name={`items.${index}.quantity`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-xs">Quantidade</FormLabel>
+                          <FormLabel className="text-xs">Cantidad</FormLabel>
                           <FormControl>
                             <Input
                               type="number"
@@ -376,7 +376,7 @@ export default function NovaCompraPage() {
                       name={`items.${index}.unitPrice`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-xs">Preco Unitario (R$)</FormLabel>
+                          <FormLabel className="text-xs">Precio Unitario (R$)</FormLabel>
                           <FormControl>
                             <Input
                               type="number"
@@ -412,12 +412,12 @@ export default function NovaCompraPage() {
                 disabled={isPending}
               >
                 <Plus className="mr-2 h-4 w-4" />
-                Adicionar Item
+                Agregar Ítem
               </Button>
             </CardContent>
           </Card>
 
-          {/* Observacoes */}
+          {/* Observaciones */}
           <Card>
             <CardContent className="pt-6">
               <FormField
@@ -425,10 +425,10 @@ export default function NovaCompraPage() {
                 name="notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Observacoes</FormLabel>
+                    <FormLabel>Observaciones</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Observacoes sobre a compra..."
+                        placeholder="Observaciones sobre la compra..."
                         disabled={isPending}
                         {...field}
                       />

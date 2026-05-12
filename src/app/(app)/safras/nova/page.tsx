@@ -466,7 +466,7 @@ export default function NovaSafraPage() {
                     </Select>
                     {inputStocks.length === 0 && (
                       <p className="text-xs text-muted-foreground">
-                        Nenhum estoque cadastrado.
+                        Ningún stock registrado.
                       </p>
                     )}
                     <FormMessage />
@@ -487,7 +487,7 @@ export default function NovaSafraPage() {
               >
                 <div className="flex items-center gap-2">
                   <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                    Descontos de Colheita
+                    Descuentos de Cosecha
                   </h2>
                   {watchGrossDiscounts.length > 0 && (
                     <Badge variant="secondary" className="text-xs">
@@ -508,7 +508,7 @@ export default function NovaSafraPage() {
                 name="grossWeightDiscounts"
                 render={() => (
                   <FormItem>
-                    <FormLabel>Descontos no peso bruto</FormLabel>
+                    <FormLabel>Descuentos en el peso bruto</FormLabel>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                       {HARVEST_DISCOUNT_OPTIONS.map((discount) => (
                         <FormField
@@ -549,7 +549,7 @@ export default function NovaSafraPage() {
                     name="netWeightDiscounts"
                     render={() => (
                       <FormItem>
-                        <FormLabel>Descontos apos remocao de impurezas</FormLabel>
+                        <FormLabel>Descuentos después de remoción de impurezas</FormLabel>
                         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                           {HARVEST_DISCOUNT_OPTIONS.map((discount) => (
                             <FormField

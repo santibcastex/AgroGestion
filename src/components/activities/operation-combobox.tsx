@@ -108,9 +108,9 @@ export function OperationCombobox({
           </div>
         ) : (
           <Command>
-            <CommandInput placeholder="Buscar operacao..." />
+            <CommandInput placeholder="Buscar operación..." />
             <CommandList>
-              <CommandEmpty>Nenhuma operacao encontrada.</CommandEmpty>
+              <CommandEmpty>Ninguna operación encontrada.</CommandEmpty>
               <CommandGroup>
                 {subtypes.map((st) => (
                   <CommandItem
@@ -137,7 +137,7 @@ export function OperationCombobox({
                   className="text-muted-foreground"
                 >
                   <Plus className="mr-2 h-4 w-4" />
-                  Nova operacao...
+                  Nueva operación...
                 </CommandItem>
               </CommandGroup>
             </CommandList>

@@ -81,7 +81,7 @@ export function TeamSelector({
         id: contractor.id,
         name: contractor.name,
         type: "contractor",
-        role: "Terceirizado",
+        role: "Tercerizado",
       }
       onContractorCreated?.(member)
       onChange([...value, contractor.name])
@@ -93,7 +93,7 @@ export function TeamSelector({
 
   const displayText = value.length > 0
     ? value.join(", ")
-    : "Selecionar equipe..."
+    : "Seleccionar equipo..."
 
   return (
     <>
