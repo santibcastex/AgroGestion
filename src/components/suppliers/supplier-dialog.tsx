@@ -468,21 +468,21 @@ function ContactFormInline({ form, onChange, onSave, onCancel, isPending }: Cont
     <div className="rounded-md border px-3 py-3 space-y-2">
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1">
-          <Label className="text-xs">Nome *</Label>
+          <Label className="text-xs">Nombre *</Label>
           <Input
             className="h-8 text-sm"
             value={form.name}
             onChange={(e) => set("name", e.target.value)}
-            placeholder="Nome do contato"
+            placeholder="Nombre del contacto"
           />
         </div>
         <div className="space-y-1">
-          <Label className="text-xs">Cargo / Funcao</Label>
+          <Label className="text-xs">Cargo / Función</Label>
           <Input
             className="h-8 text-sm"
             value={form.role}
             onChange={(e) => set("role", e.target.value)}
-            placeholder="Ex: Vendas, Financeiro"
+            placeholder="Ej: Ventas, Financiero"
           />
         </div>
       </div>
