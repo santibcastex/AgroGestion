@@ -65,13 +65,13 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 // Fixed display order — types not listed here go to the end
 const DISPLAY_ORDER = [
-  "Preparo de Solo",
-  "Tratamento de Semente",
-  "Plantio",
-  "Fertilizacao",
-  "Aplicacao",
-  "Colheita",
-  "Outro",
+  "Preparación de Suelo",
+  "Tratamiento de Semilla",
+  "Siembra",
+  "Fertilización",
+  "Aplicación",
+  "Cosecha",
+  "Otro",
 ]
 
 function getIconForType(type: ActivityTypeOption): React.ElementType {
