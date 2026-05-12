@@ -488,7 +488,7 @@ function ContactFormInline({ form, onChange, onSave, onCancel, isPending }: Cont
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1">
-          <Label className="text-xs">Telefone</Label>
+          <Label className="text-xs">Teléfono</Label>
           <Input
             className="h-8 text-sm"
             value={form.phone}
@@ -523,7 +523,7 @@ function ContactFormInline({ form, onChange, onSave, onCancel, isPending }: Cont
         </Button>
         <Button size="sm" className="h-7 px-2" onClick={onSave} disabled={isPending || !form.name.trim()}>
           <Check className="size-3 mr-1" />
-          Salvar
+          Guardar
         </Button>
       </div>
     </div>
@@ -560,18 +560,18 @@ export function DeleteSupplierDialog({ farmId, supplierId, supplierName }: Delet
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Excluir Fornecedor</DialogTitle>
+          <DialogTitle>Eliminar Proveedor</DialogTitle>
         </DialogHeader>
         <p className="text-sm text-muted-foreground">
-          Tem certeza que deseja excluir <span className="font-medium text-foreground">{supplierName}</span>?
-          Esta acao nao pode ser desfeita.
+          ¿Está seguro de que desea eliminar <span className="font-medium text-foreground">{supplierName}</span>?
+          Esta acción no puede deshacerse.
         </p>
         <DialogFooter>
           <Button variant="outline" onClick={() => setOpen(false)}>
             Cancelar
           </Button>
           <Button variant="destructive" onClick={handleDelete} disabled={isPending}>
-            {isPending ? "Excluindo..." : "Excluir"}
+            {isPending ? "Eliminando..." : "Eliminar"}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -624,12 +624,12 @@ function SupplierFormFields({ form, onChange }: SupplierFormFieldsProps) {
     <div className="space-y-4">
       {/* Nome */}
       <div className="space-y-1.5">
-        <Label htmlFor="name">Nome *</Label>
+        <Label htmlFor="name">Nombre *</Label>
         <Input
           id="name"
           value={form.name}
           onChange={(e) => set("name", e.target.value)}
-          placeholder="Nome do fornecedor"
+          placeholder="Nombre del proveedor"
           required
         />
       </div>
@@ -637,6 +637,7 @@ function SupplierFormFields({ form, onChange }: SupplierFormFieldsProps) {
       {/* Tipo */}
       <div className="space-y-1.5">
         <Label>Tipo *</Label>
+
         <div className="flex gap-5">
           {SUPPLIER_TYPES.map(({ value, label }) => (
             <label key={value} className="flex items-center gap-2 cursor-pointer select-none">
@@ -664,7 +665,7 @@ function SupplierFormFields({ form, onChange }: SupplierFormFieldsProps) {
       {/* Telefone + WhatsApp */}
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <Label htmlFor="phone">Telefone</Label>
+          <Label htmlFor="phone">Teléfono</Label>
           <Input
             id="phone"
             value={form.phone}
