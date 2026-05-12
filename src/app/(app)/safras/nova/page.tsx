@@ -164,10 +164,10 @@ export default function NovaSafraPage() {
     startTransition(async () => {
       try {
         await createCrop(activeFarm.farmId, values)
-        toast.success("Safra criada com sucesso")
+        toast.success("Cosecha creada con éxito")
         router.push("/safras")
       } catch {
-        toast.error("Erro ao criar safra")
+        toast.error("Error al crear la cosecha")
       }
     })
   }
@@ -182,9 +182,9 @@ export default function NovaSafraPage() {
           </Link>
         </Button>
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Nova Safra</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Nueva Cosecha</h1>
           <p className="text-sm text-muted-foreground">
-            Cadastre uma nova safra para sua fazenda
+            Registre una nueva cosecha para su granja
           </p>
         </div>
       </div>

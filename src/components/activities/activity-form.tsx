@@ -182,18 +182,18 @@ export function ActivityForm({
       <div className="rounded-lg border p-4 bg-muted/30">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-muted-foreground">Tipo de atividade</p>
+            <p className="text-sm text-muted-foreground">Tipo de actividad</p>
             <p className="font-semibold">{activityType.name}</p>
           </div>
           <Badge variant={kind === "PLANEJADO" ? "secondary" : "default"}>
-            {kind === "PLANEJADO" ? "Planejamento" : "Realizacao"}
+            {kind === "PLANEJADO" ? "Planificación" : "Realización"}
           </Badge>
         </div>
       </div>
 
       {/* Subtype / Operation */}
       <div className="space-y-2">
-        <Label>Operacao</Label>
+        <Label>Operación</Label>
         <OperationCombobox
           subtypes={currentSubtypes}
           value={subtype}
@@ -207,10 +207,10 @@ export function ActivityForm({
       {/* Areas */}
       <div className="space-y-2">
         <Label>
-          Areas{" "}
+          Áreas{" "}
           {selectedAreaIds.length > 0 && (
             <span className="text-muted-foreground font-normal">
-              ({selectedAreaIds.length} selecionada{selectedAreaIds.length > 1 ? "s" : ""},{" "}
+              ({selectedAreaIds.length} seleccionada{selectedAreaIds.length > 1 ? "s" : ""},{" "}
               {formatNumber(totalHa)} ha)
             </span>
           )}
@@ -235,7 +235,7 @@ export function ActivityForm({
       {/* Dates */}
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="startDate">Data inicio *</Label>
+          <Label htmlFor="startDate">Fecha inicio *</Label>
           <Input
             id="startDate"
             type="date"
@@ -245,7 +245,7 @@ export function ActivityForm({
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="endDate">Data fim</Label>
+          <Label htmlFor="endDate">Fecha fin</Label>
           <Input
             id="endDate"
             type="date"
@@ -257,7 +257,7 @@ export function ActivityForm({
 
       {/* Team */}
       <div className="space-y-2">
-        <Label>Equipe / Responsavel</Label>
+        <Label>Equipo / Responsable</Label>
         <TeamSelector
           members={[...farmMembers, ...allContractors]}
           value={teamNames}
@@ -270,10 +270,10 @@ export function ActivityForm({
       {/* Stock */}
       {stocks.length > 0 && (
         <div className="space-y-2">
-          <Label>Estoque de origem</Label>
+          <Label>Stock de origen</Label>
           <Select value={stockId} onValueChange={setStockId}>
             <SelectTrigger>
-              <SelectValue placeholder="Selecionar estoque..." />
+              <SelectValue placeholder="Seleccionar stock..." />
             </SelectTrigger>
             <SelectContent>
               {stocks.map((s) => (
@@ -292,7 +292,7 @@ export function ActivityForm({
           <Label>Insumos</Label>
           <Button type="button" variant="outline" size="sm" onClick={addInputUsage}>
             <Plus className="mr-1 h-3 w-3" />
-            Adicionar
+            Agregar
           </Button>
         </div>
         {inputUsages.map((usage, i) => {
@@ -319,7 +319,7 @@ export function ActivityForm({
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <Label className="text-xs">
-                    Quantidade total{selectedInput ? ` (${UNIT_LABELS[selectedInput.unit]})` : ""}
+                    Cantidad total{selectedInput ? ` (${UNIT_LABELS[selectedInput.unit]})` : ""}
                   </Label>
                   <Input
                     type="number"
@@ -331,7 +331,7 @@ export function ActivityForm({
                 </div>
                 <div className="space-y-1">
                   <Label className="text-xs">
-                    Dose por ha{selectedInput ? ` (${UNIT_LABELS[selectedInput.unit]}/ha)` : ""}
+                    Dosis por ha{selectedInput ? ` (${UNIT_LABELS[selectedInput.unit]}/ha)` : ""}
                   </Label>
                   <Input
                     type="number"

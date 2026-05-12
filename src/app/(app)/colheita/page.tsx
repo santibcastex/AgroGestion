@@ -35,15 +35,15 @@ export default async function ColheitaPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Colheita</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Cosecha</h1>
           <p className="text-muted-foreground">
-            Registre e acompanhe os dados de colheita da sua fazenda
+            Registre y realice seguimiento de los datos de cosecha de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/colheita/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Colheita
+            Nueva Cosecha
           </Link>
         </Button>
       </div>
@@ -53,15 +53,15 @@ export default async function ColheitaPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Wheat className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhuma colheita registrada
+              Ninguna cosecha registrada
             </h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Comece registrando a primeira colheita da sua fazenda.
+              Comience registrando la primera cosecha de su granja.
             </p>
             <Button asChild>
               <Link href="/colheita/nova">
                 <Plus className="mr-2 h-4 w-4" />
-                Nova Colheita
+                Nueva Cosecha
               </Link>
             </Button>
           </CardContent>
@@ -69,21 +69,21 @@ export default async function ColheitaPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Todas as Colheitas</CardTitle>
+            <CardTitle>Todas las Cosechas</CardTitle>
             <CardDescription>
               {harvests.length}{" "}
               {harvests.length === 1
-                ? "colheita registrada"
-                : "colheitas registradas"}
+                ? "cosecha registrada"
+                : "cosechas registradas"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Safra</TableHead>
-                  <TableHead>Area</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead>Cosecha</TableHead>
+                  <TableHead>Área</TableHead>
                   <TableHead className="text-right">Toneladas</TableHead>
                   <TableHead className="text-right">TCH</TableHead>
                   <TableHead className="text-right">ATR</TableHead>
