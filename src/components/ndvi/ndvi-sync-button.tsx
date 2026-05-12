@@ -20,7 +20,7 @@ export function NdviSyncButton({ areaId }: NdviSyncButtonProps) {
       const res = await syncNdviForArea(areaId)
       setResult({ success: true, count: res.count })
     } catch (err) {
-      setResult({ success: false, error: err instanceof Error ? err.message : "Erro ao sincronizar" })
+      setResult({ success: false, error: err instanceof Error ? err.message : "Error al sincronizar" })
     } finally {
       setLoading(false)
     }
@@ -34,12 +34,12 @@ export function NdviSyncButton({ areaId }: NdviSyncButtonProps) {
         ) : (
           <Satellite className="mr-2 h-4 w-4" />
         )}
-        {loading ? "Buscando dados..." : "Atualizar NDVI"}
+        {loading ? "Buscando datos..." : "Actualizar NDVI"}
       </Button>
       {result && (
         <span className={`text-xs ${result.success ? "text-muted-foreground" : "text-destructive"}`}>
           {result.success
-            ? `${result.count} leituras obtidas`
+            ? `${result.count} lecturas obtenidas`
             : result.error}
         </span>
       )}

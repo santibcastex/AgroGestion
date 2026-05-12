@@ -38,14 +38,14 @@ export function NfeDetailActions({
       >
         <Button>
           <Check className="mr-2 h-4 w-4" />
-          Aprovar Nota
+          Aprobar Factura
         </Button>
       </ApproveNfeDialog>
 
       <RejectNfeDialog nfeImportId={nfe.id}>
         <Button variant="outline">
           <X className="mr-2 h-4 w-4" />
-          Rejeitar Nota
+          Rechazar Factura
         </Button>
       </RejectNfeDialog>
     </div>

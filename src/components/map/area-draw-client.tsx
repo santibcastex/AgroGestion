@@ -9,7 +9,7 @@ const AreaDrawMap = dynamic(
     ssr: false,
     loading: () => (
       <div className="flex items-center justify-center h-[600px] rounded-md border bg-muted/50">
-        <p className="text-muted-foreground">Carregando mapa...</p>
+        <p className="text-muted-foreground">Cargando mapa...</p>
       </div>
     ),
   }

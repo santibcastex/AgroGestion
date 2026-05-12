@@ -121,7 +121,6 @@ export default async function SafraDetailPage({
                 crop.harvests.reduce((s, h) => s + Number(h.totalTons), 0)
               )}{" "}
               toneladas
-
             </p>
           </CardContent>
         </Card>

@@ -21,9 +21,9 @@ import { SUPPLIER_TYPE_LABELS, SUPPLIER_TYPE_COLORS } from "@/lib/constants"
 import type { SupplierType } from "@/generated/prisma/client"
 
 const SUPPLIER_TYPES: { value: SupplierType; label: string }[] = [
-  { value: "PRODUTOS", label: "Produtos" },
-  { value: "SERVICOS", label: "Servicos" },
-  { value: "OUTRO", label: "Outro" },
+  { value: "PRODUTOS", label: "Productos" },
+  { value: "SERVICOS", label: "Servicios" },
+  { value: "OUTRO", label: "Otro" },
 ]
 
 interface SupplierFormData {
@@ -64,7 +64,7 @@ export function CreateSupplierDialog({ farmId }: CreateSupplierDialogProps) {
   function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault()
     if (form.types.length === 0) {
-      setError("Selecione pelo menos um tipo")
+      setError("Seleccione al menos un tipo")
       return
     }
     setError(null)
@@ -75,7 +75,7 @@ export function CreateSupplierDialog({ farmId }: CreateSupplierDialogProps) {
         setForm(defaultFormData)
         router.refresh()
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Erro ao criar fornecedor")
+        setError(err instanceof Error ? err.message : "Error al crear proveedor")
       }
     })
   }
@@ -85,12 +85,12 @@ export function CreateSupplierDialog({ farmId }: CreateSupplierDialogProps) {
       <DialogTrigger asChild>
         <Button>
           <PlusCircle className="size-4 mr-2" />
-          Novo Fornecedor
+          Nuevo Proveedor
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Novo Fornecedor</DialogTitle>
+          <DialogTitle>Nuevo Proveedor</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-5">
           <SupplierFormFields form={form} onChange={setForm} />
@@ -100,7 +100,7 @@ export function CreateSupplierDialog({ farmId }: CreateSupplierDialogProps) {
               Cancelar
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Salvando..." : "Salvar"}
+              {isPending ? "Guardando..." : "Guardar"}
             </Button>
           </DialogFooter>
         </form>
@@ -145,7 +145,7 @@ export function EditSupplierDialog({ farmId, supplier }: EditSupplierDialogProps
   function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault()
     if (form.types.length === 0) {
-      setError("Selecione pelo menos um tipo")
+      setError("Seleccione al menos un tipo")
       return
     }
     setError(null)
@@ -155,7 +155,7 @@ export function EditSupplierDialog({ farmId, supplier }: EditSupplierDialogProps
         setOpen(false)
         router.refresh()
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Erro ao atualizar fornecedor")
+        setError(err instanceof Error ? err.message : "Error al actualizar proveedor")
       }
     })
   }
@@ -169,7 +169,7 @@ export function EditSupplierDialog({ farmId, supplier }: EditSupplierDialogProps
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Editar Fornecedor</DialogTitle>
+          <DialogTitle>Editar Proveedor</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-5">
           <SupplierFormFields form={form} onChange={setForm} />
@@ -179,7 +179,7 @@ export function EditSupplierDialog({ farmId, supplier }: EditSupplierDialogProps
               Cancelar
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Salvando..." : "Salvar"}
+              {isPending ? "Guardando..." : "Guardar"}
             </Button>
           </DialogFooter>
         </form>
@@ -332,17 +332,17 @@ export function SupplierDetailsDialog({ farmId, supplier, open, onOpenChange }: 
           )}
 
           {!supplier.document && !supplier.phone && !supplier.whatsapp && !supplier.email && !supplier.address && !supplier.notes && (
-            <p className="text-sm text-muted-foreground">Nenhum dado de contato cadastrado.</p>
+            <p className="text-sm text-muted-foreground">Ningún dato de contacto registrado.</p>
           )}
 
           {/* ── Contacts ── */}
           <div className="pt-2 border-t space-y-2">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium">Contatos</p>
+              <p className="text-sm font-medium">Contactos</p>
               {editingContact === null && (
                 <Button variant="ghost" size="sm" className="h-7 px-2 text-xs gap-1" onClick={startNewContact}>
                   <UserPlus className="size-3" />
-                  Adicionar
+                  Agregar
                 </Button>
               )}
             </div>
@@ -421,7 +421,7 @@ export function SupplierDetailsDialog({ farmId, supplier, open, onOpenChange }: 
             )}
 
             {supplier.contacts.length === 0 && editingContact === null && (
-              <p className="text-xs text-muted-foreground">Nenhum contato adicionado.</p>
+              <p className="text-xs text-muted-foreground">Ningún contacto agregado.</p>
             )}
           </div>
 
@@ -432,7 +432,7 @@ export function SupplierDetailsDialog({ farmId, supplier, open, onOpenChange }: 
             </div>
             <div className="flex items-center gap-2 text-sm">
               <ArrowLeftRight className="size-4 text-muted-foreground" />
-              <span><span className="font-medium">{supplier._count.transactions}</span> transacoes</span>
+              <span><span className="font-medium">{supplier._count.transactions}</span> transacciones</span>
             </div>
           </div>
         </div>

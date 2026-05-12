@@ -30,7 +30,7 @@ export function KmlUploader({ onGeoJsonLoaded }: KmlUploaderProps) {
 
         const parseError = xmlDoc.querySelector("parsererror")
         if (parseError) {
-          setError("Arquivo KML invalido. Verifique o formato.")
+          setError("Archivo KML inválido. Verifique el formato.")
           return
         }
 
@@ -40,18 +40,18 @@ export function KmlUploader({ onGeoJsonLoaded }: KmlUploaderProps) {
           !geojson.features ||
           geojson.features.length === 0
         ) {
-          setError("Nenhuma geometria encontrada no arquivo KML.")
+          setError("Ninguna geometría encontrada en el archivo KML.")
           return
         }
 
         onGeoJsonLoaded(geojson)
       } catch {
-        setError("Erro ao processar o arquivo. Verifique se e um KML valido.")
+        setError("Error al procesar el archivo. Verifique si es un KML válido.")
       }
     }
 
     reader.onerror = () => {
-      setError("Erro ao ler o arquivo.")
+      setError("Error al leer el archivo.")
     }
 
     reader.readAsText(file)
@@ -75,6 +75,7 @@ export function KmlUploader({ onGeoJsonLoaded }: KmlUploaderProps) {
         >
           <Upload className="h-4 w-4" />
           Importar KML
+
         </Button>
         {fileName && (
           <span className="text-sm text-muted-foreground truncate max-w-[200px]">

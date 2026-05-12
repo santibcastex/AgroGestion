@@ -21,9 +21,9 @@ export function UnderConstruction({ title, description }: UnderConstructionProps
       <Card>
         <CardContent className="flex flex-col items-center justify-center py-16">
           <Construction className="h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-1">Em desenvolvimento</h3>
+          <h3 className="text-lg font-semibold mb-1">En desarrollo</h3>
           <p className="text-sm text-muted-foreground">
-            Esta funcionalidade esta sendo desenvolvida.
+            Esta funcionalidad está siendo desarrollada.
           </p>
         </CardContent>
       </Card>

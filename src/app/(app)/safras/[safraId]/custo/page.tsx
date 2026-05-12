@@ -80,7 +80,7 @@ export default async function SafraCustoPage({
             {/* Table header */}
             <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-4 px-4 text-sm text-muted-foreground font-medium">
               <div />
-              <div className="w-24 text-right">Realizado</div>
+              <div className="w-24 text-right">Real</div>
               <div className="w-28 text-right">Valor un. (R$)</div>
               <div className="w-28 text-right">Total (R$)</div>
               <div className="w-24 text-right">Participación</div>

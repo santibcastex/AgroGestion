@@ -28,17 +28,17 @@ import {
 import { Input } from "@/components/ui/input"
 
 const profileSchema = z.object({
-  name: z.string().min(2, "Nome deve ter no minimo 2 caracteres"),
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
 })
 
 const passwordSchema = z
   .object({
-    currentPassword: z.string().min(6, "Senha deve ter no minimo 6 caracteres"),
-    newPassword: z.string().min(6, "Senha deve ter no minimo 6 caracteres"),
-    confirmPassword: z.string().min(6, "Senha deve ter no minimo 6 caracteres"),
+    currentPassword: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+    newPassword: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+    confirmPassword: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
-    message: "As senhas nao coincidem",
+    message: "Las contraseñas no coinciden",
     path: ["confirmPassword"],
   })
 
@@ -70,9 +70,9 @@ export default function PerfilPage() {
       try {
         await updateProfile(values)
         await updateSession({ name: values.name })
-        toast.success("Perfil atualizado com sucesso")
+        toast.success("Perfil actualizado con éxito")
       } catch {
-        toast.error("Erro ao atualizar perfil")
+        toast.error("Error al actualizar perfil")
       }
     })
   }
@@ -85,12 +85,12 @@ export default function PerfilPage() {
           newPassword: values.newPassword,
         })
         passwordForm.reset()
-        toast.success("Senha alterada com sucesso")
+        toast.success("Contraseña cambiada con éxito")
       } catch (error) {
         const message =
           error instanceof Error && error.message === "Senha atual incorreta"
-            ? "Senha atual incorreta"
-            : "Erro ao alterar senha"
+            ? "Contraseña actual incorrecta"
+            : "Error al cambiar contraseña"
         toast.error(message)
       }
     })
@@ -101,7 +101,7 @@ export default function PerfilPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Perfil</h1>
         <p className="text-muted-foreground mt-1">
-          Gerencie suas informacoes pessoais
+          Gestione su información personal
         </p>
       </div>
 
@@ -114,10 +114,10 @@ export default function PerfilPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="h-5 w-5" />
-                Informacoes Pessoais
+                Información Personal
               </CardTitle>
               <CardDescription>
-                Atualize seu nome e informacoes de contato
+                Actualice su nombre e información de contacto
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -127,10 +127,10 @@ export default function PerfilPage() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome</FormLabel>
+                      <FormLabel>Nombre</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Seu nome"
+                          placeholder="Su nombre"
                           disabled={isPending}
                           {...field}
                         />
@@ -141,14 +141,14 @@ export default function PerfilPage() {
                 />
 
                 <div>
-                  <label className="text-sm font-medium">Email</label>
+                  <label className="text-sm font-medium">Correo electrónico</label>
                   <Input
                     value={session?.user?.email ?? ""}
                     disabled
                     className="mt-2"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    O email nao pode ser alterado
+                    El correo electrónico no puede ser modificado
                   </p>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function PerfilPage() {
                   {isPending && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   )}
-                  Salvar
+                  Guardar
                 </Button>
               </div>
             </CardContent>
@@ -175,10 +175,10 @@ export default function PerfilPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Lock className="h-5 w-5" />
-                Alterar Senha
+                Cambiar Contraseña
               </CardTitle>
               <CardDescription>
-                Atualize sua senha de acesso
+                Actualice su contraseña de acceso
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -188,7 +188,7 @@ export default function PerfilPage() {
                   name="currentPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Senha Atual</FormLabel>
+                      <FormLabel>Contraseña Actual</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
@@ -207,7 +207,7 @@ export default function PerfilPage() {
                   name="newPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nova Senha</FormLabel>
+                      <FormLabel>Nueva Contraseña</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
@@ -226,7 +226,7 @@ export default function PerfilPage() {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Confirmar Nova Senha</FormLabel>
+                      <FormLabel>Confirmar Nueva Contraseña</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
@@ -246,7 +246,7 @@ export default function PerfilPage() {
                   {isPending && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   )}
-                  Alterar Senha
+                  Cambiar Contraseña
                 </Button>
               </div>
             </CardContent>

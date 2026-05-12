@@ -39,11 +39,11 @@ export function RejectNfeDialog({ nfeImportId, children }: RejectNfeDialogProps)
           nfeImportId,
           rejectionReason: reason || undefined,
         })
-        toast.success("Nota fiscal rejeitada")
+        toast.success("Factura rechazada")
         setOpen(false)
         router.refresh()
       } catch (error: any) {
-        toast.error(error?.message || "Erro ao rejeitar nota fiscal")
+        toast.error(error?.message || "Error al rechazar factura")
       }
     })
   }
@@ -54,27 +54,27 @@ export function RejectNfeDialog({ nfeImportId, children }: RejectNfeDialogProps)
         {children || (
           <Button variant="outline" size="sm">
             <X className="mr-2 h-4 w-4" />
-            Rejeitar
+            Rechazar
           </Button>
         )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Rejeitar Nota Fiscal</DialogTitle>
+          <DialogTitle>Rechazar Factura</DialogTitle>
           <DialogDescription>
-            A nota sera marcada como rejeitada e nao gerara registros
-            financeiros.
+            La factura será marcada como rechazada y no generará registros
+            financieros.
           </DialogDescription>
         </DialogHeader>
 
         <div className="py-2">
           <label className="text-sm font-medium mb-2 block">
-            Motivo da rejeicao (opcional)
+            Motivo del rechazo (opcional)
           </label>
           <Textarea
             value={reason}
             onChange={(e) => setReason(e.target.value)}
-            placeholder="Ex: Nota fiscal de outra empresa, duplicidade..."
+            placeholder="Ej: Factura de otra empresa, duplicidad..."
             rows={3}
           />
         </div>
@@ -89,7 +89,7 @@ export function RejectNfeDialog({ nfeImportId, children }: RejectNfeDialogProps)
           </Button>
           <Button variant="destructive" onClick={handleReject} disabled={isPending}>
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Rejeitar
+            Rechazar
           </Button>
         </DialogFooter>
       </DialogContent>

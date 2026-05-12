@@ -62,7 +62,7 @@ export default async function SafraInsumosPage({
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Insumos da Safra</CardTitle>
+            <CardTitle>Insumos de la Cosecha</CardTitle>
             <CardDescription>
               {inputs.length}{" "}
               {inputs.length === 1 ? "insumo utilizado" : "insumos utilizados"}
@@ -72,11 +72,11 @@ export default async function SafraInsumosPage({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Categoria</TableHead>
-                  <TableHead>Unidade</TableHead>
-                  <TableHead className="text-right">Utilizado na Safra</TableHead>
-                  <TableHead className="text-right">Estoque Atual</TableHead>
+                  <TableHead>Nombre</TableHead>
+                  <TableHead>Categoría</TableHead>
+                  <TableHead>Unidad</TableHead>
+                  <TableHead className="text-right">Utilizado en la Cosecha</TableHead>
+                  <TableHead className="text-right">Stock Actual</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

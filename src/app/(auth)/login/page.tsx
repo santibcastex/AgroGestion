@@ -62,10 +62,10 @@ export default function LoginPage() {
     <Card className="w-full border-zinc-800 bg-zinc-900/80 backdrop-blur-sm">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-xl font-semibold text-zinc-50">
-          Entrar na sua conta
+          Ingresar a su cuenta
         </CardTitle>
         <CardDescription className="text-zinc-400">
-          Insira suas credenciais para acessar o painel
+          Ingrese sus credenciales para acceder al panel
         </CardDescription>
       </CardHeader>
 
@@ -77,13 +77,13 @@ export default function LoginPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">E-mail</FormLabel>
+                  <FormLabel className="text-zinc-300">Correo electrónico</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
                       <Input
                         type="email"
-                        placeholder="seu@email.com"
+                        placeholder="su@correo.com"
                         className="border-zinc-800 bg-zinc-950/50 pl-10 text-zinc-50 placeholder:text-zinc-600 focus-visible:ring-emerald-600"
                         disabled={isPending}
                         {...field}
@@ -100,7 +100,7 @@ export default function LoginPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">Senha</FormLabel>
+                  <FormLabel className="text-zinc-300">Contraseña</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
@@ -126,10 +126,10 @@ export default function LoginPage() {
               {isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Entrando...
+                  Ingresando...
                 </>
               ) : (
-                "Entrar"
+                "Ingresar"
               )}
             </Button>
           </form>
@@ -138,12 +138,12 @@ export default function LoginPage() {
 
       <CardFooter className="justify-center">
         <p className="text-sm text-zinc-400">
-          Ainda não tem uma conta?{" "}
+          ¿Aún no tiene una cuenta?{" "}
           <Link
             href="/register"
             className="font-medium text-emerald-500 transition-colors hover:text-emerald-400"
           >
-            Criar conta
+            Crear cuenta
           </Link>
         </p>
       </CardFooter>

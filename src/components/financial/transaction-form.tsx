@@ -360,10 +360,10 @@ export function TransactionForm({
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Observacoes</FormLabel>
+                  <FormLabel>Observaciones</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Observacoes sobre a transacao..."
+                      placeholder="Observaciones sobre la transacción..."
                       disabled={isPending}
                       {...field}
                     />
@@ -378,7 +378,7 @@ export function TransactionForm({
         <div className="flex gap-3">
           <Button type="submit" disabled={isPending} size="lg">
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {isEditing ? "Salvar Alteracoes" : "Registrar Transacao"}
+            {isEditing ? "Guardar Cambios" : "Registrar Transacción"}
           </Button>
           <Button
             type="button"

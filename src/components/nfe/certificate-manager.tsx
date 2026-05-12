@@ -48,7 +48,7 @@ export function CertificateManager() {
     if (!activeFarm) return
     const file = fileRef.current?.files?.[0]
     if (!file || !password) {
-      toast.error("Selecione o arquivo .pfx e informe a senha")
+      toast.error("Seleccione el archivo .pfx e ingrese la contraseña")
       return
     }
 
@@ -59,13 +59,13 @@ export function CertificateManager() {
     startTransition(async () => {
       try {
         await uploadCertificate(activeFarm.farmId, formData)
-        toast.success("Certificado cadastrado com sucesso")
+        toast.success("Certificado registrado con éxito")
         setPassword("")
         if (fileRef.current) fileRef.current.value = ""
         const info = await getCertificateInfo(activeFarm.farmId)
         setCertInfo(info as CertInfo | null)
       } catch (error: any) {
-        toast.error(error?.message || "Erro ao cadastrar certificado")
+        toast.error(error?.message || "Error al registrar certificado")
       }
     })
   }
@@ -75,10 +75,10 @@ export function CertificateManager() {
     startTransition(async () => {
       try {
         await deleteCertificate(activeFarm.farmId)
-        toast.success("Certificado removido")
+        toast.success("Certificado eliminado")
         setCertInfo(null)
       } catch {
-        toast.error("Erro ao remover certificado")
+        toast.error("Error al eliminar certificado")
       }
     })
   }
@@ -109,7 +109,7 @@ export function CertificateManager() {
             Certificado A1
           </CardTitle>
           <CardDescription>
-            Certificado digital para consulta de notas fiscais no SEFAZ
+            Certificado digital para consulta de facturas en el SEFAZ
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -122,8 +122,8 @@ export function CertificateManager() {
               <AlertTriangle className="h-4 w-4" />
               <span className="text-sm">
                 {isExpired
-                  ? "Certificado vencido. Faca o upload de um novo certificado."
-                  : "Certificado vence em menos de 30 dias."}
+                  ? "Certificado vencido. Cargue un nuevo certificado."
+                  : "El certificado vence en menos de 30 días."}
               </span>
             </div>
           )}
@@ -131,22 +131,23 @@ export function CertificateManager() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <p className="text-sm text-muted-foreground">Titular</p>
+
               <p className="font-medium">{certInfo.subjectName || "—"}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Numero de Serie</p>
+              <p className="text-sm text-muted-foreground">Número de Serie</p>
               <p className="font-medium font-mono text-xs">
                 {certInfo.serialNumber || "—"}
               </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Valido de</p>
+              <p className="text-sm text-muted-foreground">Válido desde</p>
               <p className="font-medium">
                 {certInfo.validFrom ? formatDate(certInfo.validFrom) : "—"}
               </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Valido ate</p>
+              <p className="text-sm text-muted-foreground">Válido hasta</p>
               <div className="flex items-center gap-2">
                 <p className="font-medium">
                   {certInfo.validTo ? formatDate(certInfo.validTo) : "—"}
@@ -155,6 +156,7 @@ export function CertificateManager() {
                   <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
                     Vencido
                   </Badge>
+
                 )}
               </div>
             </div>
@@ -172,7 +174,7 @@ export function CertificateManager() {
               ) : (
                 <Trash2 className="mr-2 h-4 w-4" />
               )}
-              Remover Certificado
+              Eliminar Certificado
             </Button>
           </div>
         </CardContent>
@@ -188,15 +190,15 @@ export function CertificateManager() {
           Certificado A1
         </CardTitle>
         <CardDescription>
-          Faca o upload do certificado digital A1 (.pfx) para consultar notas
-          fiscais no SEFAZ automaticamente
+          Cargue el certificado digital A1 (.pfx) para consultar facturas
+          en el SEFAZ automáticamente
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="text-sm font-medium mb-2 block">
-              Arquivo do Certificado (.pfx)
+              Archivo del Certificado (.pfx)
             </label>
             <Input
               ref={fileRef}
@@ -207,11 +209,11 @@ export function CertificateManager() {
           </div>
           <div>
             <label className="text-sm font-medium mb-2 block">
-              Senha do Certificado
+              Contraseña del Certificado
             </label>
             <Input
               type="password"
-              placeholder="Senha"
+              placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isPending}
@@ -225,7 +227,7 @@ export function CertificateManager() {
           ) : (
             <Upload className="mr-2 h-4 w-4" />
           )}
-          Enviar Certificado
+          Cargar Certificado
         </Button>
       </CardContent>
     </Card>

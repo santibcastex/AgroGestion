@@ -191,7 +191,7 @@ export default function NovaSafraPage() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {/* Informacoes Gerais */}
+          {/* Información General */}
           <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
               Información General
@@ -478,7 +478,7 @@ export default function NovaSafraPage() {
 
           <Separator />
 
-          {/* Descontos de Colheita */}
+          {/* Descuentos de Cosecha */}
           <Collapsible open={discountsOpen} onOpenChange={setDiscountsOpen}>
             <CollapsibleTrigger asChild>
               <button

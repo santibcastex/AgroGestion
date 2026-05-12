@@ -50,7 +50,7 @@ export default async function IndicadoresPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Indicadores</h1>
         <p className="text-muted-foreground">
-          Relatórios e indicadores de desempenho da fazenda
+          Informes e indicadores de desempeño de la granja
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export default async function IndicadoresPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Custo por Hectare
+              Costo por Hectárea
             </CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -68,8 +68,8 @@ export default async function IndicadoresPage() {
             </div>
             <p className="text-xs text-muted-foreground">
               {hectares > 0
-                ? `baseado em ${hectares.toFixed(1)} ha`
-                : "nenhuma área cadastrada"}
+                ? `basado en ${hectares.toFixed(1)} ha`
+                : "ningún área registrada"}
             </p>
           </CardContent>
         </Card>
@@ -77,14 +77,14 @@ export default async function IndicadoresPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Produtividade Média (TCH)
+              Productividad Media (TCH)
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">—</div>
             <p className="text-xs text-muted-foreground">
-              dados de safra pendentes
+              datos de cosecha pendientes
             </p>
           </CardContent>
         </Card>
@@ -92,7 +92,7 @@ export default async function IndicadoresPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Receita Total
+              Ingreso Total
             </CardTitle>
             <ArrowDownCircle className="h-4 w-4 text-green-600" />
           </CardHeader>
@@ -101,7 +101,7 @@ export default async function IndicadoresPage() {
               {formatCurrency(revenue)}
             </div>
             <p className="text-xs text-muted-foreground">
-              todas as receitas registradas
+              todos los ingresos registrados
             </p>
           </CardContent>
         </Card>
@@ -109,7 +109,7 @@ export default async function IndicadoresPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Despesa Total
+              Gasto Total
             </CardTitle>
             <ArrowUpCircle className="h-4 w-4 text-red-600" />
           </CardHeader>
@@ -118,7 +118,7 @@ export default async function IndicadoresPage() {
               {formatCurrency(expense)}
             </div>
             <p className="text-xs text-muted-foreground">
-              todas as despesas registradas
+              todos los gastos registrados
             </p>
           </CardContent>
         </Card>
@@ -129,10 +129,10 @@ export default async function IndicadoresPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
-              Despesas por Categoria
+              Gastos por Categoría
             </CardTitle>
             <CardDescription>
-              Distribuição dos custos por categoria
+              Distribución de los costos por categoría
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center py-12">
@@ -143,7 +143,7 @@ export default async function IndicadoresPage() {
               <Skeleton className="h-8 w-2/5" />
             </div>
             <p className="text-sm text-muted-foreground mt-6">
-              Em desenvolvimento
+              En desarrollo
             </p>
           </CardContent>
         </Card>
@@ -152,10 +152,10 @@ export default async function IndicadoresPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5" />
-              Evolução Mensal
+              Evolución Mensual
             </CardTitle>
             <CardDescription>
-              Receitas x Despesas ao longo dos meses
+              Ingresos x Gastos a lo largo de los meses
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center py-12">
@@ -166,7 +166,7 @@ export default async function IndicadoresPage() {
               <Skeleton className="h-8 w-10/12" />
             </div>
             <p className="text-sm text-muted-foreground mt-6">
-              Em desenvolvimento
+              En desarrollo
             </p>
           </CardContent>
         </Card>
@@ -175,10 +175,10 @@ export default async function IndicadoresPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <DollarSign className="h-5 w-5" />
-              Custo por Hectare por Safra
+              Costo por Hectárea por Cosecha
             </CardTitle>
             <CardDescription>
-              Comparativo entre safras
+              Comparativo entre cosechas
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center py-12">
@@ -188,7 +188,7 @@ export default async function IndicadoresPage() {
               <Skeleton className="h-8 w-5/6" />
             </div>
             <p className="text-sm text-muted-foreground mt-6">
-              Em desenvolvimento
+              En desarrollo
             </p>
           </CardContent>
         </Card>
@@ -197,10 +197,10 @@ export default async function IndicadoresPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FlaskConical className="h-5 w-5" />
-              Fertilidade do Solo
+              Fertilidad del Suelo
             </CardTitle>
             <CardDescription>
-              Evolução dos indicadores de solo por área
+              Evolución de los indicadores de suelo por área
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center py-12">
@@ -210,7 +210,7 @@ export default async function IndicadoresPage() {
               <Skeleton className="h-8 w-full" />
             </div>
             <p className="text-sm text-muted-foreground mt-6">
-              Em desenvolvimento
+              En desarrollo
             </p>
           </CardContent>
         </Card>
