@@ -29,9 +29,9 @@ const PURCHASE_STATUS_COLORS: Record<string, string> = {
 }
 
 const PURCHASE_STATUS_LABELS: Record<string, string> = {
-  RASCUNHO: "Rascunho",
+  RASCUNHO: "Borrador",
   CONFIRMADA: "Confirmada",
-  RECEBIDA: "Recebida",
+  RECEBIDA: "Recibida",
   CANCELADA: "Cancelada",
 }
 
@@ -57,13 +57,13 @@ export default async function ComprasPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Compras</h1>
           <p className="text-muted-foreground">
-            Gerencie pedidos de compra e recebimentos
+            Gestione órdenes de compra y recepciones
           </p>
         </div>
         <Button asChild>
           <Link href="/compras/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Compra
+            Nueva Compra
           </Link>
         </Button>
       </div>
@@ -94,20 +94,20 @@ export default async function ComprasPage() {
               {formatCurrency(totalValue)}
             </div>
             <p className="text-xs text-muted-foreground">
-              em compras
+              en compras
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Pendentes
+              Pendientes
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{pendingCount}</div>
             <p className="text-xs text-muted-foreground">
-              aguardando recebimento
+              esperando recepción
             </p>
           </CardContent>
         </Card>
@@ -118,10 +118,10 @@ export default async function ComprasPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <ShoppingCart className="h-10 w-10 text-muted-foreground mb-4" />
             <p className="text-muted-foreground text-center">
-              Nenhuma compra cadastrada.
+              Ninguna compra registrada.
             </p>
             <Button variant="outline" className="mt-4" asChild>
-              <Link href="/compras/nova">Criar Primeira Compra</Link>
+              <Link href="/compras/nova">Crear Primera Compra</Link>
             </Button>
           </CardContent>
         </Card>
@@ -132,11 +132,11 @@ export default async function ComprasPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Código</TableHead>
-                  <TableHead>Fornecedor</TableHead>
-                  <TableHead>Data</TableHead>
-                  <TableHead className="text-center">Itens</TableHead>
+                  <TableHead>Proveedor</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead className="text-center">Ítems</TableHead>
                   <TableHead className="text-right">Valor Total</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Estado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

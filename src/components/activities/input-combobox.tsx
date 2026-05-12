@@ -83,7 +83,7 @@ export function InputCombobox({ inputs, value, onSelect, disabled }: InputCombob
                       </Badge>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Estoque: {input.currentStock.toFixed(1)} {UNIT_LABELS[input.unit]}
+                      Stock: {input.currentStock.toFixed(1)} {UNIT_LABELS[input.unit]}
                     </span>
                   </div>
                 </CommandItem>

@@ -67,19 +67,19 @@ export function OperationCombobox({
           aria-expanded={open}
           className="w-full justify-between"
         >
-          {value || "Selecionar operacao..."}
+          {value || "Seleccionar operación..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
         {creating ? (
           <div className="p-3 space-y-3">
-            <p className="text-sm font-medium">Nova operacao</p>
+            <p className="text-sm font-medium">Nueva operación</p>
             <Input
               autoFocus
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              placeholder="Nome da operacao..."
+              placeholder="Nombre de la operación..."
               onKeyDown={(e) => {
                 if (e.key === "Enter") { e.preventDefault(); handleCreate() }
                 if (e.key === "Escape") setCreating(false)
@@ -102,7 +102,7 @@ export function OperationCombobox({
                 disabled={isPending || !newName.trim()}
               >
                 {isPending && <Loader2 className="mr-1 h-3 w-3 animate-spin" />}
-                Criar
+                Crear
               </Button>
             </div>
           </div>

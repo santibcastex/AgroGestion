@@ -60,15 +60,15 @@ export function NewActivityButton({
     <>
       <Button onClick={() => setOpen(true)}>
         <Plus className="mr-2 h-4 w-4" />
-        Nova Atividade
+        Nueva Actividad
       </Button>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Nova Atividade</SheetTitle>
+            <SheetTitle>Nueva Actividad</SheetTitle>
             <SheetDescription>
-              Selecione o tipo e modo da atividade
+              Seleccione el tipo y modo de la actividad
             </SheetDescription>
           </SheetHeader>
           <div className="px-4">
