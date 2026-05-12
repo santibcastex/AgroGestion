@@ -111,11 +111,11 @@ export function TeamSelector({
         </PopoverTrigger>
         <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
           <Command>
-            <CommandInput placeholder="Buscar pessoa..." />
+            <CommandInput placeholder="Buscar persona..." />
             <CommandList>
-              <CommandEmpty>Nenhuma pessoa encontrada.</CommandEmpty>
+              <CommandEmpty>Ninguna persona encontrada.</CommandEmpty>
               {farmMembers.length > 0 && (
-                <CommandGroup heading="Membros">
+                <CommandGroup heading="Miembros">
                   {farmMembers.map((m) => (
                     <CommandItem
                       key={m.id}
@@ -140,7 +140,7 @@ export function TeamSelector({
                   ))}
                 </CommandGroup>
               )}
-              <CommandGroup heading="Terceirizados">
+              <CommandGroup heading="Tercerizado">
                 {contractors.map((c) => (
                   <CommandItem
                     key={c.id}
@@ -156,7 +156,7 @@ export function TeamSelector({
                     <div className="flex flex-1 items-center justify-between">
                       <span>{c.name}</span>
                       <Badge variant="outline" className="text-xs ml-2">
-                        Terceirizado
+                        Tercerizado
                       </Badge>
                     </div>
                   </CommandItem>
@@ -166,7 +166,7 @@ export function TeamSelector({
                   className="text-muted-foreground"
                 >
                   <Plus className="mr-2 h-4 w-4" />
-                  Novo terceirizado...
+                  Nuevo tercerizado...
                 </CommandItem>
               </CommandGroup>
             </CommandList>
@@ -177,24 +177,24 @@ export function TeamSelector({
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Novo terceirizado</DialogTitle>
+            <DialogTitle>Nuevo tercerizado</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="contractor-name">Nome *</Label>
+              <Label htmlFor="contractor-name">Nombre *</Label>
               <Input
                 id="contractor-name"
                 autoFocus
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
-                placeholder="Nome do terceirizado..."
+                placeholder="Nombre del tercerizado..."
                 onKeyDown={(e) => {
                   if (e.key === "Enter") { e.preventDefault(); handleCreateContractor() }
                 }}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="contractor-phone">Telefone</Label>
+              <Label htmlFor="contractor-phone">Teléfono</Label>
               <Input
                 id="contractor-phone"
                 value={newPhone}
@@ -216,7 +216,7 @@ export function TeamSelector({
               disabled={isPending || !newName.trim()}
             >
               {isPending && <Loader2 className="mr-1 h-4 w-4 animate-spin" />}
-              Criar
+              Crear
             </Button>
           </DialogFooter>
         </DialogContent>

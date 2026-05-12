@@ -105,10 +105,10 @@ export default async function AnaliseSoloPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">
-            Análise de Solo
+            Análisis de Suelo
           </h1>
           <p className="text-muted-foreground">
-            Acompanhe a fertilidade do solo e tome decisões baseadas em dados
+            Realice seguimiento de la fertilidad del suelo y tome decisiones basadas en datos
           </p>
         </div>
         <div className="flex gap-2">
@@ -121,7 +121,7 @@ export default async function AnaliseSoloPage() {
           <Button asChild>
             <Link href="/analise-solo/nova">
               <Plus className="mr-2 h-4 w-4" />
-              Nova Análise
+              Nuevo Análisis
             </Link>
           </Button>
         </div>
@@ -131,21 +131,21 @@ export default async function AnaliseSoloPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Total de Análises
+              Total de Análisis
             </CardTitle>
             <FlaskConical className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalAnalyses}</div>
             <p className="text-xs text-muted-foreground">
-              análise(s) registrada(s)
+              análisis registrado(s)
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Última Análise
+              Último Análisis
             </CardTitle>
             <CalendarDays className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -156,14 +156,14 @@ export default async function AnaliseSoloPage() {
                 : "—"}
             </div>
             <p className="text-xs text-muted-foreground">
-              {lastAnalysis?.area?.name ?? "sem área definida"}
+              {lastAnalysis?.area?.name ?? "sin área definida"}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Áreas Analisadas
+              Áreas Analizadas
             </CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -175,7 +175,7 @@ export default async function AnaliseSoloPage() {
               </span>
             </div>
             <p className="text-xs text-muted-foreground">
-              área(s) com análise
+              área(s) con análisis
             </p>
           </CardContent>
         </Card>
@@ -210,11 +210,11 @@ export default async function AnaliseSoloPage() {
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded bg-yellow-100 border border-yellow-300" />
-          Atenção
+          Atención
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded bg-red-100 border border-red-300" />
-          Fora do ideal
+          Fuera del ideal
         </span>
       </div>
 
@@ -223,14 +223,14 @@ export default async function AnaliseSoloPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <FlaskConical className="h-10 w-10 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhuma análise cadastrada
+              Ningún análisis registrado
             </h3>
             <p className="text-muted-foreground text-center mb-4">
-              Registre a primeira análise de solo para acompanhar a fertilidade
-              das suas áreas.
+              Registre el primer análisis de suelo para realizar seguimiento de la fertilidad
+              de sus áreas.
             </p>
             <Button variant="outline" asChild>
-              <Link href="/analise-solo/nova">Registrar Análise</Link>
+              <Link href="/analise-solo/nova">Registrar Análisis</Link>
             </Button>
           </CardContent>
         </Card>
@@ -242,8 +242,8 @@ export default async function AnaliseSoloPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Área</TableHead>
-                    <TableHead>Ano</TableHead>
-                    <TableHead>Data Coleta</TableHead>
+                    <TableHead>Año</TableHead>
+                    <TableHead>Fecha de Colecta</TableHead>
                     <TableHead className="text-center">pH</TableHead>
                     <TableHead className="text-center">V%</TableHead>
                     <TableHead className="text-center">
@@ -270,7 +270,7 @@ export default async function AnaliseSoloPage() {
                         (mmol/dm³)
                       </span>
                     </TableHead>
-                    <TableHead>Profundidade</TableHead>
+                    <TableHead>Profundidad</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

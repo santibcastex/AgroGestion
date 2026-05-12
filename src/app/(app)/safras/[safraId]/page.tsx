@@ -84,7 +84,7 @@ export default async function SafraDetailPage({
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Areas</CardTitle>
+            <CardTitle className="text-sm font-medium">Áreas</CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -97,7 +97,7 @@ export default async function SafraDetailPage({
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Atividades</CardTitle>
+            <CardTitle className="text-sm font-medium">Actividades</CardTitle>
             <ClipboardList className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -111,7 +111,7 @@ export default async function SafraDetailPage({
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Colheitas</CardTitle>
+            <CardTitle className="text-sm font-medium">Cosechas</CardTitle>
             <Wheat className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -121,13 +121,14 @@ export default async function SafraDetailPage({
                 crop.harvests.reduce((s, h) => s + Number(h.totalTons), 0)
               )}{" "}
               toneladas
+
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Periodo</CardTitle>
+            <CardTitle className="text-sm font-medium">Período</CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -135,7 +136,7 @@ export default async function SafraDetailPage({
               {crop.startDate ? formatDate(crop.startDate) : "—"}
             </div>
             <p className="text-xs text-muted-foreground">
-              {crop.endDate ? `ate ${formatDate(crop.endDate)}` : "Em andamento"}
+              {crop.endDate ? `hasta ${formatDate(crop.endDate)}` : "En curso"}
             </p>
           </CardContent>
         </Card>
@@ -145,7 +146,7 @@ export default async function SafraDetailPage({
       {crop.notes && (
         <Card>
           <CardHeader>
-            <CardTitle>Observacoes</CardTitle>
+            <CardTitle>Observaciones</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground whitespace-pre-wrap">
@@ -160,23 +161,23 @@ export default async function SafraDetailPage({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <MapPin className="h-5 w-5" />
-            Areas Vinculadas
+            Áreas Vinculadas
           </CardTitle>
           <CardDescription>
-            Areas da fazenda vinculadas a esta safra
+            Áreas de la granja vinculadas a esta cosecha
           </CardDescription>
         </CardHeader>
         <CardContent>
           {crop.cropAreas.length === 0 ? (
             <p className="text-sm text-muted-foreground text-center py-8">
-              Nenhuma area vinculada
+              Ninguna área vinculada
             </p>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Area</TableHead>
-                  <TableHead className="text-right">Tamanho (ha)</TableHead>
+                  <TableHead>Área</TableHead>
+                  <TableHead className="text-right">Tamaño (ha)</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -187,7 +188,7 @@ export default async function SafraDetailPage({
                         href={`/safras/${safraId}/areas/${ca.area?.id}`}
                         className="font-medium hover:underline"
                       >
-                        {ca.area?.name ?? "Area removida"}
+                        {ca.area?.name ?? "Área eliminada"}
                       </Link>
                     </TableCell>
                     <TableCell className="text-right">
@@ -207,27 +208,27 @@ export default async function SafraDetailPage({
           <div>
             <CardTitle className="flex items-center gap-2">
               <ClipboardList className="h-5 w-5" />
-              Atividades
+              Actividades
             </CardTitle>
-            <CardDescription>Atividades desta safra</CardDescription>
+            <CardDescription>Actividades de esta cosecha</CardDescription>
           </div>
           <Button variant="outline" size="sm" asChild>
-            <Link href="/atividades/nova">Nova Atividade</Link>
+            <Link href="/atividades/nova">Nueva Actividad</Link>
           </Button>
         </CardHeader>
         <CardContent>
           {crop.activities.length === 0 ? (
             <p className="text-sm text-muted-foreground text-center py-8">
-              Nenhuma atividade registrada
+              Ninguna actividad registrada
             </p>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead>Tipo</TableHead>
-                  <TableHead>Areas</TableHead>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Áreas</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead>Estado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -285,20 +286,20 @@ export default async function SafraDetailPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Wheat className="h-5 w-5" />
-              Colheitas
+              Cosechas
             </CardTitle>
-            <CardDescription>Registros de colheita desta safra</CardDescription>
+            <CardDescription>Registros de cosecha de esta cosecha</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Area</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead>Área</TableHead>
                   <TableHead className="text-right">Toneladas</TableHead>
                   <TableHead className="text-right">TCH</TableHead>
                   <TableHead className="text-right">ATR</TableHead>
-                  <TableHead className="text-right">Valor Venda</TableHead>
+                  <TableHead className="text-right">Valor de Venta</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

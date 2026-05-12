@@ -43,7 +43,7 @@ export default async function SafraInsumosPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Insumos</h1>
         <p className="text-muted-foreground">
-          Insumos utilizados nas atividades desta safra
+          Insumos utilizados en las actividades de esta cosecha
         </p>
       </div>
 
@@ -52,10 +52,10 @@ export default async function SafraInsumosPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Package className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhum insumo utilizado
+              Ningún insumo utilizado
             </h3>
             <p className="text-muted-foreground text-sm">
-              Os insumos utilizados nas atividades desta safra aparecerão aqui.
+              Los insumos utilizados en las actividades de esta cosecha aparecerán aquí.
             </p>
           </CardContent>
         </Card>

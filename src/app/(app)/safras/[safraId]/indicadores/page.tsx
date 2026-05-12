@@ -88,7 +88,7 @@ export default async function SafraIndicadoresPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Indicadores</h1>
         <p className="text-muted-foreground">
-          Indicadores de desempenho da safra {crop.name}
+          Indicadores de desempeño de la cosecha {crop.name}
         </p>
       </div>
 
@@ -96,7 +96,7 @@ export default async function SafraIndicadoresPage({
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Producao Total</CardTitle>
+            <CardTitle className="text-sm font-medium">Producción Total</CardTitle>
             <Wheat className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -109,7 +109,7 @@ export default async function SafraIndicadoresPage({
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Area Total</CardTitle>
+            <CardTitle className="text-sm font-medium">Área Total</CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -117,7 +117,7 @@ export default async function SafraIndicadoresPage({
               {formatNumber(totalAreaHa)}
             </div>
             <p className="text-xs text-muted-foreground">
-              hectares em {areas.length} {areas.length === 1 ? "talhao" : "talhoes"}
+              hectáreas en {areas.length} {areas.length === 1 ? "parcela" : "parcelas"}
             </p>
           </CardContent>
         </Card>
@@ -153,7 +153,7 @@ export default async function SafraIndicadoresPage({
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Receita Total</CardTitle>
+            <CardTitle className="text-sm font-medium">Ingreso Total</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -162,14 +162,14 @@ export default async function SafraIndicadoresPage({
             </div>
             <p className="text-xs text-muted-foreground">
               {summary.harvests.length}{" "}
-              {summary.harvests.length === 1 ? "colheita" : "colheitas"}
+              {summary.harvests.length === 1 ? "cosecha" : "cosechas"}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Receita por Hectare</CardTitle>
+            <CardTitle className="text-sm font-medium">Ingreso por Hectárea</CardTitle>
             <Layers className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -187,22 +187,22 @@ export default async function SafraIndicadoresPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Activity className="h-5 w-5" />
-              Desempenho por Talhao
+              Desempeño por Parcela
             </CardTitle>
             <CardDescription>
-              Comparativo de producao entre talhoes
+              Comparativo de producción entre parcelas
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Talhao</TableHead>
-                  <TableHead className="text-right">Area (ha)</TableHead>
-                  <TableHead className="text-right">Producao (ton)</TableHead>
+                  <TableHead>Parcela</TableHead>
+                  <TableHead className="text-right">Área (ha)</TableHead>
+                  <TableHead className="text-right">Producción (ton)</TableHead>
                   <TableHead className="text-right">TCH</TableHead>
                   <TableHead className="text-right">ATR</TableHead>
-                  <TableHead className="text-right">Receita</TableHead>
+                  <TableHead className="text-right">Ingreso</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -238,10 +238,10 @@ export default async function SafraIndicadoresPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <BarChart3 className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Sem dados para indicadores
+              Sin datos para indicadores
             </h3>
             <p className="text-muted-foreground text-sm">
-              Os indicadores serão calculados a partir dos registros de colheita e das areas vinculadas.
+              Los indicadores se calcularán a partir de los registros de cosecha y las áreas vinculadas.
             </p>
           </CardContent>
         </Card>

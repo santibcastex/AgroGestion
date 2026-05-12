@@ -70,7 +70,7 @@ function UploadStep({ onParsed }: { onParsed: (rows: SampleRow[], labName: strin
         setError(
           result.errors.length
             ? result.errors.join("; ")
-            : "Formato não reconhecido. Use CSV (Lagoa da Serra) ou XLS (Ciência em Solo)."
+            : "Formato no reconocido. Use CSV (Lagoa da Serra) o XLS (Ciência em Solo)."
         )
         return
       }
@@ -100,8 +100,8 @@ function UploadStep({ onParsed }: { onParsed: (rows: SampleRow[], labName: strin
       >
         <FileSpreadsheet className="h-10 w-10 text-muted-foreground" />
         <div className="text-center">
-          <p className="font-medium">Arraste o arquivo ou clique para selecionar</p>
-          <p className="text-sm text-muted-foreground mt-1">CSV (Lagoa da Serra) ou XLS/XLSX (Ciência em Solo)</p>
+          <p className="font-medium">Arrastre el archivo o haga clic para seleccionar</p>
+          <p className="text-sm text-muted-foreground mt-1">CSV (Lagoa da Serra) o XLS/XLSX (Ciência em Solo)</p>
         </div>
         <input
           ref={inputRef}
@@ -120,10 +120,10 @@ function UploadStep({ onParsed }: { onParsed: (rows: SampleRow[], labName: strin
       )}
 
       <div className="text-xs text-muted-foreground space-y-1">
-        <p className="font-medium">Formatos suportados:</p>
-        <p>• <strong>CSV — Lagoa da Serra:</strong> separado por ponto-e-vírgula, colunas P, M.O., pH, K, Ca, Mg, etc.</p>
-        <p>• <strong>XLS — Ciência em Solo:</strong> planilha do laboratório com talhão, ponto, camada e todos os parâmetros.</p>
-        <p>• <strong>XLSX — FarmCore:</strong> exportação normalizada com colunas Amostra, Profundidade, pH CaCl2, etc.</p>
+        <p className="font-medium">Formatos soportados:</p>
+        <p>• <strong>CSV — Lagoa da Serra:</strong> separado por punto y coma, columnas P, M.O., pH, K, Ca, Mg, etc.</p>
+        <p>• <strong>XLS — Ciência em Solo:</strong> planilla del laboratorio con parcela, punto, capa y todos los parámetros.</p>
+        <p>• <strong>XLSX — FarmCore:</strong> exportación normalizada con columnas Muestra, Profundidad, pH CaCl2, etc.</p>
       </div>
     </div>
   )
@@ -179,12 +179,12 @@ function ReviewStep({
       {/* Summary */}
       <div className="flex flex-wrap items-center gap-4">
         <div>
-          <span className="text-sm text-muted-foreground">Amostras: </span>
+          <span className="text-sm text-muted-foreground">Muestras: </span>
           <Badge variant="secondary">{samples.length}</Badge>
         </div>
         {depths.map((d) => (
           <div key={d}>
-            <span className="text-sm text-muted-foreground">Camada {d}: </span>
+            <span className="text-sm text-muted-foreground">Capa {d}: </span>
             <Badge variant="outline">{byDepth(d).length} pts</Badge>
           </div>
         ))}
@@ -193,29 +193,29 @@ function ReviewStep({
       {/* Lab name + area assignment */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm">Configurações da importação</CardTitle>
+          <CardTitle className="text-sm">Configuración de la importación</CardTitle>
           <CardDescription>
-            Informe o laboratório e associe as amostras a um talhão (opcional).
+            Indique el laboratorio y asocie las muestras a una parcela (opcional).
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-4">
           <div className="flex flex-col gap-1.5">
-            <Label className="text-xs">Laboratório</Label>
+            <Label className="text-xs">Laboratorio</Label>
             <Input
               className="w-56"
-              placeholder="Nome do laboratório"
+              placeholder="Nombre del laboratorio"
               value={labNameInput}
               onChange={(e) => setLabNameInput(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label className="text-xs">Talhão (todas as amostras)</Label>
+            <Label className="text-xs">Parcela (todas las muestras)</Label>
           <Select value={globalArea} onValueChange={setAllAreas}>
             <SelectTrigger className="w-64">
-              <SelectValue placeholder="Selecionar talhão..." />
+              <SelectValue placeholder="Seleccionar parcela..." />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="__none__">Sem talhão</SelectItem>
+              <SelectItem value="__none__">Sin parcela</SelectItem>
               {areas?.map((a) => (
                 <SelectItem key={a.id} value={a.id}>{a.name}</SelectItem>
               ))}
@@ -232,16 +232,16 @@ function ReviewStep({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Amostra</TableHead>
-                  <TableHead>Camada</TableHead>
-                  <TableHead>Data</TableHead>
+                  <TableHead>Muestra</TableHead>
+                  <TableHead>Capa</TableHead>
+                  <TableHead>Fecha</TableHead>
                   <TableHead className="text-center">pH</TableHead>
                   <TableHead className="text-center">V%</TableHead>
                   <TableHead className="text-center">P</TableHead>
                   <TableHead className="text-center">K</TableHead>
                   <TableHead className="text-center">Ca</TableHead>
                   <TableHead className="text-center">Mg</TableHead>
-                  <TableHead>Talhão</TableHead>
+                  <TableHead>Parcela</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -252,7 +252,7 @@ function ReviewStep({
                       <Badge variant="outline" className="text-xs">{s.depth}</Badge>
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {new Date(s.sampleDate).toLocaleDateString("pt-BR")}
+                      {new Date(s.sampleDate).toLocaleDateString("es-ES")}
                     </TableCell>
                     <TableCell className="text-center text-sm">{s.pH ?? "—"}</TableCell>
                     <TableCell className="text-center text-sm">{s.baseSaturation ?? "—"}</TableCell>
@@ -287,7 +287,7 @@ function ReviewStep({
       <div className="flex justify-between">
         <Button variant="outline" onClick={onBack}>
           <X className="mr-2 h-4 w-4" />
-          Voltar
+          Volver
         </Button>
         <Button
           disabled={isPending}
@@ -298,7 +298,7 @@ function ReviewStep({
           ) : (
             <ChevronRight className="mr-2 h-4 w-4" />
           )}
-          Importar {samples.length} amostras
+          Importar {samples.length} muestras
         </Button>
       </div>
     </div>
@@ -312,12 +312,12 @@ function DoneStep({ count, onViewList }: { count: number; onViewList: () => void
     <div className="max-w-sm mx-auto flex flex-col items-center gap-4 py-8">
       <CheckCircle2 className="h-12 w-12 text-green-500" />
       <div className="text-center">
-        <h3 className="text-lg font-semibold">Importação concluída</h3>
+        <h3 className="text-lg font-semibold">Importación completada</h3>
         <p className="text-muted-foreground mt-1">
-          {count} {count === 1 ? "amostra importada" : "amostras importadas"} com sucesso.
+          {count} {count === 1 ? "muestra importada" : "muestras importadas"} con éxito.
         </p>
       </div>
-      <Button onClick={onViewList}>Ver análises</Button>
+      <Button onClick={onViewList}>Ver análisis</Button>
     </div>
   )
 }
@@ -376,29 +376,29 @@ export default function ImportarAnaliseSoloPage() {
     try {
       const result = await importSoilAnalyses(activeFarm.farmId, samples)
       if (!result.success) {
-        toast.error("Erro na importação")
+        toast.error("Error en la importación")
         return
       }
       setImportedCount(result.count ?? 0)
       setStep("done")
     } catch {
-      toast.error("Erro ao importar amostras")
+      toast.error("Error al importar muestras")
     }
   }
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Importar Análises de Solo</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Importar Análisis de Suelo</h1>
         <p className="text-muted-foreground">
-          Importe resultados de laboratório em CSV ou XLS
+          Importe resultados de laboratorio en CSV o XLS
         </p>
       </div>
 
       {/* Steps indicator */}
       <div className="flex items-center gap-2 text-sm">
         {(["upload", "review", "done"] as Step[]).map((s, i) => {
-          const labels = ["1. Arquivo", "2. Revisar", "3. Concluído"]
+          const labels = ["1. Archivo", "2. Revisar", "3. Completado"]
           const active = step === s
           const done = (step === "review" && s === "upload") || step === "done"
           return (

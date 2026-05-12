@@ -60,11 +60,11 @@ export function NewBankAccountDialog() {
     startTransition(async () => {
       try {
         await createBankAccount(activeFarm.farmId, values)
-        toast.success("Conta bancaria criada com sucesso")
+        toast.success("Cuenta bancaria creada con éxito")
         setOpen(false)
         form.reset()
       } catch {
-        toast.error("Erro ao criar conta bancaria")
+        toast.error("Error al crear cuenta bancaria")
       }
     })
   }
@@ -73,13 +73,13 @@ export function NewBankAccountDialog() {
     <>
       <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
         <Plus className="h-3 w-3 mr-1" />
-        Nova
+        Nueva
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Nova Conta Bancaria</DialogTitle>
+            <DialogTitle>Nueva Cuenta Bancaria</DialogTitle>
           </DialogHeader>
 
           <Form {...form}>
@@ -90,9 +90,9 @@ export function NewBankAccountDialog() {
                   name="name"
                   render={({ field }) => (
                     <FormItem className="sm:col-span-2">
-                      <FormLabel>Nome da Conta</FormLabel>
+                      <FormLabel>Nombre de la Cuenta</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ex: Conta Principal" disabled={isPending} {...field} />
+                        <Input placeholder="Ej: Cuenta Principal" disabled={isPending} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,7 +106,7 @@ export function NewBankAccountDialog() {
                     <FormItem className="sm:col-span-2">
                       <FormLabel>Banco</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ex: Banco do Brasil" disabled={isPending} {...field} />
+                        <Input placeholder="Ej: Banco del Brasil" disabled={isPending} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -132,7 +132,7 @@ export function NewBankAccountDialog() {
                   name="accountNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Numero da Conta</FormLabel>
+                      <FormLabel>Número de Cuenta</FormLabel>
                       <FormControl>
                         <Input placeholder="12345-6" disabled={isPending} {...field} />
                       </FormControl>
@@ -167,7 +167,7 @@ export function NewBankAccountDialog() {
                   name="initialBalanceDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data do Saldo Inicial</FormLabel>
+                      <FormLabel>Fecha del Saldo Inicial</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -190,7 +190,7 @@ export function NewBankAccountDialog() {
                 </Button>
                 <Button type="submit" disabled={isPending}>
                   {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Criar Conta
+                  Crear Cuenta
                 </Button>
               </DialogFooter>
             </form>

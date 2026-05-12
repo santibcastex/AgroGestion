@@ -85,11 +85,11 @@ function EditBankAccountDialog({
     startTransition(async () => {
       try {
         await updateBankAccount(activeFarm.farmId, account.id, values)
-        toast.success("Conta atualizada com sucesso")
+        toast.success("Cuenta actualizada con éxito")
         onOpenChange(false)
       } catch (e) {
-        const msg = e instanceof Error ? e.message : "Erro desconhecido"
-        toast.error(`Erro ao atualizar conta: ${msg}`)
+        const msg = e instanceof Error ? e.message : "Error desconocido"
+        toast.error(`Error al actualizar cuenta: ${msg}`)
       }
     })
   }
@@ -98,7 +98,7 @@ function EditBankAccountDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Editar Conta Bancaria</DialogTitle>
+          <DialogTitle>Editar Cuenta Bancaria</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -109,9 +109,9 @@ function EditBankAccountDialog({
                 name="name"
                 render={({ field }) => (
                   <FormItem className="sm:col-span-2">
-                    <FormLabel>Nome da Conta</FormLabel>
+                    <FormLabel>Nombre de la Cuenta</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ex: Conta Principal" disabled={isPending} {...field} />
+                      <Input placeholder="Ej: Cuenta Principal" disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -125,7 +125,7 @@ function EditBankAccountDialog({
                   <FormItem className="sm:col-span-2">
                     <FormLabel>Banco</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ex: Banco do Brasil" disabled={isPending} {...field} />
+                      <Input placeholder="Ej: Banco del Brasil" disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -138,6 +138,7 @@ function EditBankAccountDialog({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Agencia</FormLabel>
+
                     <FormControl>
                       <Input placeholder="1234-5" disabled={isPending} {...field} />
                     </FormControl>
@@ -151,7 +152,7 @@ function EditBankAccountDialog({
                 name="accountNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Numero da Conta</FormLabel>
+                    <FormLabel>Número de Cuenta</FormLabel>
                     <FormControl>
                       <Input placeholder="12345-6" disabled={isPending} {...field} />
                     </FormControl>
@@ -166,6 +167,7 @@ function EditBankAccountDialog({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Saldo Inicial (R$)</FormLabel>
+
                     <FormControl>
                       <Input
                         type="number"
@@ -186,7 +188,7 @@ function EditBankAccountDialog({
                 name="initialBalanceDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data do Saldo Inicial</FormLabel>
+                    <FormLabel>Fecha del Saldo Inicial</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -214,7 +216,7 @@ function EditBankAccountDialog({
               </Button>
               <Button type="submit" disabled={isPending}>
                 {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Salvar
+                Guardar
               </Button>
             </DialogFooter>
           </form>
@@ -242,7 +244,7 @@ export function BankAccountsList({ accounts }: BankAccountsListProps) {
         <CardContent className="flex flex-col items-center justify-center py-6">
           <Landmark className="h-8 w-8 text-muted-foreground mb-2" />
           <p className="text-xs text-muted-foreground text-center">
-            Nenhuma conta cadastrada
+            Ninguna cuenta registrada
           </p>
         </CardContent>
       </Card>
@@ -274,7 +276,7 @@ export function BankAccountsList({ accounts }: BankAccountsListProps) {
                   className={`h-7 w-7 ${account.isDefault ? "text-yellow-500" : "text-muted-foreground"}`}
                   onClick={() => handleSetDefault(account)}
                   disabled={isPending || account.isDefault}
-                  title={account.isDefault ? "Conta padrao" : "Definir como conta padrao"}
+                  title={account.isDefault ? "Cuenta predeterminada" : "Definir como cuenta predeterminada"}
                 >
                   <Star className={`h-3.5 w-3.5 ${account.isDefault ? "fill-yellow-500" : ""}`} />
                 </Button>

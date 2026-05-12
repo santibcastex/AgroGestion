@@ -41,9 +41,9 @@ export default async function SafraCustoOrcadoPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Custo Orcado</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Costo Presupuestado</h1>
         <p className="text-muted-foreground">
-          Previsao de custos baseada nas atividades planejadas
+          Previsión de costos basada en las actividades planificadas
         </p>
       </div>
 
@@ -52,10 +52,10 @@ export default async function SafraCustoOrcadoPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <DollarSign className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhum custo orcado
+              Ningún costo presupuestado
             </h3>
             <p className="text-muted-foreground text-sm">
-              Crie atividades planejadas com insumos para ver a previsao de custos.
+              Cree actividades planificadas con insumos para ver la previsión de costos.
             </p>
           </CardContent>
         </Card>
@@ -64,9 +64,9 @@ export default async function SafraCustoOrcadoPage({
           {/* Donut Chart */}
           <Card>
             <CardHeader>
-              <CardTitle>Custo Orcado</CardTitle>
+              <CardTitle>Costo Presupuestado</CardTitle>
               <CardDescription>
-                Distribuicao de custos previstos por categoria
+                Distribución de costos previstos por categoría
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -82,7 +82,7 @@ export default async function SafraCustoOrcadoPage({
               <div className="w-24 text-right">Previsto</div>
               <div className="w-28 text-right">Valor un. (R$)</div>
               <div className="w-28 text-right">Total (R$)</div>
-              <div className="w-24 text-right">Participacao</div>
+              <div className="w-24 text-right">Participación</div>
             </div>
 
             {categories.map((cat) => (
@@ -104,7 +104,7 @@ export default async function SafraCustoOrcadoPage({
                   {/* Items */}
                   {cat.items.length === 0 ? (
                     <div className="px-6 py-4 text-sm text-muted-foreground">
-                      Nenhum item nesta categoria.
+                      Ningún ítem en esta categoría.
                     </div>
                   ) : (
                     <CostCategoryItems
@@ -151,7 +151,7 @@ function CostCategoryItems({
   // Group by subcategory
   const groups = new Map<string, typeof items>()
   for (const item of items) {
-    const sub = item.subcategory ?? "Outro"
+    const sub = item.subcategory ?? "Otro"
     if (!groups.has(sub)) groups.set(sub, [])
     groups.get(sub)!.push(item)
   }

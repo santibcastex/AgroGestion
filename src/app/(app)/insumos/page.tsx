@@ -30,17 +30,17 @@ function getCategoryLabel(category: string) {
     case "HERBICIDE":
       return "Herbicida"
     case "INSECTICIDE":
-      return "Inseticida"
+      return "Insecticida"
     case "FUNGICIDE":
       return "Fungicida"
     case "ADJUVANT":
-      return "Adjuvante"
+      return "Adyuvante"
     case "SEED":
-      return "Semente"
+      return "Semilla"
     case "FUEL":
-      return "Combustivel"
+      return "Combustible"
     case "OTHER":
-      return "Outro"
+      return "Otro"
     default:
       return category
   }
@@ -77,13 +77,13 @@ export default async function InsumosPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Insumos</h1>
           <p className="text-muted-foreground">
-            Controle o estoque de insumos da sua fazenda
+            Controle el stock de insumos de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/insumos/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Novo Insumo
+            Nuevo Insumo
           </Link>
         </Button>
       </div>
@@ -93,15 +93,15 @@ export default async function InsumosPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Package className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhum insumo cadastrado
+              Ningún insumo registrado
             </h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Comece cadastrando o primeiro insumo da sua fazenda.
+              Comience registrando el primer insumo de su granja.
             </p>
             <Button asChild>
               <Link href="/insumos/nova">
                 <Plus className="mr-2 h-4 w-4" />
-                Novo Insumo
+                Nuevo Insumo
               </Link>
             </Button>
           </CardContent>
@@ -109,22 +109,22 @@ export default async function InsumosPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Todos os Insumos</CardTitle>
+            <CardTitle>Todos los Insumos</CardTitle>
             <CardDescription>
               {inputs.length}{" "}
-              {inputs.length === 1 ? "insumo cadastrado" : "insumos cadastrados"}
+              {inputs.length === 1 ? "insumo registrado" : "insumos registrados"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Categoria</TableHead>
-                  <TableHead>Unidade</TableHead>
-                  <TableHead className="text-right">Estoque Atual</TableHead>
-                  <TableHead className="text-right">Estoque Minimo</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Nombre</TableHead>
+                  <TableHead>Categoría</TableHead>
+                  <TableHead>Unidad</TableHead>
+                  <TableHead className="text-right">Stock Actual</TableHead>
+                  <TableHead className="text-right">Stock Mínimo</TableHead>
+                  <TableHead>Estado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -159,15 +159,15 @@ export default async function InsumosPage() {
                       <TableCell>
                         {isOutOfStock ? (
                           <Badge className="bg-red-100 text-red-800 hover:bg-red-100">
-                            Sem estoque
+                            Sin stock
                           </Badge>
                         ) : isLowStock ? (
                           <Badge className="bg-red-100 text-red-800 hover:bg-red-100">
-                            Estoque baixo
+                            Stock bajo
                           </Badge>
                         ) : (
                           <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
-                            Estoque normal
+                            Stock normal
                           </Badge>
                         )}
                       </TableCell>

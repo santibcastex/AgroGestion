@@ -57,10 +57,10 @@ export default function NovoInsumoPage() {
     startTransition(async () => {
       try {
         await createInput(activeFarm.farmId, values)
-        toast.success("Insumo criado com sucesso")
+        toast.success("Insumo creado con éxito")
         router.push("/insumos")
       } catch (error) {
-        toast.error("Erro ao criar insumo")
+        toast.error("Error al crear insumo")
       }
     })
   }
@@ -68,13 +68,13 @@ export default function NovoInsumoPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Novo Insumo</h1>
-        <p className="text-muted-foreground mt-1">Cadastre um novo insumo no catalogo</p>
+        <h1 className="text-3xl font-bold tracking-tight">Nuevo Insumo</h1>
+        <p className="text-muted-foreground mt-1">Registre un nuevo insumo en el catálogo</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Dados do Insumo</CardTitle>
+          <CardTitle>Datos del Insumo</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -85,7 +85,7 @@ export default function NovoInsumoPage() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome</FormLabel>
+                      <FormLabel>Nombre</FormLabel>
                       <FormControl>
                         <Input placeholder="MAP 11-52-00" disabled={isPending} {...field} />
                       </FormControl>
@@ -99,11 +99,11 @@ export default function NovoInsumoPage() {
                   name="category"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Categoria</FormLabel>
+                      <FormLabel>Categoría</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione" />
+                            <SelectValue placeholder="Seleccione" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -124,11 +124,11 @@ export default function NovoInsumoPage() {
                   name="unit"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Unidade</FormLabel>
+                      <FormLabel>Unidad</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione" />
+                            <SelectValue placeholder="Seleccione" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -163,7 +163,7 @@ export default function NovoInsumoPage() {
                   name="activeAgent"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Principio Ativo</FormLabel>
+                      <FormLabel>Principio Activo</FormLabel>
                       <FormControl>
                         <Input placeholder="Glifosato, 2,4-D..." disabled={isPending} {...field} />
                       </FormControl>
@@ -177,7 +177,7 @@ export default function NovoInsumoPage() {
                   name="minStock"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Estoque Minimo</FormLabel>
+                      <FormLabel>Stock Mínimo</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -198,9 +198,9 @@ export default function NovoInsumoPage() {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Descricao</FormLabel>
+                    <FormLabel>Descripción</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Observacoes..." disabled={isPending} {...field} />
+                      <Textarea placeholder="Observaciones..." disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -210,7 +210,7 @@ export default function NovoInsumoPage() {
               <div className="flex gap-3">
                 <Button type="submit" disabled={isPending}>
                   {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Criar Insumo
+                  Crear Insumo
                 </Button>
                 <Button
                   type="button"

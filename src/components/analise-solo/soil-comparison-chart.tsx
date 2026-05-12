@@ -57,7 +57,7 @@ export function SoilComparisonChart({ analyses }: SoilComparisonChartProps) {
   if (analyses.length === 0) {
     return (
       <div className="flex h-[350px] items-center justify-center text-sm text-muted-foreground">
-        Sem dados para comparacao
+        Sin datos para comparación
       </div>
     )
   }
@@ -108,7 +108,7 @@ export function SoilComparisonChart({ analyses }: SoilComparisonChartProps) {
         </RadarChart>
       </ResponsiveContainer>
       <p className="text-center text-xs text-muted-foreground">
-        Valores normalizados em relacao ao ideal (100% = centro da faixa ideal)
+        Valores normalizados en relación al ideal (100% = centro del rango ideal)
       </p>
     </div>
   )

@@ -588,16 +588,16 @@ export default function NovaSafraPage() {
 
           <Separator />
 
-          {/* Observacoes */}
+          {/* Observaciones */}
           <FormField
             control={form.control}
             name="notes"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Observacoes</FormLabel>
+                <FormLabel>Observaciones</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Notas sobre esta safra..."
+                    placeholder="Notas sobre esta cosecha..."
                     disabled={isPending}
                     rows={3}
                     {...field}
@@ -612,7 +612,7 @@ export default function NovaSafraPage() {
           <div className="flex items-center gap-3 pt-2">
             <Button type="submit" disabled={isPending}>
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Criar Safra
+              Crear Cosecha
             </Button>
             <Button
               type="button"

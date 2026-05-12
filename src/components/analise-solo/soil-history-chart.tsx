@@ -46,7 +46,7 @@ export function SoilHistoryChart({
   if (values.length === 0) {
     return (
       <div className="flex h-[250px] items-center justify-center text-sm text-muted-foreground">
-        Sem dados para {label}
+        Sin datos para {label}
       </div>
     )
   }
@@ -87,7 +87,7 @@ export function SoilHistoryChart({
               `${val} ${unit}`,
               label,
             ]}
-            labelFormatter={(year) => `Ano: ${year}`}
+            labelFormatter={(year) => `Año: ${year}`}
           />
           {/* Ideal range reference lines */}
           <ReferenceLine

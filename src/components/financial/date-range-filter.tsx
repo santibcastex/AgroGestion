@@ -30,10 +30,10 @@ export type PeriodMode =
 
 export type DateRangeValue = PeriodMode
 
-const MONTH_NAMES_SHORT = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+const MONTH_NAMES_SHORT = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 const MONTH_NAMES_FULL = [
-  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro",
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
 ]
 
 const MIN_YEAR = 2020
@@ -53,7 +53,7 @@ function parseYearMonth(value: string): { year: number; month: number } | null {
 
 function formatMonthLabel(value: string): string {
   const parsed = parseYearMonth(value)
-  if (!parsed) return "Selecionar mês"
+  if (!parsed) return "Seleccionar mes"
   return `${MONTH_NAMES_FULL[parsed.month - 1]} ${parsed.year}`
 }
 
@@ -212,7 +212,7 @@ function MonthYearPicker({
     return (
       <div className="p-3 w-56">
         <div className="flex items-center justify-center mb-2">
-          <span className="text-sm font-semibold text-muted-foreground">Selecionar ano</span>
+          <span className="text-sm font-semibold text-muted-foreground">Seleccionar año</span>
         </div>
         <YearScrollPicker
           selected={pickerYear}
@@ -335,15 +335,15 @@ export function DateRangeFilter({ period, month, year }: DateRangeFilterProps) {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Período específico</SelectLabel>
-            <SelectItem value="specific-month">Mensal</SelectItem>
+            <SelectItem value="specific-month">Mensual</SelectItem>
             <SelectItem value="specific-year">Anual</SelectItem>
           </SelectGroup>
           <SelectGroup>
-            <SelectLabel>Períodos fixos</SelectLabel>
-            <SelectItem value="last-30-days">Últimos 30 dias</SelectItem>
-            <SelectItem value="last-90-days">Últimos 90 dias</SelectItem>
-            <SelectItem value="last-year">Último ano</SelectItem>
-            <SelectItem value="all">Todo o tempo</SelectItem>
+            <SelectLabel>Períodos fijos</SelectLabel>
+            <SelectItem value="last-30-days">Últimos 30 días</SelectItem>
+            <SelectItem value="last-90-days">Últimos 90 días</SelectItem>
+            <SelectItem value="last-year">Último año</SelectItem>
+            <SelectItem value="all">Todo el tiempo</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -379,7 +379,7 @@ export function DateRangeFilter({ period, month, year }: DateRangeFilterProps) {
           <PopoverContent className="w-auto p-0" align="start">
             <div className="p-3 w-44">
               <div className="flex items-center justify-center mb-2">
-                <span className="text-sm font-semibold text-muted-foreground">Selecionar ano</span>
+                <span className="text-sm font-semibold text-muted-foreground">Seleccionar año</span>
               </div>
               <YearScrollPicker
                 selected={Number(defaultYear)}
