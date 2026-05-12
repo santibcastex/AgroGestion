@@ -698,23 +698,23 @@ function SupplierFormFields({ form, onChange }: SupplierFormFieldsProps) {
 
       {/* Endereco */}
       <div className="space-y-1.5">
-        <Label htmlFor="address">Endereco</Label>
+        <Label htmlFor="address">Dirección</Label>
         <Input
           id="address"
           value={form.address}
           onChange={(e) => set("address", e.target.value)}
-          placeholder="Rua, numero, cidade - UF"
+          placeholder="Calle, número, ciudad - Estado"
         />
       </div>
 
       {/* Observacoes */}
       <div className="space-y-1.5">
-        <Label htmlFor="notes">Observacoes</Label>
+        <Label htmlFor="notes">Observaciones</Label>
         <Input
           id="notes"
           value={form.notes}
           onChange={(e) => set("notes", e.target.value)}
-          placeholder="Informacoes adicionais"
+          placeholder="Información adicional"
         />
       </div>
     </div>

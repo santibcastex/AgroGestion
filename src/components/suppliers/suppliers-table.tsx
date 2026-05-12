@@ -55,12 +55,12 @@ export function SuppliersTable({ farmId, suppliers }: SuppliersTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Nome</TableHead>
+            <TableHead>Nombre</TableHead>
             <TableHead>Tipo</TableHead>
             <TableHead>CPF / CNPJ</TableHead>
-            <TableHead>Contato</TableHead>
+            <TableHead>Contacto</TableHead>
             <TableHead>Compras</TableHead>
-            <TableHead>Transacoes</TableHead>
+            <TableHead>Transacciones</TableHead>
             <TableHead className="w-[100px]"></TableHead>
           </TableRow>
         </TableHeader>
