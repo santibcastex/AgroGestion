@@ -50,7 +50,7 @@ export function InputCombobox({ inputs, value, onSelect, disabled }: InputCombob
           className="w-full justify-between"
           disabled={disabled}
         >
-          {selected ? selected.name : "Selecionar insumo..."}
+          {selected ? selected.name : "Seleccionar insumo..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -58,7 +58,7 @@ export function InputCombobox({ inputs, value, onSelect, disabled }: InputCombob
         <Command>
           <CommandInput placeholder="Buscar insumo..." />
           <CommandList>
-            <CommandEmpty>Nenhum insumo encontrado.</CommandEmpty>
+            <CommandEmpty>Ningún insumo encontrado.</CommandEmpty>
             <CommandGroup>
               {inputs.map((input) => (
                 <CommandItem

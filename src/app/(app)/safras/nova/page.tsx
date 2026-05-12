@@ -194,7 +194,7 @@ export default function NovaSafraPage() {
           {/* Informacoes Gerais */}
           <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-              Informacoes Gerais
+              Información General
             </h2>
 
             <FormField
@@ -202,9 +202,9 @@ export default function NovaSafraPage() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome da safra</FormLabel>
+                  <FormLabel>Nombre de la cosecha</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ex: Cana 25/26" disabled={isPending} {...field} />
+                    <Input placeholder="Ej: Caña 25/26" disabled={isPending} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -217,11 +217,11 @@ export default function NovaSafraPage() {
                 name="culture"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Cultura</FormLabel>
+                    <FormLabel>Cultivo</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione a cultura" />
+                          <SelectValue placeholder="Seleccione el cultivo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -243,11 +243,11 @@ export default function NovaSafraPage() {
                   name="plantingType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tipo de Plantio</FormLabel>
+                      <FormLabel>Tipo de Siembra</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione o tipo" />
+                            <SelectValue placeholder="Seleccione el tipo" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -271,7 +271,7 @@ export default function NovaSafraPage() {
                 name="startDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Inicio</FormLabel>
+                    <FormLabel>Fecha de Inicio</FormLabel>
                     <FormControl>
                       <Input
                         type="date"

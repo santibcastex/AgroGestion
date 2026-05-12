@@ -349,12 +349,12 @@ export function ActivityForm({
 
       {/* Notes */}
       <div className="space-y-2">
-        <Label htmlFor="notes">Observacoes</Label>
+        <Label htmlFor="notes">Observaciones</Label>
         <Textarea
           id="notes"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          placeholder="Anotacoes sobre a atividade..."
+          placeholder="Anotaciones sobre la actividad..."
           rows={3}
         />
       </div>
@@ -370,7 +370,7 @@ export function ActivityForm({
           className="flex-1"
         >
           {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {kind === "PLANEJADO" ? "Salvar Planejamento" : "Registrar Realizacao"}
+          {kind === "PLANEJADO" ? "Guardar Planificación" : "Registrar Realización"}
         </Button>
       </div>
     </form>

@@ -97,9 +97,9 @@ export function ActivityTypeSelector({ types, onSelect }: ActivityTypeSelectorPr
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-lg font-semibold">Selecionar tipo de atividade</h2>
+        <h2 className="text-lg font-semibold">Seleccionar tipo de actividad</h2>
         <p className="text-sm text-muted-foreground">
-          Escolha o tipo de atividade que deseja registrar
+          Elija el tipo de actividad que desea registrar
         </p>
       </div>
       <div className="flex flex-col gap-1">
