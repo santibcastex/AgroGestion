@@ -37,10 +37,9 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
   if (!analysis) notFound()
 
   // Fetch historical data for the same area
-  const { analyses: historyAnalyses } = await getSoilAnalysisHistory(
-    farmId,
-    analysis.areaId
-  )
+  const { analyses: historyAnalyses } = analysis.areaId
+    ? await getSoilAnalysisHistory(farmId, analysis.areaId)
+    : { analyses: [] }
 
   // Build history data for key parameters
   const keyParams = [
