@@ -39,9 +39,9 @@ export default async function EditTransactionPage({ params }: EditTransactionPag
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Editar Transacao</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Editar Transacción</h1>
         <p className="text-muted-foreground mt-1">
-          Atualize os dados da transacao
+          Actualice los datos de la transacción
         </p>
       </div>
 

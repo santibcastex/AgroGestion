@@ -132,7 +132,7 @@ export function NewActivityWizard({
       {step !== "type" && !plannedActivity && !(preselectedType && preselectedKind) && (
         <Button variant="ghost" size="sm" onClick={goBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar
+          Volver
         </Button>
       )}
 
@@ -149,7 +149,7 @@ export function NewActivityWizard({
               {selectedType.name}
             </h2>
             <p className="text-sm text-muted-foreground">
-              O que deseja fazer?
+              ¿Qué desea hacer?
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -163,9 +163,9 @@ export function NewActivityWizard({
             >
               <ClipboardList className="h-10 w-10 text-purple-500" />
               <div className="text-center">
-                <p className="font-semibold">Planejar</p>
+                <p className="font-semibold">Planificar</p>
                 <p className="text-sm text-muted-foreground">
-                  Defina o que precisa ser feito. Nao deduz estoque.
+                  Defina lo que debe hacerse. No descuenta stock.
                 </p>
               </div>
             </button>
@@ -179,9 +179,9 @@ export function NewActivityWizard({
             >
               <ClipboardCheck className="h-10 w-10 text-emerald-500" />
               <div className="text-center">
-                <p className="font-semibold">Registrar Realizacao</p>
+                <p className="font-semibold">Registrar Realización</p>
                 <p className="text-sm text-muted-foreground">
-                  Registre o que foi executado. Deduz estoque.
+                  Registre lo que fue ejecutado. Descuenta stock.
                 </p>
               </div>
             </button>

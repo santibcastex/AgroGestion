@@ -45,10 +45,10 @@ export default async function NovaAtividadePage({ params, searchParams }: Props)
   const areas = cropAreas.map((ca) => ca.area)
 
   const ROLE_LABELS: Record<string, string> = {
-    OWNER: "Proprietario",
+    OWNER: "Propietario",
     MANAGER: "Gestor",
     ACCOUNTANT: "Contador",
-    WORKER: "Trabalhador",
+    WORKER: "Trabajador",
     VIEWER: "Visualizador",
   }
 
@@ -63,7 +63,7 @@ export default async function NovaAtividadePage({ params, searchParams }: Props)
     id: c.id,
     name: c.name,
     type: "contractor" as const,
-    role: "Terceirizado",
+    role: "Tercerizado",
   }))
 
   // Pre-select type if provided in URL
@@ -104,10 +104,10 @@ export default async function NovaAtividadePage({ params, searchParams }: Props)
 
   // Title based on context
   const isRealization = !!plannedActivity
-  const title = isRealization ? "Registrar Realizacao" : "Nova Atividade"
+  const title = isRealization ? "Registrar Realización" : "Nueva Actividad"
   const subtitle = isRealization && preselectedType
-    ? `Realizacao para ${preselectedType.name}`
-    : "Planejar ou registrar uma atividade"
+    ? `Realización para ${preselectedType.name}`
+    : "Planificar o registrar una actividad"
 
   return (
     <NovaAtividadeClient

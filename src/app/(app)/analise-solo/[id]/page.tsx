@@ -91,10 +91,10 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
         </Button>
         <div>
           <h1 className="text-3xl font-bold tracking-tight">
-            Analise de Solo
+            Análisis de Suelo
           </h1>
           <p className="text-muted-foreground">
-            Detalhes da analise e evolucao dos parametros
+            Detalles del análisis y evolución de los parámetros
           </p>
         </div>
       </div>
@@ -103,7 +103,7 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Area</CardTitle>
+            <CardTitle className="text-sm font-medium">Área</CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -120,7 +120,7 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Data da Coleta
+              Fecha de Colecta
             </CardTitle>
             <CalendarDays className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -129,7 +129,7 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
               {formatDate(analysis.sampleDate)}
             </div>
             <p className="text-xs text-muted-foreground">
-              Ano: {analysis.year}
+              Año: {analysis.year}
               {analysis.depth ? ` | Prof.: ${analysis.depth} cm` : ""}
             </p>
           </CardContent>
@@ -145,7 +145,7 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
             </div>
             {analysis.labReportId && (
               <p className="text-xs text-muted-foreground">
-                Laudo: {analysis.labReportId}
+                Informe: {analysis.labReportId}
               </p>
             )}
           </CardContent>
@@ -155,9 +155,9 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
       {/* Parameter gauges grid */}
       <Card>
         <CardHeader>
-          <CardTitle>Parametros do Solo</CardTitle>
+          <CardTitle>Parámetros del Suelo</CardTitle>
           <CardDescription>
-            Valores da analise comparados com faixas ideais para cana-de-acucar
+            Valores del análisis comparados con rangos ideales para caña de azúcar
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -217,9 +217,9 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
       {historyAnalyses.length > 1 && (
         <Card>
           <CardHeader>
-            <CardTitle>Evolucao dos Parametros</CardTitle>
+            <CardTitle>Evolución de los Parámetros</CardTitle>
             <CardDescription>
-              Historico dos principais indicadores na area{" "}
+              Historial de los principales indicadores en el área{" "}
               {analysis.area?.name ?? ""}
             </CardDescription>
           </CardHeader>
@@ -244,9 +244,9 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
       {hasMultipleYears && (
         <Card>
           <CardHeader>
-            <CardTitle>Comparacao entre Anos</CardTitle>
+            <CardTitle>Comparación entre Años</CardTitle>
             <CardDescription>
-              Comparacao radar dos parametros normalizados pela faixa ideal
+              Comparación radar de los parámetros normalizados por el rango ideal
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -259,7 +259,7 @@ export default async function AnaliseSoloDetailPage({ params }: PageProps) {
       {analysis.notes && (
         <Card>
           <CardHeader>
-            <CardTitle>Observacoes</CardTitle>
+            <CardTitle>Observaciones</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground whitespace-pre-wrap">

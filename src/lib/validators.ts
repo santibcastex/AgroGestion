@@ -1,35 +1,35 @@
 import { z } from "zod"
 
 export const loginSchema = z.object({
-  email: z.string().email("Email invalido"),
-  password: z.string().min(6, "Senha deve ter no minimo 6 caracteres"),
+  email: z.string().email("Email inválido"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 })
 
 export const registerSchema = z.object({
-  name: z.string().min(2, "Nome deve ter no minimo 2 caracteres"),
-  email: z.string().email("Email invalido"),
-  password: z.string().min(6, "Senha deve ter no minimo 6 caracteres"),
-  farmName: z.string().min(2, "Nome da fazenda deve ter no minimo 2 caracteres"),
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+  farmName: z.string().min(2, "El nombre de la granja debe tener al menos 2 caracteres"),
 })
 
 export const farmSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
+  name: z.string().min(1, "El nombre es obligatorio"),
   city: z.string().optional(),
   state: z.string().optional(),
   document: z.string().optional(),
 })
 
 export const areaSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
-  sizeHa: z.coerce.number().positive("Area deve ser maior que zero"),
+  name: z.string().min(1, "El nombre es obligatorio"),
+  sizeHa: z.coerce.number().positive("El área debe ser mayor que cero"),
   geojson: z.any().optional(),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
   description: z.string().optional(),
 })
 
 export const cropSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
-  culture: z.string().min(1, "Cultura e obrigatoria"),
+  name: z.string().min(1, "El nombre es obligatorio"),
+  culture: z.string().min(1, "El cultivo es obligatorio"),
   plantingType: z.enum(["CANA_PLANTA", "SOQUEIRA", "OUTRO"]),
   variety: z.string().optional(),
   startDate: z.coerce.date().optional(),
@@ -40,11 +40,11 @@ export const cropSchema = z.object({
   grossWeightDiscounts: z.array(z.string()).optional(),
   netWeightDiscounts: z.array(z.string()).optional(),
   notes: z.string().optional(),
-  areaIds: z.array(z.string()).min(1, "Selecione pelo menos uma area"),
+  areaIds: z.array(z.string()).min(1, "Seleccione al menos un área"),
 })
 
 export const activitySchema = z.object({
-  activityTypeId: z.string().min(1, "Tipo e obrigatorio"),
+  activityTypeId: z.string().min(1, "El tipo es obligatorio"),
   subtype: z.string().optional(),
   cropId: z.string().optional(),
   team: z.string().optional(),
@@ -55,7 +55,7 @@ export const activitySchema = z.object({
   plannedActivityId: z.string().optional(),
   stockId: z.string().optional(),
   notes: z.string().optional(),
-  areaIds: z.array(z.string()).min(1, "Selecione pelo menos uma area"),
+  areaIds: z.array(z.string()).min(1, "Seleccione al menos un área"),
   inputUsages: z.array(z.object({
     inputId: z.string(),
     quantity: z.coerce.number().positive(),
@@ -64,7 +64,7 @@ export const activitySchema = z.object({
 })
 
 export const inputSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
+  name: z.string().min(1, "El nombre es obligatorio"),
   category: z.enum(["HERBICIDA", "INSETICIDA", "FUNGICIDA", "FERTILIZANTE", "ADJUVANTE", "SEMENTE", "COMBUSTIVEL", "OUTRO"]),
   unit: z.enum(["KG", "L", "T", "UNIDADE", "SACO", "ML", "G"]).default("L"),
   manufacturer: z.string().optional(),
@@ -74,7 +74,7 @@ export const inputSchema = z.object({
 })
 
 export const soilAnalysisSchema = z.object({
-  areaId: z.string().min(1, "Area e obrigatoria"),
+  areaId: z.string().min(1, "El área es obligatoria"),
   sampleDate: z.coerce.date(),
   year: z.coerce.number().int().min(2000).max(2100),
   depth: z.string().default("0-20"),
@@ -107,7 +107,7 @@ export const soilAnalysisSchema = z.object({
 })
 
 export const bankAccountSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
+  name: z.string().min(1, "El nombre es obligatorio"),
   bankName: z.string().optional(),
   agency: z.string().optional(),
   accountNumber: z.string().optional(),
@@ -119,8 +119,8 @@ export const transactionSchema = z.object({
   type: z.enum(["RECEITA", "DESPESA"]),
   categoryId: z.string().optional(),
   bankAccountId: z.string().optional(),
-  description: z.string().min(1, "Descricao e obrigatoria"),
-  amount: z.coerce.number().positive("Valor deve ser positivo"),
+  description: z.string().min(1, "La descripción es obligatoria"),
+  amount: z.coerce.number().positive("El valor debe ser positivo"),
   dueDate: z.coerce.date(),
   paymentDate: z.coerce.date().optional(),
   competenceDate: z.coerce.date().optional(),
@@ -131,18 +131,18 @@ export const transactionSchema = z.object({
 })
 
 export const supplierSchema = z.object({
-  name: z.string().min(1, "Nome e obrigatorio"),
+  name: z.string().min(1, "El nombre es obligatorio"),
   document: z.string().optional(),
-  types: z.array(z.enum(["PRODUTOS", "SERVICOS", "OUTRO"])).min(1, "Selecione pelo menos um tipo").default(["OUTRO"]),
+  types: z.array(z.enum(["PRODUTOS", "SERVICOS", "OUTRO"])).min(1, "Seleccione al menos un tipo").default(["OUTRO"]),
   phone: z.string().optional(),
   whatsapp: z.string().optional(),
-  email: z.string().email("Email invalido").optional().or(z.literal("")),
+  email: z.string().email("Email inválido").optional().or(z.literal("")),
   address: z.string().optional(),
   notes: z.string().optional(),
 })
 
 export const purchaseSchema = z.object({
-  supplierId: z.string().min(1, "Fornecedor e obrigatorio"),
+  supplierId: z.string().min(1, "El proveedor es obligatorio"),
   purchaseDate: z.coerce.date(),
   deliveryDate: z.coerce.date().optional(),
   invoiceNumber: z.string().optional(),
@@ -157,11 +157,11 @@ export const purchaseSchema = z.object({
     quantity: z.coerce.number().positive(),
     unit: z.enum(["KG", "L", "T", "UNIDADE", "SACO", "ML", "G"]),
     unitPrice: z.coerce.number().positive(),
-  })).min(1, "Adicione pelo menos um item"),
+  })).min(1, "Agregue al menos un ítem"),
 })
 
 export const certificateUploadSchema = z.object({
-  password: z.string().min(1, "Senha do certificado e obrigatoria"),
+  password: z.string().min(1, "La contraseña del certificado es obligatoria"),
 })
 
 export const approveNfeSchema = z.object({
@@ -179,10 +179,10 @@ export const rejectNfeSchema = z.object({
 })
 
 export const harvestSchema = z.object({
-  cropId: z.string().min(1, "Safra e obrigatoria"),
-  areaId: z.string().min(1, "Area e obrigatoria"),
+  cropId: z.string().min(1, "La cosecha es obligatoria"),
+  areaId: z.string().min(1, "El área es obligatoria"),
   harvestDate: z.coerce.date(),
-  totalTons: z.coerce.number().positive("Tonelagem deve ser positiva"),
+  totalTons: z.coerce.number().positive("El tonelaje debe ser positivo"),
   tch: z.coerce.number().optional(),
   atr: z.coerce.number().optional(),
   brix: z.coerce.number().optional(),

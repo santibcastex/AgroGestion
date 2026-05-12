@@ -13,9 +13,9 @@ export default async function NovaTransacaoPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Transacao</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nueva Transacción</h1>
         <p className="text-muted-foreground mt-1">
-          Registre uma nova receita ou despesa
+          Registre un nuevo ingreso o gasto
         </p>
       </div>
 

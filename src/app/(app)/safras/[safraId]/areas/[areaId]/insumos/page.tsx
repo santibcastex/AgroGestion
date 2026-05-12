@@ -47,7 +47,7 @@ export default async function AreaInsumosPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Insumos</h1>
         <p className="text-muted-foreground">
-          Insumos utilizados no talhao {area.name} nesta safra
+          Insumos utilizados en la parcela {area.name} en esta cosecha
         </p>
       </div>
 
@@ -56,17 +56,17 @@ export default async function AreaInsumosPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Package className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhum insumo utilizado
+              Ningún insumo utilizado
             </h3>
             <p className="text-muted-foreground text-sm">
-              Os insumos utilizados nas atividades deste talhao nesta safra aparecerão aqui.
+              Los insumos utilizados en las actividades de esta parcela en esta cosecha aparecerán aquí.
             </p>
           </CardContent>
         </Card>
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Insumos do Talhao</CardTitle>
+            <CardTitle>Insumos de la Parcela</CardTitle>
             <CardDescription>
               {inputs.length}{" "}
               {inputs.length === 1 ? "insumo utilizado" : "insumos utilizados"}
@@ -76,11 +76,11 @@ export default async function AreaInsumosPage({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Categoria</TableHead>
-                  <TableHead>Unidade</TableHead>
+                  <TableHead>Nombre</TableHead>
+                  <TableHead>Categoría</TableHead>
+                  <TableHead>Unidad</TableHead>
                   <TableHead className="text-right">Utilizado</TableHead>
-                  <TableHead className="text-right">Estoque Atual</TableHead>
+                  <TableHead className="text-right">Stock Actual</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

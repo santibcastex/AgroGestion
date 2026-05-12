@@ -77,10 +77,10 @@ export default function NovaAreaPage() {
         if (geojson) formData.append("geojson", JSON.stringify(geojson))
 
         await createArea(activeFarm.farmId, formData)
-        toast.success("Area criada com sucesso")
+        toast.success("Área creada con éxito")
         router.push("/areas")
       } catch (error) {
-        toast.error("Erro ao criar area")
+        toast.error("Error al crear el área")
       }
     })
   }
@@ -88,9 +88,9 @@ export default function NovaAreaPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Area</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nueva Área</h1>
         <p className="text-muted-foreground mt-1">
-          Cadastre uma nova area na fazenda
+          Registre una nueva área en la granja
         </p>
       </div>
 
@@ -101,11 +101,11 @@ export default function NovaAreaPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5" />
-                Desenhar Area no Mapa
+                Dibujar Área en el Mapa
               </CardTitle>
               <CardDescription>
-                Desenhe o poligono da area diretamente no mapa ou importe um arquivo KML.
-                A area em hectares sera calculada automaticamente.
+                Dibuje el polígono del área directamente en el mapa o importe un archivo KML.
+                El área en hectáreas se calculará automáticamente.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -121,7 +121,7 @@ export default function NovaAreaPage() {
                       form.setValue("sizeHa", 0)
                     }}
                   >
-                    Limpar geometria
+                    Limpiar geometría
                   </Button>
                 )}
               </div>
@@ -134,7 +134,7 @@ export default function NovaAreaPage() {
               </div>
               {geojson && (
                 <p className="text-sm text-muted-foreground">
-                  Geometria definida. Area calculada: {form.getValues("sizeHa")} ha
+                  Geometría definida. Área calculada: {form.getValues("sizeHa")} ha
                 </p>
               )}
             </CardContent>
@@ -143,7 +143,7 @@ export default function NovaAreaPage() {
           {/* Data Card */}
           <Card>
             <CardHeader>
-              <CardTitle>Dados da Area</CardTitle>
+              <CardTitle>Datos del Área</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -152,9 +152,9 @@ export default function NovaAreaPage() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome</FormLabel>
+                      <FormLabel>Nombre</FormLabel>
                       <FormControl>
-                        <Input placeholder="Talhao 1" disabled={isPending} {...field} />
+                        <Input placeholder="Parcela 1" disabled={isPending} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -166,7 +166,7 @@ export default function NovaAreaPage() {
                   name="sizeHa"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tamanho (ha)</FormLabel>
+                      <FormLabel>Tamaño (ha)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -186,7 +186,7 @@ export default function NovaAreaPage() {
                   name="color"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cor no mapa</FormLabel>
+                      <FormLabel>Color en el mapa</FormLabel>
                       <FormControl>
                         <div className="flex items-center gap-3">
                           <Input
@@ -215,10 +215,10 @@ export default function NovaAreaPage() {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Descricao</FormLabel>
+                      <FormLabel>Descripción</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Observacoes sobre esta area..."
+                          placeholder="Observaciones sobre esta área..."
                           disabled={isPending}
                           {...field}
                         />
@@ -234,7 +234,7 @@ export default function NovaAreaPage() {
           <div className="flex gap-3">
             <Button type="submit" disabled={isPending}>
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Criar Area
+              Crear Área
             </Button>
             <Button
               type="button"

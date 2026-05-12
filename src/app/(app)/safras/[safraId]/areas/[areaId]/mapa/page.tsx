@@ -39,7 +39,7 @@ export default async function AreaMapaPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Mapa</h1>
         <p className="text-muted-foreground">
-          Visualizacao do talhao {area.name}
+          Visualización de la parcela {area.name}
         </p>
       </div>
 
@@ -60,10 +60,10 @@ export default async function AreaMapaPage({
               </div>
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold tracking-tight">
-                  Sem dados de geometria
+                  Sin datos de geometría
                 </h2>
                 <p className="text-muted-foreground max-w-md">
-                  Este talhao nao possui dados GeoJSON para visualizacao no mapa.
+                  Esta parcela no tiene datos GeoJSON para visualización en el mapa.
                 </p>
               </div>
             </div>

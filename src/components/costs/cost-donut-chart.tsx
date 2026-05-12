@@ -27,7 +27,7 @@ export function CostDonutChart({ categories, totalCost }: CostDonutChartProps) {
   if (data.length === 0) {
     return (
       <div className="flex items-center justify-center h-[300px] text-muted-foreground text-sm">
-        Sem dados de custo para exibir
+        Sin datos de costo para mostrar
       </div>
     )
   }
@@ -56,7 +56,7 @@ export function CostDonutChart({ categories, totalCost }: CostDonutChartProps) {
         {/* Center label */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <span className="text-2xl font-bold">100%</span>
-          <span className="text-xs text-muted-foreground">Total dos custos</span>
+          <span className="text-xs text-muted-foreground">Total de costos</span>
         </div>
       </div>
 

@@ -74,10 +74,10 @@ export default function NovaColheitaPage() {
     startTransition(async () => {
       try {
         await createHarvest(activeFarm.farmId, values)
-        toast.success("Colheita registrada com sucesso")
+        toast.success("Cosecha registrada con éxito")
         router.push("/colheita")
       } catch (error) {
-        toast.error("Erro ao registrar colheita")
+        toast.error("Error al registrar cosecha")
       }
     })
   }
@@ -85,20 +85,20 @@ export default function NovaColheitaPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Colheita</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nueva Cosecha</h1>
         <p className="text-muted-foreground mt-1">
-          Registre os dados de uma colheita
+          Registre los datos de una cosecha
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Informacoes Basicas */}
+          {/* Información Básica */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Wheat className="h-5 w-5" />
-                Informacoes da Colheita
+                Información de la Cosecha
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -108,10 +108,10 @@ export default function NovaColheitaPage() {
                   name="cropId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Safra</FormLabel>
+                      <FormLabel>Cosecha</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="ID da safra"
+                          placeholder="ID de la cosecha"
                           disabled={isPending}
                           {...field}
                         />
@@ -126,10 +126,10 @@ export default function NovaColheitaPage() {
                   name="areaId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Area (Talhao)</FormLabel>
+                      <FormLabel>Área (Parcela)</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="ID da area"
+                          placeholder="ID del área"
                           disabled={isPending}
                           {...field}
                         />
@@ -144,7 +144,7 @@ export default function NovaColheitaPage() {
                   name="harvestDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data da Colheita</FormLabel>
+                      <FormLabel>Fecha de Cosecha</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -165,10 +165,10 @@ export default function NovaColheitaPage() {
                   name="ticketNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Numero do Ticket</FormLabel>
+                      <FormLabel>Número de Ticket</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Ex: 12345"
+                          placeholder="Ej: 12345"
                           disabled={isPending}
                           {...field}
                         />
@@ -183,10 +183,10 @@ export default function NovaColheitaPage() {
                   name="buyerName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Comprador / Usina</FormLabel>
+                      <FormLabel>Comprador / Planta</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Nome do comprador"
+                          placeholder="Nombre del comprador"
                           disabled={isPending}
                           {...field}
                         />
@@ -196,22 +196,22 @@ export default function NovaColheitaPage() {
                   )}
                 />
 
-                {numericField("salePrice", "Preco de Venda (R$/t)", "0", "0.01")}
+                {numericField("salePrice", "Precio de Venta (R$/t)", "0", "0.01")}
               </div>
             </CardContent>
           </Card>
 
-          {/* Parametros de Qualidade da Cana */}
+          {/* Parámetros de Calidad */}
           <Card>
             <CardHeader>
-              <CardTitle>Parametros de Qualidade</CardTitle>
+              <CardTitle>Parámetros de Calidad</CardTitle>
               <CardDescription>
-                Indicadores de qualidade da cana-de-acucar
+                Indicadores de calidad de la caña de azúcar
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-                {numericField("tch", "TCH (t cana/ha)", "80")}
+                {numericField("tch", "TCH (t caña/ha)", "80")}
                 {numericField("atr", "ATR (kg/t)", "140")}
                 {numericField("brix", "Brix (%)", "21")}
                 {numericField("pol", "Pol (%)", "16")}
@@ -221,7 +221,7 @@ export default function NovaColheitaPage() {
             </CardContent>
           </Card>
 
-          {/* Observacoes */}
+          {/* Observaciones */}
           <Card>
             <CardContent className="pt-6">
               <FormField
@@ -229,10 +229,10 @@ export default function NovaColheitaPage() {
                 name="notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Observacoes</FormLabel>
+                    <FormLabel>Observaciones</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Observacoes sobre a colheita..."
+                        placeholder="Observaciones sobre la cosecha..."
                         disabled={isPending}
                         {...field}
                       />
@@ -247,7 +247,7 @@ export default function NovaColheitaPage() {
           <div className="flex gap-3">
             <Button type="submit" disabled={isPending} size="lg">
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Registrar Colheita
+              Registrar Cosecha
             </Button>
             <Button
               type="button"

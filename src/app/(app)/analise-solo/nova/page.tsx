@@ -58,10 +58,10 @@ export default function NovaAnaliseSoloPage() {
     startTransition(async () => {
       try {
         await createSoilAnalysis(activeFarm.farmId, values)
-        toast.success("Analise de solo registrada com sucesso")
+        toast.success("Análisis de suelo registrado con éxito")
         router.push("/analise-solo")
       } catch (error) {
-        toast.error("Erro ao registrar analise")
+        toast.error("Error al registrar análisis")
       }
     })
   }
@@ -93,20 +93,20 @@ export default function NovaAnaliseSoloPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Analise de Solo</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nuevo Análisis de Suelo</h1>
         <p className="text-muted-foreground mt-1">
-          Registre os resultados de uma analise de solo
+          Registre los resultados de un análisis de suelo
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Info basica */}
+          {/* Información básica */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FlaskConical className="h-5 w-5" />
-                Informacoes da Amostra
+                Información de la Muestra
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -116,9 +116,9 @@ export default function NovaAnaliseSoloPage() {
                   name="areaId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Area (Talhao)</FormLabel>
+                      <FormLabel>Área (Parcela)</FormLabel>
                       <FormControl>
-                        <Input placeholder="ID da area" disabled={isPending} {...field} />
+                        <Input placeholder="ID del área" disabled={isPending} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -130,7 +130,7 @@ export default function NovaAnaliseSoloPage() {
                   name="sampleDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data da Coleta</FormLabel>
+                      <FormLabel>Fecha de Colecta</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -149,7 +149,7 @@ export default function NovaAnaliseSoloPage() {
                   name="year"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Ano Agricola</FormLabel>
+                      <FormLabel>Año Agrícola</FormLabel>
                       <FormControl>
                         <Input type="number" disabled={isPending} {...field} />
                       </FormControl>
@@ -163,7 +163,7 @@ export default function NovaAnaliseSoloPage() {
                   name="depth"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Profundidade (cm)</FormLabel>
+                      <FormLabel>Profundidad (cm)</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -189,7 +189,7 @@ export default function NovaAnaliseSoloPage() {
                     <FormItem>
                       <FormLabel>Laboratorio</FormLabel>
                       <FormControl>
-                        <Input placeholder="Nome do laboratorio" disabled={isPending} {...field} />
+                        <Input placeholder="Nombre del laboratorio" disabled={isPending} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -201,7 +201,7 @@ export default function NovaAnaliseSoloPage() {
                   name="labReportId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>N. do Laudo</FormLabel>
+                      <FormLabel>N. del Informe</FormLabel>
                       <FormControl>
                         <Input placeholder="123456" disabled={isPending} {...field} />
                       </FormControl>
@@ -216,8 +216,8 @@ export default function NovaAnaliseSoloPage() {
           {/* Macronutrientes */}
           <Card>
             <CardHeader>
-              <CardTitle>Macronutrientes e Parametros Principais</CardTitle>
-              <CardDescription>Valores do laudo de analise</CardDescription>
+              <CardTitle>Macronutrientes y Parámetros Principales</CardTitle>
+              <CardDescription>Valores del informe de análisis</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -233,12 +233,12 @@ export default function NovaAnaliseSoloPage() {
             </CardContent>
           </Card>
 
-          {/* Valores Derivados */}
+          {/* Valores Calculados */}
           <Card>
             <CardHeader>
               <CardTitle>Valores Calculados</CardTitle>
               <CardDescription>
-                Preenchidos automaticamente se deixados em branco
+                Completados automáticamente si se dejan en blanco
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -255,7 +255,7 @@ export default function NovaAnaliseSoloPage() {
           <Card>
             <CardHeader>
               <CardTitle>Micronutrientes</CardTitle>
-              <CardDescription>Valores em mg/dm3</CardDescription>
+              <CardDescription>Valores en mg/dm3</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -269,26 +269,26 @@ export default function NovaAnaliseSoloPage() {
             </CardContent>
           </Card>
 
-          {/* Propriedades Fisicas */}
+          {/* Propiedades Físicas */}
           <Card>
             <CardHeader>
-              <CardTitle>Propriedades Fisicas</CardTitle>
-              <CardDescription>Granulometria e textura</CardDescription>
+              <CardTitle>Propiedades Físicas</CardTitle>
+              <CardDescription>Granulometría y textura</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                {numericField("clayPercent", "Argila (%)", "35")}
-                {numericField("siltPercent", "Silte (%)", "15")}
-                {numericField("sandPercent", "Areia (%)", "50")}
+                {numericField("clayPercent", "Arcilla (%)", "35")}
+                {numericField("siltPercent", "Limo (%)", "15")}
+                {numericField("sandPercent", "Arena (%)", "50")}
                 <FormField
                   control={form.control}
                   name="textureClass"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs">Classe Textural</FormLabel>
+                      <FormLabel className="text-xs">Clase Textural</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Argilosa"
+                          placeholder="Arcillosa"
                           disabled={isPending}
                           className="h-9"
                           {...field}
@@ -302,7 +302,7 @@ export default function NovaAnaliseSoloPage() {
             </CardContent>
           </Card>
 
-          {/* Notas */}
+          {/* Observaciones */}
           <Card>
             <CardContent className="pt-6">
               <FormField
@@ -310,10 +310,10 @@ export default function NovaAnaliseSoloPage() {
                 name="notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Observacoes</FormLabel>
+                    <FormLabel>Observaciones</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Observacoes sobre a amostra ou resultados..."
+                        placeholder="Observaciones sobre la muestra o resultados..."
                         disabled={isPending}
                         {...field}
                       />
@@ -328,7 +328,7 @@ export default function NovaAnaliseSoloPage() {
           <div className="flex gap-3">
             <Button type="submit" disabled={isPending} size="lg">
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Registrar Analise
+              Registrar Análisis
             </Button>
             <Button
               type="button"

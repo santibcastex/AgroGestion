@@ -126,15 +126,15 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Financeiro</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Financiero</h1>
           <p className="text-muted-foreground">
-            Gerencie suas contas, receitas e despesas
+            Gestione sus cuentas, ingresos y gastos
           </p>
         </div>
         <Button asChild>
           <Link href="/financeiro/nova-transacao">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Transação
+            Nueva Transacción
           </Link>
         </Button>
       </div>
@@ -150,13 +150,13 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
               {formatCurrency(totalBalance)}
             </div>
             <p className="text-xs text-muted-foreground">
-              {bankAccounts.length} conta(s) cadastrada(s)
+              {bankAccounts.length} cuenta(s) registrada(s)
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">A Receber</CardTitle>
+            <CardTitle className="text-sm font-medium">Por Cobrar</CardTitle>
             <ArrowDownCircle className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
@@ -169,13 +169,13 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
             </div>
             <p className="text-xs text-muted-foreground">
               {receitas.filter((t) => t.status === "PENDENTE").length}{" "}
-              pendente(s)
+              pendiente(s)
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">A Pagar</CardTitle>
+            <CardTitle className="text-sm font-medium">Por Pagar</CardTitle>
             <ArrowUpCircle className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
@@ -188,7 +188,7 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
             </div>
             <p className="text-xs text-muted-foreground">
               {despesas.filter((t) => t.status === "PENDENTE").length}{" "}
-              pendente(s)
+              pendiente(s)
             </p>
           </CardContent>
         </Card>
@@ -196,25 +196,25 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
 
       <Tabs defaultValue="contas" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="contas">Contas</TabsTrigger>
-          <TabsTrigger value="a-pagar">A Pagar</TabsTrigger>
-          <TabsTrigger value="a-receber">A Receber</TabsTrigger>
-          <TabsTrigger value="fluxo-caixa">Fluxo de Caixa</TabsTrigger>
-          <TabsTrigger value="conciliacao">Conciliação</TabsTrigger>
+          <TabsTrigger value="contas">Cuentas</TabsTrigger>
+          <TabsTrigger value="a-pagar">Por Pagar</TabsTrigger>
+          <TabsTrigger value="a-receber">Por Cobrar</TabsTrigger>
+          <TabsTrigger value="fluxo-caixa">Flujo de Caja</TabsTrigger>
+          <TabsTrigger value="conciliacao">Conciliación</TabsTrigger>
         </TabsList>
 
         <TabsContent value="contas" className="space-y-4">
           <div className="flex gap-4">
-            {/* Sidebar - Contas Bancárias */}
+            {/* Sidebar - Cuentas Bancarias */}
             <div className="w-72 shrink-0 space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold">Contas Bancárias</h3>
+                <h3 className="text-sm font-semibold">Cuentas Bancarias</h3>
                 <NewBankAccountDialog />
               </div>
               <BankAccountsList accounts={bankAccounts} />
             </div>
 
-            {/* Tabela de Transações */}
+            {/* Tabla de Transacciones */}
             <div className="flex-1 min-w-0 space-y-3">
               <div className="flex items-center justify-end">
                 <DateRangeFilter period={period} month={month} year={year} />
@@ -224,7 +224,7 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
                   <CardContent className="flex flex-col items-center justify-center py-10">
                     <Wallet className="h-10 w-10 text-muted-foreground mb-4" />
                     <p className="text-muted-foreground text-center">
-                      Nenhuma transação cadastrada.
+                      Ninguna transacción registrada.
                     </p>
                   </CardContent>
                 </Card>
@@ -245,7 +245,7 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
               <CardContent className="flex flex-col items-center justify-center py-10">
                 <ArrowUpCircle className="h-10 w-10 text-muted-foreground mb-4" />
                 <p className="text-muted-foreground text-center">
-                  Nenhuma despesa cadastrada.
+                  Ningún gasto registrado.
                 </p>
               </CardContent>
             </Card>
@@ -255,13 +255,13 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Vencimento</TableHead>
-                      <TableHead>Descrição</TableHead>
-                      <TableHead>Categoria</TableHead>
-                      <TableHead>Fornecedor</TableHead>
-                      <TableHead>Parcelas</TableHead>
+                      <TableHead>Vencimiento</TableHead>
+                      <TableHead>Descripción</TableHead>
+                      <TableHead>Categoría</TableHead>
+                      <TableHead>Proveedor</TableHead>
+                      <TableHead>Cuotas</TableHead>
                       <TableHead className="text-right">Valor</TableHead>
-                      <TableHead>Status</TableHead>
+                      <TableHead>Estado</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -316,7 +316,7 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
               <CardContent className="flex flex-col items-center justify-center py-10">
                 <ArrowDownCircle className="h-10 w-10 text-muted-foreground mb-4" />
                 <p className="text-muted-foreground text-center">
-                  Nenhuma receita cadastrada.
+                  Ningún ingreso registrado.
                 </p>
               </CardContent>
             </Card>
@@ -326,13 +326,13 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Vencimento</TableHead>
-                      <TableHead>Descrição</TableHead>
-                      <TableHead>Categoria</TableHead>
-                      <TableHead>Fornecedor</TableHead>
-                      <TableHead>Parcelas</TableHead>
+                      <TableHead>Vencimiento</TableHead>
+                      <TableHead>Descripción</TableHead>
+                      <TableHead>Categoría</TableHead>
+                      <TableHead>Proveedor</TableHead>
+                      <TableHead>Cuotas</TableHead>
                       <TableHead className="text-right">Valor</TableHead>
-                      <TableHead>Status</TableHead>
+                      <TableHead>Estado</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -385,9 +385,9 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-16">
               <Wallet className="h-10 w-10 text-muted-foreground mb-4" />
-              <h3 className="text-lg font-semibold mb-1">Fluxo de Caixa</h3>
+              <h3 className="text-lg font-semibold mb-1">Flujo de Caja</h3>
               <p className="text-muted-foreground text-center">
-                Em breve
+                Próximamente
               </p>
             </CardContent>
           </Card>
@@ -397,9 +397,9 @@ export default async function FinanceiroPage({ searchParams }: FinanceiroPagePro
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-16">
               <Landmark className="h-10 w-10 text-muted-foreground mb-4" />
-              <h3 className="text-lg font-semibold mb-1">Conciliação Bancária</h3>
+              <h3 className="text-lg font-semibold mb-1">Conciliación Bancaria</h3>
               <p className="text-muted-foreground text-center">
-                Em breve
+                Próximamente
               </p>
             </CardContent>
           </Card>

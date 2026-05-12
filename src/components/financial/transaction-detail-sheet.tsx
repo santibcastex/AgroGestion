@@ -129,6 +129,7 @@ export function TransactionDetailSheet({
               <Badge variant="outline" className="text-blue-500 border-blue-500/30">
                 Conciliado
               </Badge>
+
             )}
           </div>
           <SheetTitle className="text-xl leading-tight">{transaction.description}</SheetTitle>
@@ -148,7 +149,7 @@ export function TransactionDetailSheet({
             <div className="flex items-start gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-xs text-muted-foreground">Vencimento</p>
+                <p className="text-xs text-muted-foreground">Vencimiento</p>
                 <p className="text-sm font-medium">
                   {transaction.dueDate ? formatDate(transaction.dueDate) : "—"}
                 </p>
@@ -157,7 +158,7 @@ export function TransactionDetailSheet({
             <div className="flex items-start gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-xs text-muted-foreground">Pagamento</p>
+                <p className="text-xs text-muted-foreground">Pago</p>
                 <p className="text-sm font-medium">
                   {transaction.paymentDate ? formatDate(transaction.paymentDate) : "—"}
                 </p>
@@ -168,6 +169,7 @@ export function TransactionDetailSheet({
                 <Calendar className="h-4 w-4 text-muted-foreground mt-0.5" />
                 <div>
                   <p className="text-xs text-muted-foreground">Competencia</p>
+
                   <p className="text-sm font-medium">{formatDate(transaction.competenceDate)}</p>
                 </div>
               </div>
@@ -182,7 +184,7 @@ export function TransactionDetailSheet({
               <div className="flex items-center gap-2">
                 <Tag className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Categoria</p>
+                  <p className="text-xs text-muted-foreground">Categoría</p>
                   <p className="text-sm font-medium">{transaction.category.name}</p>
                 </div>
               </div>
@@ -192,7 +194,7 @@ export function TransactionDetailSheet({
               <div className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Fornecedor</p>
+                  <p className="text-xs text-muted-foreground">Proveedor</p>
                   <p className="text-sm font-medium">{transaction.supplier.name}</p>
                 </div>
               </div>
@@ -202,7 +204,7 @@ export function TransactionDetailSheet({
               <div className="flex items-center gap-2">
                 <Landmark className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Conta Bancaria</p>
+                  <p className="text-xs text-muted-foreground">Cuenta Bancaria</p>
                   <p className="text-sm font-medium">{transaction.bankAccount.name}</p>
                 </div>
               </div>
@@ -212,7 +214,7 @@ export function TransactionDetailSheet({
               <div className="flex items-center gap-2">
                 <Hash className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Numero do Documento</p>
+                  <p className="text-xs text-muted-foreground">Número del Documento</p>
                   <p className="text-sm font-medium">{transaction.documentNumber}</p>
                 </div>
               </div>
@@ -225,7 +227,7 @@ export function TransactionDetailSheet({
               <Separator />
               <div className="space-y-2">
                 <span className="text-sm font-medium text-muted-foreground">
-                  Parcelas ({transaction.installments.length})
+                  Cuotas ({transaction.installments.length})
                 </span>
                 <div className="space-y-1.5">
                   {transaction.installments.map((inst) => (
@@ -259,7 +261,7 @@ export function TransactionDetailSheet({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm font-medium text-muted-foreground">Observacoes</span>
+                  <span className="text-sm font-medium text-muted-foreground">Observaciones</span>
                 </div>
                 <p className="text-sm pl-6">{transaction.notes}</p>
               </div>
@@ -286,7 +288,7 @@ export function TransactionDetailSheet({
                 disabled={isPending}
               >
                 <CheckCircle2 className="mr-2 h-4 w-4" />
-                {isDespesa ? "Marcar como Pago" : "Marcar como Recebido"}
+                {isDespesa ? "Marcar como Pagado" : "Marcar como Cobrado"}
               </Button>
             )}
             <Button
@@ -300,7 +302,7 @@ export function TransactionDetailSheet({
           </div>
           {confirmDelete && (
             <p className="text-xs text-destructive text-center">
-              Clique novamente para confirmar exclusao
+              Haga clic de nuevo para confirmar la eliminación
             </p>
           )}
         </div>

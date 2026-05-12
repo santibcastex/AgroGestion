@@ -65,13 +65,13 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 // Fixed display order — types not listed here go to the end
 const DISPLAY_ORDER = [
-  "Preparo de Solo",
-  "Tratamento de Semente",
-  "Plantio",
-  "Fertilizacao",
-  "Aplicacao",
-  "Colheita",
-  "Outro",
+  "Preparación de Suelo",
+  "Tratamiento de Semilla",
+  "Siembra",
+  "Fertilización",
+  "Aplicación",
+  "Cosecha",
+  "Otro",
 ]
 
 function getIconForType(type: ActivityTypeOption): React.ElementType {
@@ -97,9 +97,9 @@ export function ActivityTypeSelector({ types, onSelect }: ActivityTypeSelectorPr
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-lg font-semibold">Selecionar tipo de atividade</h2>
+        <h2 className="text-lg font-semibold">Seleccionar tipo de actividad</h2>
         <p className="text-sm text-muted-foreground">
-          Escolha o tipo de atividade que deseja registrar
+          Elija el tipo de actividad que desea registrar
         </p>
       </div>
       <div className="flex flex-col gap-1">

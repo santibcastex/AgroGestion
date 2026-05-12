@@ -164,10 +164,10 @@ export default function NovaSafraPage() {
     startTransition(async () => {
       try {
         await createCrop(activeFarm.farmId, values)
-        toast.success("Safra criada com sucesso")
+        toast.success("Cosecha creada con éxito")
         router.push("/safras")
       } catch {
-        toast.error("Erro ao criar safra")
+        toast.error("Error al crear la cosecha")
       }
     })
   }
@@ -182,19 +182,19 @@ export default function NovaSafraPage() {
           </Link>
         </Button>
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Nova Safra</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Nueva Cosecha</h1>
           <p className="text-sm text-muted-foreground">
-            Cadastre uma nova safra para sua fazenda
+            Registre una nueva cosecha para su granja
           </p>
         </div>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {/* Informacoes Gerais */}
+          {/* Información General */}
           <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-              Informacoes Gerais
+              Información General
             </h2>
 
             <FormField
@@ -202,9 +202,9 @@ export default function NovaSafraPage() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome da safra</FormLabel>
+                  <FormLabel>Nombre de la cosecha</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ex: Cana 25/26" disabled={isPending} {...field} />
+                    <Input placeholder="Ej: Caña 25/26" disabled={isPending} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -217,11 +217,11 @@ export default function NovaSafraPage() {
                 name="culture"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Cultura</FormLabel>
+                    <FormLabel>Cultivo</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione a cultura" />
+                          <SelectValue placeholder="Seleccione el cultivo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -243,11 +243,11 @@ export default function NovaSafraPage() {
                   name="plantingType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tipo de Plantio</FormLabel>
+                      <FormLabel>Tipo de Siembra</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione o tipo" />
+                            <SelectValue placeholder="Seleccione el tipo" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -271,7 +271,7 @@ export default function NovaSafraPage() {
                 name="startDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Inicio</FormLabel>
+                    <FormLabel>Fecha de Inicio</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -290,7 +290,7 @@ export default function NovaSafraPage() {
                 name="endDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Termino</FormLabel>
+                    <FormLabel>Fecha de Término</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -312,7 +312,7 @@ export default function NovaSafraPage() {
           <section className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                Areas
+                Áreas
               </h2>
               {areas.length > 0 && (
                 <button
@@ -320,7 +320,7 @@ export default function NovaSafraPage() {
                   onClick={toggleAllAreas}
                   className="text-xs text-primary hover:underline"
                 >
-                  {watchAreaIds.length === areas.length ? "Desmarcar todas" : "Selecionar todas"}
+                  {watchAreaIds.length === areas.length ? "Deseleccionar todas" : "Seleccionar todas"}
                 </button>
               )}
             </div>
@@ -337,7 +337,7 @@ export default function NovaSafraPage() {
                         <Search className="h-4 w-4 text-muted-foreground shrink-0" />
                         <input
                           type="text"
-                          placeholder="Buscar area..."
+                          placeholder="Buscar área..."
                           value={areaSearch}
                           onChange={(e) => setAreaSearch(e.target.value)}
                           className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
@@ -380,7 +380,7 @@ export default function NovaSafraPage() {
                         })}
                         {filteredAreas.length === 0 && areaSearch && (
                           <p className="text-sm text-muted-foreground text-center py-4">
-                            Nenhuma area encontrada
+                            Ninguna área encontrada
                           </p>
                         )}
                       </div>
@@ -389,18 +389,18 @@ export default function NovaSafraPage() {
                     <div className="rounded-lg border border-dashed py-8 text-center">
                       <MapPin className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
                       <p className="text-sm text-muted-foreground">
-                        Nenhuma area cadastrada.{" "}
+                        Ninguna área registrada.{" "}
                         <Link href="/areas/nova" className="text-primary hover:underline">
-                          Cadastre areas
+                          Registre áreas
                         </Link>{" "}
-                        antes de criar uma safra.
+                        antes de crear una cosecha.
                       </p>
                     </div>
                   )}
 
                   {watchAreaIds.length > 0 && (
                     <p className="text-xs text-muted-foreground">
-                      {watchAreaIds.length} {watchAreaIds.length === 1 ? "area selecionada" : "areas selecionadas"}
+                      {watchAreaIds.length} {watchAreaIds.length === 1 ? "área seleccionada" : "áreas seleccionadas"}
                       {" "}&middot;{" "}{selectedAreaHa.toFixed(2)} ha
                     </p>
                   )}
@@ -415,7 +415,7 @@ export default function NovaSafraPage() {
           {/* Definicoes */}
           <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-              Definicoes
+              Definiciones
             </h2>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -424,11 +424,11 @@ export default function NovaSafraPage() {
                 name="measurementUnit"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Unidade de medida</FormLabel>
+                    <FormLabel>Unidad de medida</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value ?? ""}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione" />
+                          <SelectValue placeholder="Seleccione" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -449,11 +449,11 @@ export default function NovaSafraPage() {
                 name="defaultInputStockId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Estoque de insumos</FormLabel>
+                    <FormLabel>Stock de insumos</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value ?? ""}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione" />
+                          <SelectValue placeholder="Seleccione" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -466,7 +466,7 @@ export default function NovaSafraPage() {
                     </Select>
                     {inputStocks.length === 0 && (
                       <p className="text-xs text-muted-foreground">
-                        Nenhum estoque cadastrado.
+                        Ningún stock registrado.
                       </p>
                     )}
                     <FormMessage />
@@ -478,7 +478,7 @@ export default function NovaSafraPage() {
 
           <Separator />
 
-          {/* Descontos de Colheita */}
+          {/* Descuentos de Cosecha */}
           <Collapsible open={discountsOpen} onOpenChange={setDiscountsOpen}>
             <CollapsibleTrigger asChild>
               <button
@@ -487,7 +487,7 @@ export default function NovaSafraPage() {
               >
                 <div className="flex items-center gap-2">
                   <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                    Descontos de Colheita
+                    Descuentos de Cosecha
                   </h2>
                   {watchGrossDiscounts.length > 0 && (
                     <Badge variant="secondary" className="text-xs">
@@ -508,7 +508,7 @@ export default function NovaSafraPage() {
                 name="grossWeightDiscounts"
                 render={() => (
                   <FormItem>
-                    <FormLabel>Descontos no peso bruto</FormLabel>
+                    <FormLabel>Descuentos en el peso bruto</FormLabel>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                       {HARVEST_DISCOUNT_OPTIONS.map((discount) => (
                         <FormField
@@ -549,7 +549,7 @@ export default function NovaSafraPage() {
                     name="netWeightDiscounts"
                     render={() => (
                       <FormItem>
-                        <FormLabel>Descontos apos remocao de impurezas</FormLabel>
+                        <FormLabel>Descuentos después de remoción de impurezas</FormLabel>
                         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                           {HARVEST_DISCOUNT_OPTIONS.map((discount) => (
                             <FormField
@@ -588,16 +588,16 @@ export default function NovaSafraPage() {
 
           <Separator />
 
-          {/* Observacoes */}
+          {/* Observaciones */}
           <FormField
             control={form.control}
             name="notes"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Observacoes</FormLabel>
+                <FormLabel>Observaciones</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Notas sobre esta safra..."
+                    placeholder="Notas sobre esta cosecha..."
                     disabled={isPending}
                     rows={3}
                     {...field}
@@ -612,7 +612,7 @@ export default function NovaSafraPage() {
           <div className="flex items-center gap-3 pt-2">
             <Button type="submit" disabled={isPending}>
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Criar Safra
+              Crear Cosecha
             </Button>
             <Button
               type="button"

@@ -41,9 +41,9 @@ export default async function AreaCustoPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Custo Realizado</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Costo Real</h1>
         <p className="text-muted-foreground">
-          Custos do talhao {area.name} nesta safra
+          Costos de la parcela {area.name} en esta cosecha
         </p>
       </div>
 
@@ -52,10 +52,10 @@ export default async function AreaCustoPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <DollarSign className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhum custo registrado
+              Ningún costo registrado
             </h3>
             <p className="text-muted-foreground text-sm">
-              Os custos das atividades e insumos deste talhao nesta safra aparecerão aqui.
+              Los costos de las actividades e insumos de esta parcela en esta cosecha aparecerán aquí.
             </p>
           </CardContent>
         </Card>
@@ -64,9 +64,9 @@ export default async function AreaCustoPage({
           {/* Donut Chart */}
           <Card>
             <CardHeader>
-              <CardTitle>Custo Realizado</CardTitle>
+              <CardTitle>Costo Real</CardTitle>
               <CardDescription>
-                Distribuicao de custos por categoria
+                Distribución de costos por categoría
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -79,10 +79,10 @@ export default async function AreaCustoPage({
             {/* Table header */}
             <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-4 px-4 text-sm text-muted-foreground font-medium">
               <div />
-              <div className="w-24 text-right">Realizado</div>
+              <div className="w-24 text-right">Real</div>
               <div className="w-28 text-right">Valor un. (R$)</div>
               <div className="w-28 text-right">Total (R$)</div>
-              <div className="w-24 text-right">Participacao</div>
+              <div className="w-24 text-right">Participación</div>
             </div>
 
             {categories.map((cat) => (
@@ -104,7 +104,7 @@ export default async function AreaCustoPage({
                   {/* Items */}
                   {cat.items.length === 0 ? (
                     <div className="px-6 py-4 text-sm text-muted-foreground">
-                      Nenhum item nesta categoria.
+                      Ningún ítem en esta categoría.
                     </div>
                   ) : (
                     <CostCategoryItems
@@ -150,7 +150,7 @@ function CostCategoryItems({
 
   const groups = new Map<string, typeof items>()
   for (const item of items) {
-    const sub = item.subcategory ?? "Outro"
+    const sub = item.subcategory ?? "Otro"
     if (!groups.has(sub)) groups.set(sub, [])
     groups.get(sub)!.push(item)
   }

@@ -36,7 +36,7 @@ export default async function DashboardPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Inicio</h1>
         <p className="text-muted-foreground mt-1">
-          Visao geral da fazenda {membership.farm.name}
+          Vista general de la granja {membership.farm.name}
         </p>
       </div>
 
@@ -44,33 +44,33 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Areas Totais</CardTitle>
+            <CardTitle className="text-sm font-medium">Áreas Totales</CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{data.areasCount}</div>
             <p className="text-xs text-muted-foreground">
-              {formatNumber(data.totalAreaHa)} hectares
+              {formatNumber(data.totalAreaHa)} hectáreas
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Safras Ativas</CardTitle>
+            <CardTitle className="text-sm font-medium">Cosechas Activas</CardTitle>
             <Sprout className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{data.activeCrops.length}</div>
             <p className="text-xs text-muted-foreground">
-              {data.pendingActivities} atividades pendentes
+              {data.pendingActivities} actividades pendientes
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">A Receber</CardTitle>
+            <CardTitle className="text-sm font-medium">Por Cobrar</CardTitle>
             <ArrowDownCircle className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
@@ -78,14 +78,14 @@ export default async function DashboardPage() {
               {formatCurrency(Number(data.pendingReceivables.total))}
             </div>
             <p className="text-xs text-muted-foreground">
-              {data.pendingReceivables.count} transacoes pendentes
+              {data.pendingReceivables.count} transacciones pendientes
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">A Pagar</CardTitle>
+            <CardTitle className="text-sm font-medium">Por Pagar</CardTitle>
             <ArrowUpCircle className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
@@ -93,22 +93,22 @@ export default async function DashboardPage() {
               {formatCurrency(Number(data.pendingPayables.total))}
             </div>
             <p className="text-xs text-muted-foreground">
-              {data.pendingPayables.count} transacoes pendentes
+              {data.pendingPayables.count} transacciones pendientes
             </p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Safras Ativas */}
+        {/* Cosechas Activas */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Sprout className="h-5 w-5" />
-                Safras Ativas
+                Cosechas Activas
               </CardTitle>
-              <CardDescription>Safras em andamento</CardDescription>
+              <CardDescription>Cosechas en curso</CardDescription>
             </div>
             <Button variant="ghost" size="sm" asChild>
               <Link href="/safras">
@@ -120,7 +120,7 @@ export default async function DashboardPage() {
           <CardContent>
             {data.activeCrops.length === 0 ? (
               <p className="text-sm text-muted-foreground text-center py-8">
-                Nenhuma safra ativa
+                Ninguna cosecha activa
               </p>
             ) : (
               <div className="space-y-3">
@@ -133,7 +133,7 @@ export default async function DashboardPage() {
                     <div>
                       <p className="font-medium">{crop.name}</p>
                       <p className="text-xs text-muted-foreground">
-                        {crop.cropAreas.length} area(s) -{" "}
+                        {crop.cropAreas.length} área(s) -{" "}
                         {formatNumber(
                           crop.cropAreas.reduce(
                             (sum, ca) => sum + (ca.area?.sizeHa ?? 0),
@@ -151,15 +151,15 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Atividades Recentes */}
+        {/* Actividades Recientes */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <ClipboardList className="h-5 w-5" />
-                Atividades Recentes
+                Actividades Recientes
               </CardTitle>
-              <CardDescription>Ultimas atividades registradas</CardDescription>
+              <CardDescription>Últimas actividades registradas</CardDescription>
             </div>
             <Button variant="ghost" size="sm" asChild>
               <Link href="/atividades">
@@ -171,7 +171,7 @@ export default async function DashboardPage() {
           <CardContent>
             {data.recentActivities.length === 0 ? (
               <p className="text-sm text-muted-foreground text-center py-8">
-                Nenhuma atividade registrada
+                Ninguna actividad registrada
               </p>
             ) : (
               <div className="space-y-3">
@@ -190,13 +190,13 @@ export default async function DashboardPage() {
                           }}
                         />
                         <p className="font-medium text-sm">
-                          {activity.activityType?.name ?? "Atividade"}
+                          {activity.activityType?.name ?? "Actividad"}
                         </p>
                       </div>
                       <p className="text-xs text-muted-foreground mt-0.5">
                         {activity.activityAreas
                           .map((aa) => aa.area.name)
-                          .join(", ") || "Sem area"}
+                          .join(", ") || "Sin área"}
                         {activity.startDate
                           ? ` - ${formatDate(activity.startDate)}`
                           : ""}
@@ -213,9 +213,9 @@ export default async function DashboardPage() {
                       className="text-xs"
                     >
                       {activity.status === "A_FAZER"
-                        ? "A Fazer"
+                        ? "Por Hacer"
                         : activity.status === "EM_PROGRESSO"
-                          ? "Em Progresso"
+                          ? "En Progreso"
                           : "Concluido"}
                     </Badge>
                   </div>
@@ -231,7 +231,7 @@ export default async function DashboardPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
-            Acesso Rapido
+            Acceso Rápido
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -240,7 +240,7 @@ export default async function DashboardPage() {
               <Link href="/atividades/nova">
                 <div className="flex flex-col items-center gap-1.5">
                   <ClipboardList className="h-5 w-5" />
-                  <span className="text-xs">Nova Atividade</span>
+                  <span className="text-xs">Nueva Actividad</span>
                 </div>
               </Link>
             </Button>
@@ -248,7 +248,7 @@ export default async function DashboardPage() {
               <Link href="/analise-solo/nova">
                 <div className="flex flex-col items-center gap-1.5">
                   <TrendingUp className="h-5 w-5" />
-                  <span className="text-xs">Analise de Solo</span>
+                  <span className="text-xs">Análisis de Suelo</span>
                 </div>
               </Link>
             </Button>
@@ -256,7 +256,7 @@ export default async function DashboardPage() {
               <Link href="/financeiro/nova-transacao">
                 <div className="flex flex-col items-center gap-1.5">
                   <DollarSign className="h-5 w-5" />
-                  <span className="text-xs">Nova Transacao</span>
+                  <span className="text-xs">Nueva Transacción</span>
                 </div>
               </Link>
             </Button>
@@ -264,7 +264,7 @@ export default async function DashboardPage() {
               <Link href="/colheita/nova">
                 <div className="flex flex-col items-center gap-1.5">
                   <Sprout className="h-5 w-5" />
-                  <span className="text-xs">Nova Colheita</span>
+                  <span className="text-xs">Nueva Cosecha</span>
                 </div>
               </Link>
             </Button>

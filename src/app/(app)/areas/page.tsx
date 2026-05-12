@@ -37,15 +37,15 @@ export default async function AreasPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Areas</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Áreas</h1>
           <p className="text-muted-foreground">
-            Gerencie as areas de cultivo da sua fazenda
+            Gestione las áreas de cultivo de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/areas/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Area
+            Nueva Área
           </Link>
         </Button>
       </div>
@@ -55,15 +55,15 @@ export default async function AreasPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <MapPin className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhuma area cadastrada
+              Ninguna área registrada
             </h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Comece cadastrando a primeira area da sua fazenda.
+              Comience registrando la primera área de su granja.
             </p>
             <Button asChild>
               <Link href="/areas/nova">
                 <Plus className="mr-2 h-4 w-4" />
-                Nova Area
+                Nueva Área
               </Link>
             </Button>
           </CardContent>
@@ -71,21 +71,21 @@ export default async function AreasPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Todas as Areas</CardTitle>
+            <CardTitle>Todas las Áreas</CardTitle>
             <CardDescription>
-              {areas.length} {areas.length === 1 ? "area cadastrada" : "areas cadastradas"}
+              {areas.length} {areas.length === 1 ? "área registrada" : "áreas registradas"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Tamanho (ha)</TableHead>
+                  <TableHead>Nombre</TableHead>
+                  <TableHead>Tamaño (ha)</TableHead>
                   <TableHead>NDVI</TableHead>
-                  <TableHead>Safras Ativas</TableHead>
-                  <TableHead>Analises</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Cosechas Activas</TableHead>
+                  <TableHead>Análisis</TableHead>
+                  <TableHead>Estado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -133,7 +133,7 @@ export default async function AreasPage() {
                     </TableCell>
                     <TableCell>
                       <Badge variant={area.active ? "default" : "secondary"}>
-                        {area.active ? "Ativa" : "Inativa"}
+                        {area.active ? "Activa" : "Inactiva"}
                       </Badge>
                     </TableCell>
                   </TableRow>

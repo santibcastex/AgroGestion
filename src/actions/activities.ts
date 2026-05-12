@@ -91,7 +91,7 @@ export async function createRealization(
       inputUsages: true,
     },
   })
-  if (!planned) throw new Error("Atividade planejada nao encontrada")
+  if (!planned) throw new Error("Actividad planificada no encontrada")
 
   const parsed = activitySchema.parse({
     ...(data as Record<string, unknown>),
@@ -198,12 +198,12 @@ export async function addSubtypeToActivityType(
   const activityType = await prisma.activityType.findFirst({
     where: { id: activityTypeId, farmId },
   })
-  if (!activityType) throw new Error("Tipo de atividade nao encontrado")
+  if (!activityType) throw new Error("Tipo de actividad no encontrado")
 
   const trimmed = subtypeName.trim()
-  if (!trimmed) throw new Error("Nome da operacao e obrigatorio")
+  if (!trimmed) throw new Error("Nombre de la operación es obligatorio")
   if (activityType.subtypes.includes(trimmed)) {
-    throw new Error("Operacao ja existe")
+    throw new Error("Operación ya existe")
   }
 
   const updated = await prisma.activityType.update({

@@ -20,13 +20,13 @@ export function ImportNfesButton() {
       try {
         const result = await importNfesFromSefaz(activeFarm.farmId)
         if (result.importedCount > 0) {
-          toast.success(`${result.importedCount} nota(s) fiscal(is) importada(s)`)
+          toast.success(`${result.importedCount} factura(s) importada(s)`)
         } else {
-          toast.info("Nenhuma nota fiscal nova encontrada")
+          toast.info("Ninguna factura nueva encontrada")
         }
         router.refresh()
       } catch (error: any) {
-        toast.error(error?.message || "Erro ao buscar notas fiscais")
+        toast.error(error?.message || "Error al buscar facturas")
       }
     })
   }
@@ -38,7 +38,7 @@ export function ImportNfesButton() {
       ) : (
         <Download className="mr-2 h-4 w-4" />
       )}
-      Buscar Notas
+      Buscar Facturas
     </Button>
   )
 }

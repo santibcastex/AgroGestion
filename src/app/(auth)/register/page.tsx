@@ -66,10 +66,10 @@ export default function RegisterPage() {
     <Card className="w-full border-zinc-800 bg-zinc-900/80 backdrop-blur-sm">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-xl font-semibold text-zinc-50">
-          Criar sua conta
+          Crear su cuenta
         </CardTitle>
         <CardDescription className="text-zinc-400">
-          Preencha os dados abaixo para começar a gerenciar sua fazenda
+          Complete los datos a continuación para comenzar a gestionar su granja
         </CardDescription>
       </CardHeader>
 
@@ -81,13 +81,13 @@ export default function RegisterPage() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">Nome completo</FormLabel>
+                  <FormLabel className="text-zinc-300">Nombre completo</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
                       <Input
                         type="text"
-                        placeholder="João Silva"
+                        placeholder="Juan García"
                         className="border-zinc-800 bg-zinc-950/50 pl-10 text-zinc-50 placeholder:text-zinc-600 focus-visible:ring-emerald-600"
                         disabled={isPending}
                         {...field}
@@ -104,13 +104,13 @@ export default function RegisterPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">E-mail</FormLabel>
+                  <FormLabel className="text-zinc-300">Correo electrónico</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
                       <Input
                         type="email"
-                        placeholder="seu@email.com"
+                        placeholder="su@correo.com"
                         className="border-zinc-800 bg-zinc-950/50 pl-10 text-zinc-50 placeholder:text-zinc-600 focus-visible:ring-emerald-600"
                         disabled={isPending}
                         {...field}
@@ -127,7 +127,7 @@ export default function RegisterPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">Senha</FormLabel>
+                  <FormLabel className="text-zinc-300">Contraseña</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
@@ -151,14 +151,14 @@ export default function RegisterPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-zinc-300">
-                    Nome da fazenda
+                    Nombre de la granja
                   </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
                       <Input
                         type="text"
-                        placeholder="Fazenda Boa Vista"
+                        placeholder="Granja Buena Vista"
                         className="border-zinc-800 bg-zinc-950/50 pl-10 text-zinc-50 placeholder:text-zinc-600 focus-visible:ring-emerald-600"
                         disabled={isPending}
                         {...field}
@@ -178,10 +178,10 @@ export default function RegisterPage() {
               {isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Criando conta...
+                  Creando cuenta...
                 </>
               ) : (
-                "Criar conta"
+                "Crear cuenta"
               )}
             </Button>
           </form>
@@ -190,12 +190,12 @@ export default function RegisterPage() {
 
       <CardFooter className="justify-center">
         <p className="text-sm text-zinc-400">
-          Já tem uma conta?{" "}
+          ¿Ya tiene una cuenta?{" "}
           <Link
             href="/login"
             className="font-medium text-emerald-500 transition-colors hover:text-emerald-400"
           >
-            Entrar
+            Ingresar
           </Link>
         </p>
       </CardFooter>

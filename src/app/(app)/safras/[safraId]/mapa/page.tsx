@@ -37,7 +37,7 @@ export default async function SafraMapaPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Mapa</h1>
         <p className="text-muted-foreground">
-          Areas vinculadas a esta safra
+          Áreas vinculadas a esta cosecha
         </p>
       </div>
 
@@ -58,10 +58,10 @@ export default async function SafraMapaPage({
               </div>
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold tracking-tight">
-                  Nenhuma area com geometria
+                  Ninguna área con geometría
                 </h2>
                 <p className="text-muted-foreground max-w-md">
-                  As areas desta safra nao possuem dados GeoJSON para visualizacao no mapa.
+                  Las áreas de esta cosecha no tienen datos GeoJSON para visualización en el mapa.
                 </p>
               </div>
             </div>

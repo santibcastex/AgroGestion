@@ -15,7 +15,7 @@ export async function createSupplier(farmId: string, data: SupplierInput) {
   const parsed = supplierSchema.parse(data)
 
   const name = parsed.name.trim()
-  if (!name) throw new Error("Nome e obrigatorio")
+  if (!name) throw new Error("Nombre es obligatorio")
 
   const supplier = await prisma.supplier.create({
     data: {
@@ -46,7 +46,7 @@ export async function updateSupplier(
   const parsed = supplierSchema.parse(data)
 
   const name = parsed.name.trim()
-  if (!name) throw new Error("Nome e obrigatorio")
+  if (!name) throw new Error("Nombre es obligatorio")
 
   const supplier = await prisma.supplier.update({
     where: { id: supplierId, farmId },
@@ -99,7 +99,7 @@ export async function upsertSupplierContact(
 
   // Verify supplier belongs to farm
   const supplier = await prisma.supplier.findFirst({ where: { id: supplierId, farmId } })
-  if (!supplier) throw new Error("Fornecedor nao encontrado")
+  if (!supplier) throw new Error("Proveedor no encontrado")
 
   const parsed = contactSchema.parse(data)
   const payload = {
@@ -127,7 +127,7 @@ export async function deleteSupplierContact(farmId: string, contactId: string) {
   const contact = await prisma.supplierContact.findFirst({
     where: { id: contactId, supplier: { farmId } },
   })
-  if (!contact) throw new Error("Contato nao encontrado")
+  if (!contact) throw new Error("Contacto no encontrado")
 
   await prisma.supplierContact.delete({ where: { id: contactId } })
   revalidatePath("/fornecedores")

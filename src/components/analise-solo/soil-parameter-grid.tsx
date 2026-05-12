@@ -119,6 +119,7 @@ export function SoilParameterGrid({ analysis }: SoilParameterGridProps) {
         params={MICRONUTRIENT_PARAMS}
         analysis={analysis}
       />
+
     </div>
   )
 }

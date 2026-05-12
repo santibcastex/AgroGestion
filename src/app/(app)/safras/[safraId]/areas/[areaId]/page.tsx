@@ -62,7 +62,7 @@ export default async function AreaPainelPage({
       <div>
         <h1 className="text-3xl font-bold tracking-tight">{area.name}</h1>
         <p className="text-muted-foreground">
-          Painel de controle do talhao nesta safra
+          Panel de control de la parcela en esta cosecha
         </p>
       </div>
 
@@ -70,18 +70,18 @@ export default async function AreaPainelPage({
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Area</CardTitle>
+            <CardTitle className="text-sm font-medium">Área</CardTitle>
             <MapPin className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{formatNumber(area.sizeHa)}</div>
-            <p className="text-xs text-muted-foreground">hectares</p>
+            <p className="text-xs text-muted-foreground">hectáreas</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Atividades</CardTitle>
+            <CardTitle className="text-sm font-medium">Actividades</CardTitle>
             <ClipboardList className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -94,7 +94,7 @@ export default async function AreaPainelPage({
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Colheitas</CardTitle>
+            <CardTitle className="text-sm font-medium">Cosechas</CardTitle>
             <Wheat className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -107,15 +107,15 @@ export default async function AreaPainelPage({
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Analises de Solo</CardTitle>
+            <CardTitle className="text-sm font-medium">Análisis de Suelo</CardTitle>
             <FlaskConical className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{area.soilAnalyses.length}</div>
             <p className="text-xs text-muted-foreground">
               {area.soilAnalyses[0]
-                ? `Ultima: ${area.soilAnalyses[0].year}`
-                : "Nenhuma"}
+                ? `Último: ${area.soilAnalyses[0].year}`
+                : "Ninguno"}
             </p>
           </CardContent>
         </Card>
@@ -127,10 +127,10 @@ export default async function AreaPainelPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <ClipboardList className="h-5 w-5" />
-              Atividades
+              Actividades
             </CardTitle>
             <CardDescription>
-              Atividades deste talhao na safra
+              Actividades de esta parcela en la cosecha
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -138,8 +138,8 @@ export default async function AreaPainelPage({
               <TableHeader>
                 <TableRow>
                   <TableHead>Tipo</TableHead>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead>Estado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -188,17 +188,17 @@ export default async function AreaPainelPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Wheat className="h-5 w-5" />
-              Colheitas
+              Cosechas
             </CardTitle>
             <CardDescription>
-              Registros de colheita deste talhao na safra
+              Registros de cosecha de esta parcela en la cosecha
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Data</TableHead>
+                  <TableHead>Fecha</TableHead>
                   <TableHead className="text-right">Toneladas</TableHead>
                   <TableHead className="text-right">TCH</TableHead>
                   <TableHead className="text-right">ATR</TableHead>
@@ -233,10 +233,10 @@ export default async function AreaPainelPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Sem registros nesta safra
+              Sin registros en esta cosecha
             </h3>
             <p className="text-muted-foreground text-sm">
-              Atividades e colheitas deste talhao nesta safra aparecerão aqui.
+              Actividades y cosechas de esta parcela en esta cosecha aparecerán aquí.
             </p>
           </CardContent>
         </Card>

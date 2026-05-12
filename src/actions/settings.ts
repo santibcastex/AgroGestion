@@ -46,11 +46,11 @@ export async function removeFarmMember(farmId: string, membershipId: string) {
   })
 
   if (!membership || membership.farmId !== farmId) {
-    throw new Error("Membro nao encontrado")
+    throw new Error("Miembro no encontrado")
   }
 
   if (membership.role === "OWNER") {
-    throw new Error("Nao e possivel remover o proprietario")
+    throw new Error("No es posible eliminar al propietario")
   }
 
   await prisma.farmMembership.update({
@@ -85,12 +85,12 @@ export async function changePassword(data: {
   })
 
   if (!dbUser?.passwordHash) {
-    throw new Error("Usuario sem senha configurada")
+    throw new Error("Usuario sin contraseña configurada")
   }
 
   const isValid = await bcryptjs.compare(data.currentPassword, dbUser.passwordHash)
   if (!isValid) {
-    throw new Error("Senha atual incorreta")
+    throw new Error("Contraseña actual incorrecta")
   }
 
   const hashedPassword = await bcryptjs.hash(data.newPassword, 12)

@@ -43,15 +43,15 @@ export default async function SafrasPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Safras</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Cosechas</h1>
           <p className="text-muted-foreground">
-            Acompanhe e gerencie as safras da sua fazenda
+            Siga y gestione las cosechas de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/safras/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Safra
+            Nueva Cosecha
           </Link>
         </Button>
       </div>
@@ -61,15 +61,15 @@ export default async function SafrasPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Sprout className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhuma safra cadastrada
+              Ninguna cosecha registrada
             </h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Comece cadastrando a primeira safra da sua fazenda.
+              Comience registrando la primera cosecha de su granja.
             </p>
             <Button asChild>
               <Link href="/safras/nova">
                 <Plus className="mr-2 h-4 w-4" />
-                Nova Safra
+                Nueva Cosecha
               </Link>
             </Button>
           </CardContent>
@@ -105,8 +105,8 @@ export default async function SafrasPage() {
                     <span>
                       {crop.cropAreas?.length ?? 0}{" "}
                       {(crop.cropAreas?.length ?? 0) === 1
-                        ? "area vinculada"
-                        : "areas vinculadas"}
+                        ? "área vinculada"
+                        : "áreas vinculadas"}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -114,8 +114,8 @@ export default async function SafrasPage() {
                     <span>
                       {crop._count?.activities ?? 0}{" "}
                       {(crop._count?.activities ?? 0) === 1
-                        ? "atividade"
-                        : "atividades"}
+                        ? "actividad"
+                        : "actividades"}
                     </span>
                   </div>
                 </CardContent>
@@ -123,7 +123,7 @@ export default async function SafrasPage() {
                   {crop.startDate && (
                     <p className="text-xs text-muted-foreground">
                       Inicio:{" "}
-                      {new Date(crop.startDate).toLocaleDateString("pt-BR")}
+                      {new Date(crop.startDate).toLocaleDateString("es-ES")}
                     </p>
                   )}
                 </CardFooter>

@@ -126,6 +126,7 @@ export function SoilGauge({
           Ideal: {min}
           {unit ? ` ${unit}` : ""}
         </span>
+
         <span>
           {max}
           {unit ? ` ${unit}` : ""}

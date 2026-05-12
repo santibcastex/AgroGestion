@@ -94,17 +94,17 @@ export function TransactionForm({
       try {
         if (isEditing) {
           await updateTransaction(activeFarm.farmId, transactionId, values)
-          toast.success("Transacao atualizada com sucesso")
+          toast.success("Transacción actualizada con éxito")
         } else {
           await createTransaction(activeFarm.farmId, values)
-          toast.success("Transacao registrada com sucesso")
+          toast.success("Transacción registrada con éxito")
         }
         router.push("/financeiro")
       } catch {
         toast.error(
           isEditing
-            ? "Erro ao atualizar transacao"
-            : "Erro ao registrar transacao"
+            ? "Error al actualizar transacción"
+            : "Error al registrar transacción"
         )
       }
     })
@@ -117,7 +117,7 @@ export function TransactionForm({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <DollarSign className="h-5 w-5" />
-              Dados da Transacao
+              Datos de la Transacción
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -131,7 +131,7 @@ export function TransactionForm({
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione o tipo" />
+                          <SelectValue placeholder="Seleccione el tipo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -152,9 +152,9 @@ export function TransactionForm({
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Descricao</FormLabel>
+                    <FormLabel>Descripción</FormLabel>
                     <FormControl>
-                      <Input placeholder="Descricao da transacao" disabled={isPending} {...field} />
+                      <Input placeholder="Descripción de la transacción" disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -187,7 +187,7 @@ export function TransactionForm({
                 name="installments"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Parcelas</FormLabel>
+                    <FormLabel>Cuotas</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
@@ -209,9 +209,9 @@ export function TransactionForm({
                 name="categoryId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Categoria</FormLabel>
+                    <FormLabel>Categoría</FormLabel>
                     <FormControl>
-                      <Input placeholder="ID da categoria" disabled={isPending} {...field} />
+                      <Input placeholder="ID de la categoría" disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -223,11 +223,11 @@ export function TransactionForm({
                 name="bankAccountId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Conta Bancaria</FormLabel>
+                    <FormLabel>Cuenta Bancaria</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value ?? ""}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione a conta" />
+                          <SelectValue placeholder="Seleccione la cuenta" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -255,9 +255,9 @@ export function TransactionForm({
                 name="supplierId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Fornecedor</FormLabel>
+                    <FormLabel>Proveedor</FormLabel>
                     <FormControl>
-                      <Input placeholder="ID do fornecedor" disabled={isPending} {...field} />
+                      <Input placeholder="ID del proveedor" disabled={isPending} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -269,7 +269,7 @@ export function TransactionForm({
                 name="documentNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Numero do Documento</FormLabel>
+                    <FormLabel>Número del Documento</FormLabel>
                     <FormControl>
                       <Input placeholder="NF, boleto, etc." disabled={isPending} {...field} />
                     </FormControl>
@@ -283,7 +283,7 @@ export function TransactionForm({
 
         <Card>
           <CardHeader>
-            <CardTitle>Datas</CardTitle>
+            <CardTitle>Fechas</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -292,7 +292,7 @@ export function TransactionForm({
                 name="dueDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Vencimento</FormLabel>
+                    <FormLabel>Fecha de Vencimiento</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -313,7 +313,7 @@ export function TransactionForm({
                 name="paymentDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Pagamento</FormLabel>
+                    <FormLabel>Fecha de Pago</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -334,7 +334,7 @@ export function TransactionForm({
                 name="competenceDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data de Competencia</FormLabel>
+                    <FormLabel>Fecha de Competencia</FormLabel>
                     <FormControl>
                       <Input
                         type="date"
@@ -360,10 +360,10 @@ export function TransactionForm({
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Observacoes</FormLabel>
+                  <FormLabel>Observaciones</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Observacoes sobre a transacao..."
+                      placeholder="Observaciones sobre la transacción..."
                       disabled={isPending}
                       {...field}
                     />
@@ -378,7 +378,7 @@ export function TransactionForm({
         <div className="flex gap-3">
           <Button type="submit" disabled={isPending} size="lg">
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {isEditing ? "Salvar Alteracoes" : "Registrar Transacao"}
+            {isEditing ? "Guardar Cambios" : "Registrar Transacción"}
           </Button>
           <Button
             type="button"

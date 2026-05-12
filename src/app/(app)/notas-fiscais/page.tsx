@@ -45,9 +45,9 @@ export default async function NotasFiscaisPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Notas Fiscais</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Facturas</h1>
           <p className="text-muted-foreground">
-            Importacao automatica de NFe via certificado A1
+            Importación automática de facturas electrónicas via certificado A1
           </p>
         </div>
         <ImportNfesButton />
@@ -56,39 +56,39 @@ export default async function NotasFiscaisPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pendentes</CardTitle>
+            <CardTitle className="text-sm font-medium">Pendientes</CardTitle>
             <Clock className="h-4 w-4 text-yellow-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{counts.pendente}</div>
             <p className="text-xs text-muted-foreground">
-              aguardando aprovacao
+              esperando aprobación
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Aprovadas</CardTitle>
+            <CardTitle className="text-sm font-medium">Aprobadas</CardTitle>
             <CheckCircle2 className="h-4 w-4 text-green-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{counts.aprovada}</div>
             <p className="text-xs text-muted-foreground">
-              registros financeiros criados
+              registros financieros creados
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Rejeitadas</CardTitle>
+            <CardTitle className="text-sm font-medium">Rechazadas</CardTitle>
             <XCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{counts.rejeitada}</div>
             <p className="text-xs text-muted-foreground">
-              notas descartadas
+              facturas descartadas
             </p>
           </CardContent>
         </Card>
@@ -97,15 +97,15 @@ export default async function NotasFiscaisPage() {
       <Tabs defaultValue="pendentes" className="space-y-4">
         <TabsList>
           <TabsTrigger value="pendentes">
-            Pendentes
+            Pendientes
             {counts.pendente > 0 && (
               <Badge className="ml-2 bg-yellow-500/20 text-yellow-400 border-yellow-500/30" variant="secondary">
                 {counts.pendente}
               </Badge>
             )}
           </TabsTrigger>
-          <TabsTrigger value="aprovadas">Aprovadas</TabsTrigger>
-          <TabsTrigger value="rejeitadas">Rejeitadas</TabsTrigger>
+          <TabsTrigger value="aprovadas">Aprobadas</TabsTrigger>
+          <TabsTrigger value="rejeitadas">Rechazadas</TabsTrigger>
         </TabsList>
 
         <TabsContent value="pendentes" className="space-y-4">
@@ -114,10 +114,10 @@ export default async function NotasFiscaisPage() {
               <CardContent className="flex flex-col items-center justify-center py-16">
                 <FileText className="h-10 w-10 text-muted-foreground mb-4" />
                 <p className="text-muted-foreground text-center">
-                  Nenhuma nota fiscal pendente.
+                  Ninguna factura pendiente.
                 </p>
                 <p className="text-sm text-muted-foreground text-center mt-1">
-                  Clique em &ldquo;Buscar Notas&rdquo; para consultar o SEFAZ.
+                  Haga clic en &ldquo;Buscar Facturas&rdquo; para consultar el SEFAZ.
                 </p>
               </CardContent>
             </Card>
@@ -127,12 +127,12 @@ export default async function NotasFiscaisPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Emissao</TableHead>
-                      <TableHead>Emitente</TableHead>
+                      <TableHead>Emisión</TableHead>
+                      <TableHead>Emisor</TableHead>
                       <TableHead>CNPJ</TableHead>
-                      <TableHead>Numero</TableHead>
+                      <TableHead>Número</TableHead>
                       <TableHead className="text-right">Valor Total</TableHead>
-                      <TableHead>Status</TableHead>
+                      <TableHead>Estado</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -179,7 +179,7 @@ export default async function NotasFiscaisPage() {
               <CardContent className="flex flex-col items-center justify-center py-16">
                 <CheckCircle2 className="h-10 w-10 text-muted-foreground mb-4" />
                 <p className="text-muted-foreground text-center">
-                  Nenhuma nota fiscal aprovada ainda.
+                  Ninguna factura aprobada aún.
                 </p>
               </CardContent>
             </Card>
@@ -189,12 +189,12 @@ export default async function NotasFiscaisPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Emissao</TableHead>
-                      <TableHead>Emitente</TableHead>
-                      <TableHead>Fornecedor</TableHead>
-                      <TableHead>Numero</TableHead>
+                      <TableHead>Emisión</TableHead>
+                      <TableHead>Emisor</TableHead>
+                      <TableHead>Proveedor</TableHead>
+                      <TableHead>Número</TableHead>
                       <TableHead className="text-right">Valor Total</TableHead>
-                      <TableHead>Aprovada em</TableHead>
+                      <TableHead>Aprobada el</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -234,7 +234,7 @@ export default async function NotasFiscaisPage() {
               <CardContent className="flex flex-col items-center justify-center py-16">
                 <XCircle className="h-10 w-10 text-muted-foreground mb-4" />
                 <p className="text-muted-foreground text-center">
-                  Nenhuma nota fiscal rejeitada.
+                  Ninguna factura rechazada.
                 </p>
               </CardContent>
             </Card>
@@ -244,12 +244,12 @@ export default async function NotasFiscaisPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Emissao</TableHead>
-                      <TableHead>Emitente</TableHead>
-                      <TableHead>Numero</TableHead>
+                      <TableHead>Emisión</TableHead>
+                      <TableHead>Emisor</TableHead>
+                      <TableHead>Número</TableHead>
                       <TableHead className="text-right">Valor Total</TableHead>
                       <TableHead>Motivo</TableHead>
-                      <TableHead>Rejeitada em</TableHead>
+                      <TableHead>Rechazada el</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>

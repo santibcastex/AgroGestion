@@ -47,10 +47,10 @@ interface Member {
 }
 
 const roleLabels: Record<string, string> = {
-  OWNER: "Proprietario",
+  OWNER: "Propietario",
   MANAGER: "Gerente",
   ACCOUNTANT: "Contador",
-  WORKER: "Trabalhador",
+  WORKER: "Trabajador",
   VIEWER: "Visualizador",
 }
 
@@ -86,10 +86,10 @@ export default function ConfiguracoesPage() {
     startTransition(async () => {
       try {
         await updateFarm(activeFarm.farmId, values)
-        toast.success("Fazenda atualizada com sucesso")
+        toast.success("Granja actualizada con éxito")
         router.refresh()
       } catch {
-        toast.error("Erro ao atualizar fazenda")
+        toast.error("Error al actualizar granja")
       }
     })
   }
@@ -100,9 +100,9 @@ export default function ConfiguracoesPage() {
       try {
         await removeFarmMember(activeFarm.farmId, membershipId)
         setMembers((prev) => prev.filter((m) => m.id !== membershipId))
-        toast.success("Membro removido")
+        toast.success("Miembro eliminado")
       } catch {
-        toast.error("Erro ao remover membro")
+        toast.error("Error al eliminar miembro")
       }
     })
   }
@@ -110,15 +110,15 @@ export default function ConfiguracoesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Configuracoes</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Configuración</h1>
         <p className="text-muted-foreground mt-1">
-          Gerencie as configuracoes da fazenda
+          Gestione la configuración de la granja
         </p>
       </div>
 
       <Tabs defaultValue="fazenda" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="fazenda">Fazenda</TabsTrigger>
+          <TabsTrigger value="fazenda">Granja</TabsTrigger>
           <TabsTrigger value="certificado">Certificado A1</TabsTrigger>
         </TabsList>
 
@@ -129,10 +129,10 @@ export default function ConfiguracoesPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Settings className="h-5 w-5" />
-                    Dados da Fazenda
+                    Datos de la Granja
                   </CardTitle>
                   <CardDescription>
-                    Informacoes gerais da propriedade
+                    Información general de la propiedad
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -142,10 +142,10 @@ export default function ConfiguracoesPage() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Nome da Fazenda</FormLabel>
+                          <FormLabel>Nombre de la Granja</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Fazenda Sao Paulo"
+                              placeholder="Granja San Pablo"
                               disabled={isPending}
                               {...field}
                             />
@@ -178,10 +178,10 @@ export default function ConfiguracoesPage() {
                       name="city"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Cidade</FormLabel>
+                          <FormLabel>Ciudad</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Ribeirao Preto"
+                              placeholder="Ribeirão Preto"
                               disabled={isPending}
                               {...field}
                             />
@@ -213,7 +213,7 @@ export default function ConfiguracoesPage() {
                   <div className="mt-6">
                     <Button type="submit" disabled={isPending}>
                       {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Salvar Alteracoes
+                      Guardar Cambios
                     </Button>
                   </div>
                 </CardContent>
@@ -225,16 +225,16 @@ export default function ConfiguracoesPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Users className="h-5 w-5" />
-                Membros da Fazenda
+                Miembros de la Granja
               </CardTitle>
               <CardDescription>
-                Usuarios com acesso a esta fazenda
+                Usuarios con acceso a esta granja
               </CardDescription>
             </CardHeader>
             <CardContent>
               {members.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-8">
-                  Nenhum membro encontrado
+                  Ningún miembro encontrado
                 </p>
               ) : (
                 <div className="space-y-3">

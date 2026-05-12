@@ -123,7 +123,7 @@ export async function importSoilAnalyses(farmId: string, samples: ImportSample[]
   const user = await requireAuth()
   await requireFarmAccess(user.id, farmId, "MANAGER")
 
-  if (!samples.length) return { success: false, error: "Nenhuma amostra para importar" }
+  if (!samples.length) return { success: false, error: "Ninguna muestra para importar" }
 
   const importBatchId = `import_${Date.now()}`
 

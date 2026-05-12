@@ -463,7 +463,7 @@ function NdviControls({ enabled, onToggle, areaIds, selectedDate, onDateChange, 
                 ))}
               </select>
             ) : (
-              <p className="text-xs text-muted-foreground">Nenhuma imagem disponivel</p>
+              <p className="text-xs text-muted-foreground">Ninguna imagen disponible</p>
             )}
           </div>
 

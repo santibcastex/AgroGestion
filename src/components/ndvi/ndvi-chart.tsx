@@ -44,7 +44,7 @@ export function NdviChart({ readings }: NdviChartProps) {
   if (readings.length === 0) {
     return (
       <div className="flex items-center justify-center py-12 text-sm text-muted-foreground">
-        Nenhum dado NDVI disponivel. Clique em &quot;Atualizar NDVI&quot; para buscar dados do satelite.
+        Sin datos NDVI disponibles. Haga clic en &quot;Actualizar NDVI&quot; para obtener datos del satélite.
       </div>
     )
   }
@@ -114,7 +114,7 @@ export function NdviChart({ readings }: NdviChartProps) {
           {latest.mean.toFixed(2)}
         </div>
         <div>
-          <p className="text-sm font-medium">NDVI Medio Atual</p>
+          <p className="text-sm font-medium">NDVI Medio Actual</p>
           <p className="text-xs text-muted-foreground">
             {formatDate(latest.date)} &middot; Min {latest.min.toFixed(2)} / Max {latest.max.toFixed(2)}
           </p>
@@ -232,11 +232,11 @@ export function NdviChart({ readings }: NdviChartProps) {
       <div className="flex items-center gap-4 text-xs text-muted-foreground">
         <div className="flex items-center gap-1">
           <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
-          &lt;0.2 Solo exposto
+          &lt;0.2 Suelo expuesto
         </div>
         <div className="flex items-center gap-1">
           <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-          0.2–0.4 Baixa
+          0.2–0.4 Baja
         </div>
         <div className="flex items-center gap-1">
           <div className="h-2.5 w-2.5 rounded-full bg-lime-500" />
@@ -244,7 +244,7 @@ export function NdviChart({ readings }: NdviChartProps) {
         </div>
         <div className="flex items-center gap-1">
           <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
-          &gt;0.6 Saudavel
+          &gt;0.6 Saludable
         </div>
       </div>
     </div>

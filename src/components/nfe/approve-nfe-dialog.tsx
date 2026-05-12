@@ -100,11 +100,11 @@ export function ApproveNfeDialog({
           dueDate: dueDate ? new Date(dueDate) : undefined,
           notes: notes || undefined,
         })
-        toast.success("Nota fiscal aprovada com sucesso")
+        toast.success("Factura aprobada con éxito")
         setOpen(false)
         router.refresh()
       } catch (error: any) {
-        toast.error(error?.message || "Erro ao aprovar nota fiscal")
+        toast.error(error?.message || "Error al aprobar factura")
       }
     })
   }
@@ -115,22 +115,22 @@ export function ApproveNfeDialog({
         {children || (
           <Button size="sm">
             <Check className="mr-2 h-4 w-4" />
-            Aprovar
+            Aprobar
           </Button>
         )}
       </DialogTrigger>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Aprovar Nota Fiscal</DialogTitle>
+          <DialogTitle>Aprobar Factura</DialogTitle>
           <DialogDescription>
-            Ao aprovar, sera criada uma transacao financeira (despesa) e uma
-            compra com os itens da nota.
+            Al aprobar, se creará una transacción financiera (gasto) y una
+            compra con los ítems de la factura.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-2">
           <div className="rounded-lg border p-3 space-y-1">
-            <p className="text-sm text-muted-foreground">Emitente</p>
+            <p className="text-sm text-muted-foreground">Emisor</p>
             <p className="font-medium">{emitenteNome || "—"}</p>
             <p className="text-xs text-muted-foreground">
               CNPJ: {emitenteCnpj || "—"}
@@ -139,10 +139,10 @@ export function ApproveNfeDialog({
           </div>
 
           <div>
-            <label className="text-sm font-medium mb-2 block">Fornecedor</label>
+            <label className="text-sm font-medium mb-2 block">Proveedor</label>
             <Select value={supplierId} onValueChange={setSupplierId}>
               <SelectTrigger>
-                <SelectValue placeholder="Auto-criar do emitente" />
+                <SelectValue placeholder="Auto-crear del emisor" />
               </SelectTrigger>
               <SelectContent>
                 {suppliers.map((s) => (
@@ -153,19 +153,19 @@ export function ApproveNfeDialog({
               </SelectContent>
             </Select>
             <p className="text-xs text-muted-foreground mt-1">
-              Se nenhum for selecionado, um novo fornecedor sera criado
-              automaticamente
+              Si ninguno es seleccionado, se creará un nuevo proveedor
+              automáticamente
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium mb-2 block">
-                Categoria Financeira
+                Categoría Financiera
               </label>
               <Select value={categoryId} onValueChange={setCategoryId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Outros Custos" />
+                  <SelectValue placeholder="Otros Costos" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((c) => (
@@ -179,11 +179,11 @@ export function ApproveNfeDialog({
 
             <div>
               <label className="text-sm font-medium mb-2 block">
-                Conta Bancaria
+                Cuenta Bancaria
               </label>
               <Select value={bankAccountId} onValueChange={setBankAccountId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Nenhuma" />
+                  <SelectValue placeholder="Ninguna" />
                 </SelectTrigger>
                 <SelectContent>
                   {bankAccounts.map((ba) => (
@@ -198,27 +198,27 @@ export function ApproveNfeDialog({
 
           <div>
             <label className="text-sm font-medium mb-2 block">
-              Data de Vencimento
+              Fecha de Vencimiento
             </label>
             <Input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              placeholder="Usar data de emissao"
+              placeholder="Usar fecha de emisión"
             />
             <p className="text-xs text-muted-foreground mt-1">
-              Se nao informada, sera usada a data de emissao da nota
+              Si no se informa, se usará la fecha de emisión de la factura
             </p>
           </div>
 
           <div>
             <label className="text-sm font-medium mb-2 block">
-              Observacoes
+              Observaciones
             </label>
             <Textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Observacoes opcionais..."
+              placeholder="Observaciones opcionales..."
               rows={2}
             />
           </div>
@@ -234,7 +234,7 @@ export function ApproveNfeDialog({
           </Button>
           <Button onClick={handleApprove} disabled={isPending}>
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Aprovar Nota
+            Aprobar Factura
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -64,33 +64,33 @@ const farmNavSections: NavSection[] = [
     items: [
       { title: "Inicio", href: "/dashboard", icon: Home },
       { title: "Mapa", href: "/mapa", icon: Map },
-      { title: "Areas", href: "/areas", icon: Grid3x3 },
-      { title: "Safras", href: "/safras", icon: Leaf },
+      { title: "Áreas", href: "/areas", icon: Grid3x3 },
+      { title: "Cosechas", href: "/safras", icon: Leaf },
     ],
   },
   {
-    label: "Operacoes",
+    label: "Operaciones",
     items: [
-      { title: "Atividades", href: "/atividades", icon: ClipboardList },
-      { title: "Analise de Solo", href: "/analise-solo", icon: FlaskConical },
+      { title: "Actividades", href: "/atividades", icon: ClipboardList },
+      { title: "Análisis de Suelo", href: "/analise-solo", icon: FlaskConical },
       { title: "Insumos", href: "/insumos", icon: Package },
-      { title: "Colheita", href: "/colheita", icon: Truck },
+      { title: "Cosecha", href: "/colheita", icon: Truck },
     ],
   },
   {
-    label: "Financeiro",
+    label: "Financiero",
     items: [
-      { title: "Financeiro", href: "/financeiro", icon: Wallet },
+      { title: "Financiero", href: "/financeiro", icon: Wallet },
       { title: "Compras", href: "/compras", icon: ShoppingCart },
-      { title: "Fornecedores", href: "/fornecedores", icon: Store },
-      { title: "Notas Fiscais", href: "/notas-fiscais", icon: FileText },
+      { title: "Proveedores", href: "/fornecedores", icon: Store },
+      { title: "Facturas", href: "/notas-fiscais", icon: FileText },
     ],
   },
   {
     label: "Sistema",
     items: [
       { title: "Indicadores", href: "/indicadores", icon: BarChart3 },
-      { title: "Configuracoes", href: "/configuracoes", icon: Settings },
+      { title: "Configuración", href: "/configuracoes", icon: Settings },
     ],
   },
 ]
@@ -98,24 +98,24 @@ const farmNavSections: NavSection[] = [
 // Hrefs are suffixes — prefixed with /safras/[safraId] by getNavSections
 const safraNavSections: NavSection[] = [
   {
-    label: "Safra",
+    label: "Cosecha",
     items: [
-      { title: "Painel de Controle", href: "", icon: LayoutDashboard, exact: true },
+      { title: "Panel de Control", href: "", icon: LayoutDashboard, exact: true },
       { title: "Mapa", href: "/mapa", icon: Map },
-      { title: "Atividades", href: "/atividades", icon: ClipboardList },
+      { title: "Actividades", href: "/atividades", icon: ClipboardList },
       { title: "Insumos", href: "/insumos", icon: Package },
-      { title: "Colheita", href: "/colheita", icon: Truck },
+      { title: "Cosecha", href: "/colheita", icon: Truck },
     ],
   },
   {
-    label: "Custos",
+    label: "Costos",
     items: [
-      { title: "Custo Orcado", href: "/custo-orcado", icon: DollarSign },
-      { title: "Custo Realizado", href: "/custo", icon: DollarSign },
+      { title: "Costo Presupuestado", href: "/custo-orcado", icon: DollarSign },
+      { title: "Costo Real", href: "/custo", icon: DollarSign },
     ],
   },
   {
-    label: "Analise",
+    label: "Análisis",
     items: [
       { title: "Indicadores", href: "/indicadores", icon: BarChart3 },
     ],
@@ -125,12 +125,12 @@ const safraNavSections: NavSection[] = [
 // Hrefs are suffixes — prefixed with /safras/[safraId]/areas/[areaId] by getNavSections
 const areaNavSections: NavSection[] = [
   {
-    label: "Talhao",
+    label: "Parcela",
     items: [
-      { title: "Painel de Controle", href: "", icon: LayoutDashboard, exact: true },
+      { title: "Panel de Control", href: "", icon: LayoutDashboard, exact: true },
       { title: "Mapa", href: "/mapa", icon: Map },
       { title: "Insumos", href: "/insumos", icon: Package },
-      { title: "Custo Realizado", href: "/custo", icon: DollarSign },
+      { title: "Costo Real", href: "/custo", icon: DollarSign },
     ],
   },
 ]

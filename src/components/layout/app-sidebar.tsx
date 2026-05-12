@@ -79,12 +79,12 @@ function getInitials(name?: string | null) {
 
 function getRoleLabel(role?: string) {
   switch (role) {
-    case "OWNER": return "Proprietario"
+    case "OWNER": return "Propietario"
     case "MANAGER": return "Gerente"
     case "ACCOUNTANT": return "Contador"
-    case "WORKER": return "Trabalhador"
+    case "WORKER": return "Trabajador"
     case "VIEWER": return "Visualizador"
-    default: return "Selecione uma fazenda"
+    default: return "Seleccione una granja"
   }
 }
 
@@ -161,7 +161,7 @@ export function AppSidebar({ farms, activeFarm: initialActiveFarm, user }: AppSi
                 sideOffset={4}
               >
                 <DropdownMenuLabel className="text-xs text-muted-foreground">
-                  Fazendas
+                  Granjas
                 </DropdownMenuLabel>
                 {farms.map((membership) => (
                   <DropdownMenuItem
@@ -281,7 +281,7 @@ export function AppSidebar({ farms, activeFarm: initialActiveFarm, user }: AppSi
                 <DropdownMenuItem asChild>
                   <Link href="/configuracoes" className="gap-2">
                     <Settings className="size-4" />
-                    Configuracoes
+                    Configuración
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -290,7 +290,7 @@ export function AppSidebar({ farms, activeFarm: initialActiveFarm, user }: AppSi
                   onClick={() => signOut({ callbackUrl: "/login" })}
                 >
                   <LogOut className="size-4" />
-                  Sair
+                  Salir
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

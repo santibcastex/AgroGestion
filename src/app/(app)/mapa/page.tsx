@@ -39,7 +39,7 @@ export default async function MapaPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Mapa</h1>
         <p className="text-muted-foreground">
-          Visualize suas areas e talhoes no mapa
+          Visualice sus áreas y parcelas en el mapa
         </p>
       </div>
 
@@ -60,11 +60,11 @@ export default async function MapaPage() {
               </div>
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold tracking-tight">
-                  Nenhuma area com geometria
+                  Ningún área con geometría
                 </h2>
                 <p className="text-muted-foreground max-w-md">
-                  Cadastre areas com dados GeoJSON para visualiza-las no mapa.
-                  Voce pode importar arquivos KML na tela de cadastro de areas.
+                  Registre áreas con datos GeoJSON para visualizarlas en el mapa.
+                  Puede importar archivos KML en la pantalla de registro de áreas.
                 </p>
               </div>
             </div>

@@ -203,10 +203,10 @@ export function ActivitiesTable({
           {counts.total} total
         </Badge>
         <Badge className="bg-yellow-500/20 text-yellow-600 border-yellow-500/30 text-sm py-1 px-3">
-          {counts.aFazer} a fazer
+          {counts.aFazer} por hacer
         </Badge>
         <Badge className="bg-blue-500/20 text-blue-600 border-blue-500/30 text-sm py-1 px-3">
-          {counts.emProgresso} em progresso
+          {counts.emProgresso} en progreso
         </Badge>
         <Badge className="bg-orange-500/20 text-orange-600 border-orange-500/30 text-sm py-1 px-3">
           {counts.revisar} revisar
@@ -223,9 +223,9 @@ export function ActivitiesTable({
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Todos os status</SelectItem>
-            <SelectItem value="A_FAZER">A Fazer</SelectItem>
-            <SelectItem value="EM_PROGRESSO">Em Progresso</SelectItem>
+            <SelectItem value="all">Todos los estados</SelectItem>
+            <SelectItem value="A_FAZER">Por Hacer</SelectItem>
+            <SelectItem value="EM_PROGRESSO">En Progreso</SelectItem>
             <SelectItem value="REVISAR">Revisar</SelectItem>
             <SelectItem value="CONCLUIDO">Concluido</SelectItem>
           </SelectContent>
@@ -235,15 +235,15 @@ export function ActivitiesTable({
             <SelectValue placeholder="Tipo" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Todos os tipos</SelectItem>
-            <SelectItem value="PLANEJADO">Planejado</SelectItem>
+            <SelectItem value="all">Todos los tipos</SelectItem>
+            <SelectItem value="PLANEJADO">Planificado</SelectItem>
             <SelectItem value="REALIZADO">Realizado</SelectItem>
           </SelectContent>
         </Select>
         <div className="flex-1" />
         <Button onClick={handleNewActivity}>
           <Plus className="mr-2 h-4 w-4" />
-          Nova Atividade
+          Nueva Actividad
         </Button>
       </div>
 
@@ -252,12 +252,12 @@ export function ActivitiesTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[60px]">Status</TableHead>
-              <TableHead className="w-[90px]">Codigo</TableHead>
-              <TableHead>Tipo / Operacao</TableHead>
+              <TableHead className="w-[60px]">Estado</TableHead>
+              <TableHead className="w-[90px]">Código</TableHead>
+              <TableHead>Tipo / Operación</TableHead>
               <TableHead>Tipo</TableHead>
-              <TableHead>Datas</TableHead>
-              <TableHead>Areas</TableHead>
+              <TableHead>Fechas</TableHead>
+              <TableHead>Áreas</TableHead>
               <TableHead className="text-right">ha</TableHead>
               <TableHead>Insumos</TableHead>
             </TableRow>
@@ -266,7 +266,7 @@ export function ActivitiesTable({
             {filtered.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
-                  Nenhuma atividade encontrada
+                  Ninguna actividad encontrada
                 </TableCell>
               </TableRow>
             ) : (
@@ -351,9 +351,9 @@ export function ActivitiesTable({
       <Sheet open={dialogOpen} onOpenChange={(open) => { if (!open) handleDialogClose() }}>
         <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Nova Atividade</SheetTitle>
+            <SheetTitle>Nueva Actividad</SheetTitle>
             <SheetDescription>
-              Selecione o tipo e modo da atividade
+              Seleccione el tipo y modo de la actividad
             </SheetDescription>
           </SheetHeader>
           <div className="px-4">

@@ -28,9 +28,9 @@ export default async function FornecedoresPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Fornecedores</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Proveedores</h1>
           <p className="text-muted-foreground">
-            Gerencie os fornecedores de produtos, servicos e outros
+            Gestione los proveedores de productos, servicios y otros
           </p>
         </div>
         <CreateSupplierDialog farmId={farmId} />
@@ -39,39 +39,39 @@ export default async function FornecedoresPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Produtos</CardTitle>
+            <CardTitle className="text-sm font-medium">Productos</CardTitle>
             <Package className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalProdutos}</div>
             <p className="text-xs text-muted-foreground">
-              fornecedores de produtos
+              proveedores de productos
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Servicos</CardTitle>
+            <CardTitle className="text-sm font-medium">Servicios</CardTitle>
             <Wrench className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalServicos}</div>
             <p className="text-xs text-muted-foreground">
-              fornecedores de servicos
+              proveedores de servicios
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Outros</CardTitle>
+            <CardTitle className="text-sm font-medium">Otros</CardTitle>
             <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalOutro}</div>
             <p className="text-xs text-muted-foreground">
-              outras categorias
+              otras categorías
             </p>
           </CardContent>
         </Card>
@@ -82,10 +82,10 @@ export default async function FornecedoresPage() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Store className="h-10 w-10 text-muted-foreground mb-4" />
             <p className="text-muted-foreground text-center">
-              Nenhum fornecedor cadastrado ainda.
+              Ningún proveedor registrado aún.
             </p>
             <p className="text-sm text-muted-foreground text-center mt-1">
-              Clique em &ldquo;Novo Fornecedor&rdquo; para comecar.
+              Haga clic en &ldquo;Nuevo Proveedor&rdquo; para comenzar.
             </p>
           </CardContent>
         </Card>

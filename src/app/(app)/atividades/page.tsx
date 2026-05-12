@@ -48,9 +48,9 @@ interface Activity {
 function getStatusLabel(status: string) {
   switch (status) {
     case "A_FAZER":
-      return "A Fazer"
+      return "Por Hacer"
     case "EM_PROGRESSO":
-      return "Em Progresso"
+      return "En Progreso"
     case "CONCLUIDO":
       return "Concluido"
     default:
@@ -100,15 +100,15 @@ export default function AtividadesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Atividades</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Actividades</h1>
           <p className="text-muted-foreground">
-            Gerencie as atividades operacionais da sua fazenda
+            Gestione las actividades operacionales de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/atividades/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Atividade
+            Nueva Actividad
           </Link>
         </Button>
       </div>
@@ -125,7 +125,7 @@ export default function AtividadesPage() {
           </TabsTrigger>
           <TabsTrigger value="progresso" className="gap-2">
             <Columns3 className="h-4 w-4" />
-            Progresso
+            Progreso
           </TabsTrigger>
         </TabsList>
 
@@ -152,15 +152,15 @@ export default function AtividadesPage() {
               <CardContent className="flex flex-col items-center justify-center py-16">
                 <ClipboardList className="h-12 w-12 text-muted-foreground mb-4" />
                 <h3 className="text-lg font-semibold mb-1">
-                  Nenhuma atividade cadastrada
+                  Ninguna actividad registrada
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  Comece cadastrando a primeira atividade da sua fazenda.
+                  Comience registrando la primera actividad de su granja.
                 </p>
                 <Button asChild>
                   <Link href="/atividades/nova">
                     <Plus className="mr-2 h-4 w-4" />
-                    Nova Atividade
+                    Nueva Actividad
                   </Link>
                 </Button>
               </CardContent>
@@ -168,26 +168,26 @@ export default function AtividadesPage() {
           ) : (
             <Card>
               <CardHeader>
-                <CardTitle>Todas as Atividades</CardTitle>
+                <CardTitle>Todas las Actividades</CardTitle>
                 <CardDescription>
                   {activities.length}{" "}
                   {activities.length === 1
-                    ? "atividade cadastrada"
-                    : "atividades cadastradas"}
+                    ? "actividad registrada"
+                    : "actividades registradas"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Codigo</TableHead>
+                      <TableHead>Código</TableHead>
                       <TableHead>Tipo</TableHead>
                       <TableHead>Subtipo</TableHead>
-                      <TableHead>Safra</TableHead>
-                      <TableHead>Data Inicio</TableHead>
-                      <TableHead>Data Fim</TableHead>
-                      <TableHead>Areas</TableHead>
-                      <TableHead>Status</TableHead>
+                      <TableHead>Cosecha</TableHead>
+                      <TableHead>Fecha Inicio</TableHead>
+                      <TableHead>Fecha Fin</TableHead>
+                      <TableHead>Áreas</TableHead>
+                      <TableHead>Estado</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -254,10 +254,10 @@ export default function AtividadesPage() {
             <CardContent className="flex flex-col items-center justify-center py-16">
               <LayoutGrid className="h-12 w-12 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-1">
-                Visualizacao por Tipos
+                Visualización por Tipos
               </h3>
               <p className="text-muted-foreground text-sm">
-                Em breve voce podera visualizar as atividades agrupadas por tipo.
+                Próximamente podrá visualizar las actividades agrupadas por tipo.
               </p>
             </CardContent>
           </Card>
@@ -268,11 +268,11 @@ export default function AtividadesPage() {
             <CardContent className="flex flex-col items-center justify-center py-16">
               <Columns3 className="h-12 w-12 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-1">
-                Visualizacao Kanban
+                Visualización Kanban
               </h3>
               <p className="text-muted-foreground text-sm">
-                Em breve voce podera visualizar as atividades em colunas: A Fazer
-                | Em Progresso | Concluido.
+                Próximamente podrá visualizar las actividades en columnas: Por Hacer
+                | En Progreso | Concluido.
               </p>
             </CardContent>
           </Card>

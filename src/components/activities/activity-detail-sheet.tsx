@@ -141,14 +141,14 @@ export function ActivityDetailSheet({
             )}
           </SheetTitle>
           <SheetDescription>
-            {activity.crop ? `Safra: ${activity.crop.name}` : "Sem safra vinculada"}
+            {activity.crop ? `Cosecha: ${activity.crop.name}` : "Sin cosecha vinculada"}
           </SheetDescription>
         </SheetHeader>
 
         <div className="px-4 space-y-5">
           {/* Status */}
           <div className="space-y-2">
-            <span className="text-sm font-medium text-muted-foreground">Progresso</span>
+            <span className="text-sm font-medium text-muted-foreground">Progreso</span>
             <div className="flex gap-1.5">
               {STATUS_ORDER.map((s) => (
                 <button
@@ -186,7 +186,7 @@ export function ActivityDetailSheet({
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">Fim</p>
+                <p className="text-xs text-muted-foreground">Fin</p>
                 <p className="text-sm font-medium">
                   {activity.endDate ? formatDate(activity.endDate) : "—"}
                 </p>
@@ -199,7 +199,7 @@ export function ActivityDetailSheet({
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">Equipe</p>
+                <p className="text-xs text-muted-foreground">Equipo</p>
                 <p className="text-sm font-medium">{activity.team}</p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function ActivityDetailSheet({
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-muted-foreground">
-                  Areas ({formatNumber(activity.totalHa ?? 0)} ha)
+                  Áreas ({formatNumber(activity.totalHa ?? 0)} ha)
                 </span>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -262,7 +262,7 @@ export function ActivityDetailSheet({
             <div className="flex items-center gap-2">
               <Package className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">Estoque</p>
+                <p className="text-xs text-muted-foreground">Stock</p>
                 <p className="text-sm font-medium">{activity.stock.name}</p>
               </div>
             </div>
@@ -273,7 +273,7 @@ export function ActivityDetailSheet({
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <FileText className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm font-medium text-muted-foreground">Observacoes</span>
+                <span className="text-sm font-medium text-muted-foreground">Observaciones</span>
               </div>
               <p className="text-sm pl-6">{activity.notes}</p>
             </div>
@@ -285,14 +285,14 @@ export function ActivityDetailSheet({
               <Separator />
               <div className="space-y-1">
                 <span className="text-sm font-medium text-muted-foreground">
-                  Planejamento vinculado
+                  Planificación vinculada
                 </span>
                 <div className="flex items-center gap-2 text-sm">
                   <Badge variant="outline" className="font-mono">
                     {activity.plannedActivity.code}
                   </Badge>
                   <ChevronRight className="h-3 w-3 text-muted-foreground" />
-                  <span>Esta realizacao</span>
+                  <span>Esta realización</span>
                 </div>
               </div>
             </>
@@ -304,7 +304,7 @@ export function ActivityDetailSheet({
               <Separator />
               <div className="space-y-2">
                 <span className="text-sm font-medium text-muted-foreground">
-                  Realizacoes ({activity.realizations.length})
+                  Realizaciones ({activity.realizations.length})
                 </span>
                 {activity.realizations.length > 0 ? (
                   <div className="space-y-1.5">
@@ -327,7 +327,7 @@ export function ActivityDetailSheet({
                   </div>
                 ) : (
                   <p className="text-sm text-muted-foreground">
-                    Nenhuma realizacao registrada.
+                    Ninguna realización registrada.
                   </p>
                 )}
                 {onRealize && (
@@ -337,7 +337,7 @@ export function ActivityDetailSheet({
                     variant="default"
                   >
                     <ClipboardCheck className="mr-2 h-4 w-4" />
-                    Registrar Realizacao
+                    Registrar Realización
                   </Button>
                 )}
               </div>
@@ -354,7 +354,7 @@ export function ActivityDetailSheet({
                 disabled={isPending}
                 className="flex-1"
               >
-                Avancar para {ACTIVITY_STATUS_LABELS[nextStatus]}
+                Avanzar a {ACTIVITY_STATUS_LABELS[nextStatus]}
               </Button>
             )}
             <Button
@@ -368,7 +368,7 @@ export function ActivityDetailSheet({
           </div>
           {confirmDelete && (
             <p className="text-xs text-destructive text-center">
-              Clique novamente para confirmar exclusao
+              Haga clic de nuevo para confirmar la eliminación
             </p>
           )}
         </div>

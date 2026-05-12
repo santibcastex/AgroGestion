@@ -31,12 +31,12 @@ export function TransactionsTable({ transactions, farmId }: TransactionsTablePro
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Data</TableHead>
-            <TableHead>Categoria</TableHead>
-            <TableHead>Fornecedor</TableHead>
-            <TableHead>Nº Nota Fiscal</TableHead>
-            <TableHead>Produtos/Descrição</TableHead>
-            <TableHead>Parcelas</TableHead>
+            <TableHead>Fecha</TableHead>
+            <TableHead>Categoría</TableHead>
+            <TableHead>Proveedor</TableHead>
+            <TableHead>Nº Factura</TableHead>
+            <TableHead>Productos/Descripción</TableHead>
+            <TableHead>Cuotas</TableHead>
             <TableHead className="text-right">Valor</TableHead>
           </TableRow>
         </TableHeader>

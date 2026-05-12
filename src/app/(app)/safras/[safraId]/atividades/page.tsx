@@ -38,18 +38,18 @@ export default async function SafraAtividadesPage({ params }: Props) {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Atividades</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Actividades</h1>
           <p className="text-muted-foreground">
-            Atividades vinculadas a esta safra
+            Actividades vinculadas a esta cosecha
           </p>
         </div>
         <div className="flex flex-col items-center justify-center rounded-lg border py-16">
           <ClipboardList className="h-12 w-12 text-muted-foreground mb-4" />
           <h3 className="text-lg font-semibold mb-1">
-            Nenhuma atividade nesta safra
+            Ninguna actividad en esta cosecha
           </h3>
           <p className="text-muted-foreground text-sm mb-4">
-            Crie uma atividade para comecar a planejar ou registrar o trabalho.
+            Cree una actividad para comenzar a planificar o registrar el trabajo.
           </p>
           <NewActivityButton
             farmId={farmId}
@@ -67,9 +67,9 @@ export default async function SafraAtividadesPage({ params }: Props) {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Atividades</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Actividades</h1>
         <p className="text-muted-foreground">
-          {activities.length} atividade{activities.length !== 1 ? "s" : ""} nesta safra
+          {activities.length} actividad{activities.length !== 1 ? "es" : ""} en esta cosecha
         </p>
       </div>
       <ActivitiesTable

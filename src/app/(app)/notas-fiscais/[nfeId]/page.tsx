@@ -78,7 +78,7 @@ export default async function NfeDetailPage({
             NF-e {nfe.numero || nfe.chaveAcesso.slice(-8)}
           </h1>
           <p className="text-muted-foreground">
-            {nfe.emitenteNome || "Emitente desconhecido"}
+            {nfe.emitenteNome || "Emisor desconocido"}
           </p>
         </div>
         <Badge
@@ -107,11 +107,11 @@ export default async function NfeDetailPage({
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Dados do Emitente</CardTitle>
+            <CardTitle className="text-base">Datos del Emisor</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <p className="text-sm text-muted-foreground">Razao Social</p>
+              <p className="text-sm text-muted-foreground">Razón Social</p>
               <p className="font-medium">{nfe.emitenteNome || "—"}</p>
             </div>
             <div>
@@ -127,12 +127,12 @@ export default async function NfeDetailPage({
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Dados da Nota</CardTitle>
+            <CardTitle className="text-base">Datos de la Factura</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-sm text-muted-foreground">Numero</p>
+                <p className="text-sm text-muted-foreground">Número</p>
                 <p className="font-medium">{nfe.numero || "—"}</p>
               </div>
               <div>
@@ -140,18 +140,18 @@ export default async function NfeDetailPage({
                 <p className="font-medium">{nfe.serie || "—"}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Data de Emissao</p>
+                <p className="text-sm text-muted-foreground">Fecha de Emisión</p>
                 <p className="font-medium">
                   {nfe.dataEmissao ? formatDate(nfe.dataEmissao) : "—"}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Importada em</p>
+                <p className="text-sm text-muted-foreground">Importada el</p>
                 <p className="font-medium">{formatDate(nfe.createdAt)}</p>
               </div>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Chave de Acesso</p>
+              <p className="text-sm text-muted-foreground">Clave de Acceso</p>
               <p className="font-mono text-xs break-all">{nfe.chaveAcesso}</p>
             </div>
           </CardContent>
@@ -160,20 +160,20 @@ export default async function NfeDetailPage({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Totais</CardTitle>
+          <CardTitle className="text-base">Totales</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             <div>
-              <p className="text-sm text-muted-foreground">Valor dos Produtos</p>
+              <p className="text-sm text-muted-foreground">Valor de Productos</p>
               <p className="text-lg font-bold">{formatCurrency(nfe.valorProdutos)}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Frete</p>
+              <p className="text-sm text-muted-foreground">Flete</p>
               <p className="text-lg font-bold">{formatCurrency(nfe.valorFrete)}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Desconto</p>
+              <p className="text-sm text-muted-foreground">Descuento</p>
               <p className="text-lg font-bold">{formatCurrency(nfe.valorDesconto)}</p>
             </div>
             <div>
@@ -190,18 +190,18 @@ export default async function NfeDetailPage({
         <Card>
           <CardHeader>
             <CardTitle className="text-base">
-              Itens ({nfe.items.length})
+              Ítems ({nfe.items.length})
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Codigo</TableHead>
-                  <TableHead>Descricao</TableHead>
+                  <TableHead>Código</TableHead>
+                  <TableHead>Descripción</TableHead>
                   <TableHead>NCM</TableHead>
                   <TableHead>Un.</TableHead>
-                  <TableHead className="text-right">Qtd.</TableHead>
+                  <TableHead className="text-right">Cant.</TableHead>
                   <TableHead className="text-right">Vl. Unit.</TableHead>
                   <TableHead className="text-right">Vl. Total</TableHead>
                 </TableRow>
@@ -237,13 +237,13 @@ export default async function NfeDetailPage({
       {nfe.status === "APROVADA" && (nfe.transaction || nfe.purchase) && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Registros Gerados</CardTitle>
+            <CardTitle className="text-base">Registros Generados</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {nfe.transaction && (
               <div className="flex items-center justify-between rounded-lg border p-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Transacao Financeira</p>
+                  <p className="text-sm text-muted-foreground">Transacción Financiera</p>
                   <p className="font-medium">{nfe.transaction.description}</p>
                   <p className="text-sm">{formatCurrency(nfe.transaction.amount)}</p>
                 </div>
@@ -281,7 +281,7 @@ export default async function NfeDetailPage({
       {nfe.status === "REJEITADA" && nfe.rejectionReason && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Motivo da Rejeicao</CardTitle>
+            <CardTitle className="text-base">Motivo del Rechazo</CardTitle>
           </CardHeader>
           <CardContent>
             <p>{nfe.rejectionReason}</p>

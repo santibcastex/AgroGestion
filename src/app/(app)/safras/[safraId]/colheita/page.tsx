@@ -41,9 +41,9 @@ export default async function SafraColheitaPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Colheita</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Cosecha</h1>
         <p className="text-muted-foreground">
-          Registros de colheita desta safra
+          Registros de cosecha de esta cosecha
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default async function SafraColheitaPage({
         <div className="grid gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Colhido</CardTitle>
+              <CardTitle className="text-sm font-medium">Total Cosechado</CardTitle>
               <Wheat className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -61,12 +61,12 @@ export default async function SafraColheitaPage({
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Area Colhida</CardTitle>
+              <CardTitle className="text-sm font-medium">Área Cosechada</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{formatNumber(summary.totalHa)}</div>
-              <p className="text-xs text-muted-foreground">hectares</p>
+              <p className="text-xs text-muted-foreground">hectáreas</p>
             </CardContent>
           </Card>
           <Card>
@@ -99,17 +99,17 @@ export default async function SafraColheitaPage({
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Wheat className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-1">
-              Nenhuma colheita nesta safra
+              Ninguna cosecha en esta cosecha
             </h3>
             <p className="text-muted-foreground text-sm">
-              Os registros de colheita desta safra aparecerão aqui.
+              Los registros de cosecha de esta cosecha aparecerán aquí.
             </p>
           </CardContent>
         </Card>
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Colheitas</CardTitle>
+            <CardTitle>Cosechas</CardTitle>
             <CardDescription>
               {harvests.length}{" "}
               {harvests.length === 1 ? "registro" : "registros"}
@@ -119,8 +119,8 @@ export default async function SafraColheitaPage({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Area</TableHead>
+                  <TableHead>Fecha</TableHead>
+                  <TableHead>Área</TableHead>
                   <TableHead className="text-right">Toneladas</TableHead>
                   <TableHead className="text-right">TCH</TableHead>
                   <TableHead className="text-right">ATR</TableHead>
