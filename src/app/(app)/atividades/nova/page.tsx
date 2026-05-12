@@ -65,10 +65,10 @@ export default function NovaAtividadePage() {
     startTransition(async () => {
       try {
         await createActivity(activeFarm.farmId, values)
-        toast.success("Atividade registrada com sucesso")
+        toast.success("Actividad registrada con éxito")
         router.push("/atividades")
       } catch (error) {
-        toast.error("Erro ao registrar atividade")
+        toast.error("Error al registrar actividad")
       }
     })
   }
@@ -76,20 +76,20 @@ export default function NovaAtividadePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Nova Atividade</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Nueva Actividad</h1>
         <p className="text-muted-foreground mt-1">
-          Registre uma nova atividade agricola
+          Registre una nueva actividad agrícola
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Informacoes Basicas */}
+          {/* Información Básica */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ClipboardList className="h-5 w-5" />
-                Informacoes da Atividade
+                Información de la Actividad
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -99,10 +99,10 @@ export default function NovaAtividadePage() {
                   name="activityTypeId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tipo de Atividade</FormLabel>
+                      <FormLabel>Tipo de Actividad</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="ID do tipo de atividade"
+                          placeholder="ID del tipo de actividad"
                           disabled={isPending}
                           {...field}
                         />
@@ -120,7 +120,7 @@ export default function NovaAtividadePage() {
                       <FormLabel>Subtipo</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Ex: Mecanizada, Manual"
+                          placeholder="Ej: Mecanizada, Manual"
                           disabled={isPending}
                           {...field}
                         />
@@ -135,10 +135,10 @@ export default function NovaAtividadePage() {
                   name="cropId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Safra</FormLabel>
+                      <FormLabel>Cosecha</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="ID da safra"
+                          placeholder="ID de la cosecha"
                           disabled={isPending}
                           {...field}
                         />
@@ -153,10 +153,10 @@ export default function NovaAtividadePage() {
                   name="team"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Equipe</FormLabel>
+                      <FormLabel>Equipo</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Nome da equipe responsavel"
+                          placeholder="Nombre del equipo responsable"
                           disabled={isPending}
                           {...field}
                         />
@@ -171,7 +171,7 @@ export default function NovaAtividadePage() {
                   name="startDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data de Inicio</FormLabel>
+                      <FormLabel>Fecha de Inicio</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -190,7 +190,7 @@ export default function NovaAtividadePage() {
                   name="endDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Data de Conclusao</FormLabel>
+                      <FormLabel>Fecha de Conclusión</FormLabel>
                       <FormControl>
                         <Input
                           type="date"
@@ -209,11 +209,11 @@ export default function NovaAtividadePage() {
                   name="status"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Status</FormLabel>
+                      <FormLabel>Estado</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione o status" />
+                            <SelectValue placeholder="Seleccione el estado" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -234,7 +234,7 @@ export default function NovaAtividadePage() {
                   name="areaIds"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Areas (IDs separados por virgula)</FormLabel>
+                      <FormLabel>Áreas (IDs separados por coma)</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="id1, id2, id3"
@@ -257,7 +257,7 @@ export default function NovaAtividadePage() {
             </CardContent>
           </Card>
 
-          {/* Insumos Usados */}
+          {/* Insumos Utilizados */}
           <Card>
             <CardHeader>
               <CardTitle>Insumos Utilizados</CardTitle>
@@ -273,7 +273,7 @@ export default function NovaAtividadePage() {
                         <FormLabel className="text-xs">Insumo (ID)</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="ID do insumo"
+                            placeholder="ID del insumo"
                             disabled={isPending}
                             {...field}
                           />
@@ -288,7 +288,7 @@ export default function NovaAtividadePage() {
                     name={`inputUsages.${index}.quantity`}
                     render={({ field }) => (
                       <FormItem className="w-32">
-                        <FormLabel className="text-xs">Quantidade</FormLabel>
+                        <FormLabel className="text-xs">Cantidad</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -346,12 +346,12 @@ export default function NovaAtividadePage() {
                 disabled={isPending}
               >
                 <Plus className="mr-2 h-4 w-4" />
-                Adicionar Insumo
+                Agregar Insumo
               </Button>
             </CardContent>
           </Card>
 
-          {/* Observacoes */}
+          {/* Observaciones */}
           <Card>
             <CardContent className="pt-6">
               <FormField
@@ -359,10 +359,10 @@ export default function NovaAtividadePage() {
                 name="notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Observacoes</FormLabel>
+                    <FormLabel>Observaciones</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Observacoes sobre a atividade..."
+                        placeholder="Observaciones sobre la actividad..."
                         disabled={isPending}
                         {...field}
                       />
@@ -377,7 +377,7 @@ export default function NovaAtividadePage() {
           <div className="flex gap-3">
             <Button type="submit" disabled={isPending} size="lg">
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Registrar Atividade
+              Registrar Actividad
             </Button>
             <Button
               type="button"

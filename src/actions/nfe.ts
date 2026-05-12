@@ -17,7 +17,7 @@ export async function uploadCertificate(farmId: string, formData: FormData) {
   const password = formData.get("password") as string | null
 
   if (!file || !password) {
-    throw new Error("Certificado e senha sao obrigatorios")
+    throw new Error("Certificado y contraseña son obligatorios")
   }
 
   const arrayBuffer = await file.arrayBuffer()
@@ -29,7 +29,7 @@ export async function uploadCertificate(farmId: string, formData: FormData) {
     certInfo = parsePfx(pfxBuffer, password)
   } catch {
     throw new Error(
-      "Nao foi possivel ler o certificado. Verifique o arquivo e a senha."
+      "No fue posible leer el certificado. Verifique el archivo y la contraseña."
     )
   }
 
@@ -114,7 +114,7 @@ export async function importNfesFromSefaz(farmId: string) {
   })
 
   if (!farm?.document) {
-    throw new Error("A fazenda precisa ter um CNPJ cadastrado nas configuracoes")
+    throw new Error("La granja necesita tener un CNPJ registrado en la configuración")
   }
 
   const result = await queryDistDFe(farmId)
@@ -183,7 +183,7 @@ export async function approveNfe(farmId: string, data: unknown) {
   })
 
   if (!nfeImport) {
-    throw new Error("Nota fiscal nao encontrada ou ja processada")
+    throw new Error("Factura no encontrada o ya procesada")
   }
 
   // Find or create supplier
@@ -200,7 +200,7 @@ export async function approveNfe(farmId: string, data: unknown) {
       const supplier = await prisma.supplier.create({
         data: {
           farmId,
-          name: nfeImport.emitenteNome || `Fornecedor ${nfeImport.emitenteCnpj}`,
+          name: nfeImport.emitenteNome || `Proveedor ${nfeImport.emitenteCnpj}`,
           document: nfeImport.emitenteCnpj,
         },
       })
@@ -288,7 +288,7 @@ export async function rejectNfe(farmId: string, data: unknown) {
   })
 
   if (!nfeImport) {
-    throw new Error("Nota fiscal nao encontrada ou ja processada")
+    throw new Error("Factura no encontrada o ya procesada")
   }
 
   await prisma.nfeImport.update({

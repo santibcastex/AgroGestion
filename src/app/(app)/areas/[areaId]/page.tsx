@@ -69,7 +69,7 @@ export default async function AreaDetailPage({
           </p>
         </div>
         <Badge variant={area.active ? "default" : "secondary"} className="ml-auto">
-          {area.active ? "Ativa" : "Inativa"}
+          {area.active ? "Activa" : "Inactiva"}
         </Badge>
       </div>
 
@@ -106,18 +106,18 @@ export default async function AreaDetailPage({
         <div className={area.geojson ? "grid gap-3 grid-cols-1 content-start" : "grid gap-4 grid-cols-2 lg:grid-cols-4"}>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Tamanho</CardTitle>
+              <CardTitle className="text-sm font-medium">Tamaño</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{formatNumber(area.sizeHa)}</div>
-              <p className="text-xs text-muted-foreground">hectares</p>
+              <p className="text-xs text-muted-foreground">hectáreas</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Safras</CardTitle>
+              <CardTitle className="text-sm font-medium">Cosechas</CardTitle>
               <Sprout className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -128,7 +128,7 @@ export default async function AreaDetailPage({
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Atividades</CardTitle>
+              <CardTitle className="text-sm font-medium">Actividades</CardTitle>
               <ClipboardList className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -153,7 +153,7 @@ export default async function AreaDetailPage({
               ) : (
                 <>
                   <div className="text-2xl font-bold text-muted-foreground">—</div>
-                  <p className="text-xs text-muted-foreground">sem dados</p>
+                  <p className="text-xs text-muted-foreground">sin datos</p>
                 </>
               )}
             </CardContent>
@@ -167,16 +167,16 @@ export default async function AreaDetailPage({
           <div>
             <CardTitle className="flex items-center gap-2">
               <Satellite className="h-5 w-5" />
-              Indice de Vegetacao (NDVI)
+              Índice de Vegetación (NDVI)
             </CardTitle>
             <CardDescription>
-              Dados do satelite Sentinel-2 — ultimos 90 dias
+              Datos del satélite Sentinel-2 — últimos 90 días
             </CardDescription>
           </div>
           {area.geojson ? (
             <NdviSyncButton areaId={area.id} />
           ) : (
-            <p className="text-xs text-muted-foreground">Desenhe a area no mapa para habilitar</p>
+            <p className="text-xs text-muted-foreground">Dibuje el área en el mapa para habilitar</p>
           )}
         </CardHeader>
         <CardContent>
@@ -185,15 +185,15 @@ export default async function AreaDetailPage({
           {/* Tabela de leituras */}
           {ndviReadings.length > 0 && (
             <div className="mt-6">
-              <h3 className="text-sm font-semibold mb-3">Historico de Leituras</h3>
+              <h3 className="text-sm font-semibold mb-3">Historial de Lecturas</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Data</TableHead>
+                    <TableHead>Fecha</TableHead>
                     <TableHead className="text-right">Media</TableHead>
                     <TableHead className="text-right">Min</TableHead>
                     <TableHead className="text-right">Max</TableHead>
-                    <TableHead className="text-right">Nuvens</TableHead>
+                    <TableHead className="text-right">Nubes</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -227,7 +227,7 @@ export default async function AreaDetailPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Leaf className="h-5 w-5" />
-              Safras Vinculadas
+              Cosechas Vinculadas
             </CardTitle>
           </CardHeader>
           <CardContent>

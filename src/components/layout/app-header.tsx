@@ -34,21 +34,21 @@ import { CROP_STATUS_LABELS } from "@/lib/constants"
 const routeLabels: Record<string, string> = {
   dashboard: "Inicio",
   mapa: "Mapa",
-  areas: "Areas",
-  safras: "Safras",
-  atividades: "Atividades",
-  "analise-solo": "Analise de Solo",
+  areas: "Áreas",
+  safras: "Cosechas",
+  atividades: "Actividades",
+  "analise-solo": "Análisis de Suelo",
   insumos: "Insumos",
-  colheita: "Colheita",
-  financeiro: "Financeiro",
+  colheita: "Cosecha",
+  financeiro: "Financiero",
   compras: "Compras",
   indicadores: "Indicadores",
-  configuracoes: "Configuracoes",
+  configuracoes: "Configuración",
   perfil: "Perfil",
-  custo: "Custo Realizado",
-  "custo-orcado": "Custo Orcado",
-  nova: "Nova",
-  "nova-transacao": "Nova Transacao",
+  custo: "Costo Real",
+  "custo-orcado": "Costo Presupuestado",
+  nova: "Nueva",
+  "nova-transacao": "Nueva Transacción",
 }
 
 function ContextSelectors() {
@@ -63,26 +63,26 @@ function ContextSelectors() {
           <button className="flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium hover:bg-accent transition-colors outline-none">
             <Leaf className="size-3 text-primary" />
             <span className="max-w-[140px] truncate">
-              {safra ? safra.name : "Safra"}
+              {safra ? safra.name : "Cosecha"}
             </span>
             <ChevronDown className="size-3 text-muted-foreground" />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-56">
           <DropdownMenuLabel className="text-xs text-muted-foreground">
-            Safras
+            Cosechas
           </DropdownMenuLabel>
           {context.level !== "farm" && (
             <>
               <DropdownMenuItem onClick={() => router.push("/safras")}>
-                <span className="text-muted-foreground">Todas as safras</span>
+                <span className="text-muted-foreground">Todas las cosechas</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
             </>
           )}
           {safras.length === 0 ? (
             <DropdownMenuItem disabled>
-              <span className="text-muted-foreground">Nenhuma safra</span>
+              <span className="text-muted-foreground">Sin cosechas</span>
             </DropdownMenuItem>
           ) : (
             safras.map((s) => (
@@ -111,28 +111,28 @@ function ContextSelectors() {
             <button className="flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium hover:bg-accent transition-colors outline-none">
               <Grid3x3 className="size-3 text-primary" />
               <span className="max-w-[140px] truncate">
-                {area ? area.name : "Talhao"}
+                {area ? area.name : "Parcela"}
               </span>
               <ChevronDown className="size-3 text-muted-foreground" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="w-56">
             <DropdownMenuLabel className="text-xs text-muted-foreground">
-              Talhoes da safra
+              Parcelas de la cosecha
             </DropdownMenuLabel>
             {context.level === "area" && (
               <>
                 <DropdownMenuItem
                   onClick={() => router.push(`/safras/${context.safraId}`)}
                 >
-                  <span className="text-muted-foreground">Todos os talhoes</span>
+                  <span className="text-muted-foreground">Todas las parcelas</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
               </>
             )}
             {safraAreas.length === 0 ? (
               <DropdownMenuItem disabled>
-                <span className="text-muted-foreground">Nenhum talhao vinculado</span>
+                <span className="text-muted-foreground">Sin parcelas vinculadas</span>
               </DropdownMenuItem>
             ) : (
               safraAreas.map((a) => (
@@ -222,10 +222,10 @@ export function AppHeader() {
 
       // Skip rendering raw IDs as separate breadcrumbs when we have the name
       if (context.safraId && segment === context.safraId) {
-        return { href, label: safra?.name ?? "Safra", isLast: index === segments.length - 1 }
+        return { href, label: safra?.name ?? "Cosecha", isLast: index === segments.length - 1 }
       }
       if (context.areaId && segment === context.areaId) {
-        return { href, label: area?.name ?? "Talhao", isLast: index === segments.length - 1 }
+        return { href, label: area?.name ?? "Parcela", isLast: index === segments.length - 1 }
       }
 
       // Check resolved names for ID segments

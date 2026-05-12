@@ -37,7 +37,7 @@ export async function updateBankAccount(farmId: string, accountId: string, data:
   const parsed = bankAccountSchema.parse(data)
 
   const existing = await prisma.bankAccount.findFirst({ where: { id: accountId, farmId } })
-  if (!existing) throw new Error("Conta nao encontrada")
+  if (!existing) throw new Error("Cuenta no encontrada")
 
   const account = await prisma.bankAccount.update({
     where: { id: accountId },
@@ -105,7 +105,7 @@ export async function markTransactionPaid(farmId: string, transactionId: string)
   const tx = await prisma.transaction.findFirst({
     where: { id: transactionId, farmId },
   })
-  if (!tx) throw new Error("Transacao nao encontrada")
+  if (!tx) throw new Error("Transacción no encontrada")
 
   const status = tx.type === "RECEITA" ? "RECEBIDO" : "PAGO"
 

@@ -62,7 +62,7 @@ export async function confirmPurchase(farmId: string, purchaseId: string) {
     where: { id: purchaseId, farmId },
     include: { items: true },
   })
-  if (!purchase) throw new Error("Compra nao encontrada")
+  if (!purchase) throw new Error("Compra no encontrada")
 
   // Add items to inventory
   for (const item of purchase.items) {

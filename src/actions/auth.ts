@@ -16,7 +16,7 @@ export async function login(_prevState: unknown, formData: FormData) {
 
   if (!validated.success) {
     return {
-      error: "Dados de login inválidos. Verifique os campos e tente novamente.",
+      error: "Datos de inicio de sesión inválidos. Verifique los campos e intente nuevamente.",
     }
   }
 
@@ -30,9 +30,9 @@ export async function login(_prevState: unknown, formData: FormData) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: "E-mail ou senha incorretos." }
+          return { error: "Correo electrónico o contraseña incorrectos." }
         default:
-          return { error: "Ocorreu um erro ao fazer login. Tente novamente." }
+          return { error: "Ocurrió un error al iniciar sesión. Intente nuevamente." }
       }
     }
     throw error
@@ -54,7 +54,7 @@ export async function register(_prevState: unknown, formData: FormData) {
   if (!validated.success) {
     return {
       error:
-        "Dados de cadastro inválidos. Verifique os campos e tente novamente.",
+        "Datos de registro inválidos. Verifique los campos e intente nuevamente.",
     }
   }
 
@@ -66,7 +66,7 @@ export async function register(_prevState: unknown, formData: FormData) {
     })
 
     if (existingUser) {
-      return { error: "Já existe uma conta com este e-mail." }
+      return { error: "Ya existe una cuenta con este correo electrónico." }
     }
 
     const hashedPassword = await bcryptjs.hash(password, 12)
@@ -103,7 +103,7 @@ export async function register(_prevState: unknown, formData: FormData) {
   } catch (error) {
     if (error instanceof AuthError) {
       return {
-        error: "Conta criada, mas houve um erro ao fazer login automático. Tente fazer login manualmente.",
+        error: "Cuenta creada, pero hubo un error al iniciar sesión automáticamente. Intente iniciar sesión manualmente.",
       }
     }
     throw error

@@ -8,14 +8,14 @@ import { revalidatePath } from "next/cache"
 export async function syncNdviForArea(areaId: string) {
   const user = await requireAuth()
   const membership = await getUserActiveFarm(user.id)
-  if (!membership) throw new Error("Sem acesso")
+  if (!membership) throw new Error("Sin acceso")
 
   const area = await prisma.area.findFirst({
     where: { id: areaId, farmId: membership.farmId, active: true },
   })
 
-  if (!area) throw new Error("Area nao encontrada")
-  if (!area.geojson) throw new Error("Area sem geometria definida")
+  if (!area) throw new Error("Área no encontrada")
+  if (!area.geojson) throw new Error("Área sin geometría definida")
 
   const to = new Date()
   const from = new Date()
@@ -65,7 +65,7 @@ export async function syncNdviForArea(areaId: string) {
 export async function syncNdviForAllAreas() {
   const user = await requireAuth()
   const membership = await getUserActiveFarm(user.id)
-  if (!membership) throw new Error("Sem acesso")
+  if (!membership) throw new Error("Sin acceso")
 
   const areas = await prisma.area.findMany({
     where: { farmId: membership.farmId, active: true, geojson: { not: undefined } },
@@ -115,7 +115,7 @@ export async function syncNdviForAllAreas() {
         totalReadings++
       }
     } catch (err) {
-      errors.push(`${area.name}: ${err instanceof Error ? err.message : "Erro desconhecido"}`)
+      errors.push(`${area.name}: ${err instanceof Error ? err.message : "Error desconocido"}`)
     }
   }
 

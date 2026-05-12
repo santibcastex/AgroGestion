@@ -43,15 +43,15 @@ export default async function SafrasPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Safras</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Cosechas</h1>
           <p className="text-muted-foreground">
-            Acompanhe e gerencie as safras da sua fazenda
+            Siga y gestione las cosechas de su granja
           </p>
         </div>
         <Button asChild>
           <Link href="/safras/nova">
             <Plus className="mr-2 h-4 w-4" />
-            Nova Safra
+            Nueva Cosecha
           </Link>
         </Button>
       </div>

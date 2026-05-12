@@ -12,7 +12,7 @@ export async function createContractor(
   await requireFarmAccess(user.id, farmId, "MANAGER")
 
   const name = data.name.trim()
-  if (!name) throw new Error("Nome e obrigatorio")
+  if (!name) throw new Error("Nombre es obligatorio")
 
   const contractor = await prisma.contractor.create({
     data: {
