@@ -186,7 +186,7 @@ export function ActivityDetailSheet({
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground" />
               <div>
-                <p className="text-xs text-muted-foreground">Fim</p>
+                <p className="text-xs text-muted-foreground">Fin</p>
                 <p className="text-sm font-medium">
                   {activity.endDate ? formatDate(activity.endDate) : "—"}
                 </p>
