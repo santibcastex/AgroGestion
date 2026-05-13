@@ -1,0 +1,69 @@
+name: Actualizar datos agronumeros
+
+on:
+  schedule:
+    - cron: '0 13 * * 1-5'   # Lunes a viernes a las 10:00 AM Argentina (UTC-3)
+    - cron: '0 19 * * 1-5'   # Segunda corrida a las 16:00 PM Argentina
+  workflow_dispatch:           # Permite correr manualmente desde GitHub
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agronumeros/scripts
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install requests yfinance beautifulsoup4
+
+      - name: Indicadores globales (Yahoo Finance + BCRA + dolarapi)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python 01_indicadores_globales.py
+
+      - name: Precios agro (pizarras BCR)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python 02_precios_agro.py
+
+      - name: Series diarias (BADLAR / BCRA)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python 03_series_diarias.py
+
+  update_semanal:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' && startsWith(github.event.schedule, '0 13 * * 1')
+    defaults:
+      run:
+        working-directory: agronumeros/scripts
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install requests beautifulsoup4
+
+      - name: Ganadería Liniers (semanal, solo lunes)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python 04_ganaderia_liniers.py

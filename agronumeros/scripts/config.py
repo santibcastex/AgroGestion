@@ -1,5 +1,7 @@
-SUPABASE_URL = "https://szjxcfntvdyklnnuyepg.supabase.co"
-SUPABASE_KEY = "sb_publishable_QRCmHDhrHk6rElc169-udw_GiSGiK-B"
+import os
+
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://szjxcfntvdyklnnuyepg.supabase.co")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "sb_publishable_QRCmHDhrHk6rElc169-udw_GiSGiK-B")
 
 HEADERS = {
     "apikey": SUPABASE_KEY,
