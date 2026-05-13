@@ -8991,6 +8991,814 @@ function rmSetVista(vista) {
 }
 
 
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ░░ FUNCIONES RESCATADAS ░░
+   - iniciarEducacion: implementación completa (fetch + filtros + render)
+   - iniciarAgromet: stub temporal hasta reescribir el visor de mapas
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── AGROMET INTA: navegación agrupada + visor de imágenes ─── */
+const AGRO_INFORME_NUM = 900
+const AGRO_BASE = `agromet/N${AGRO_INFORME_NUM}/`
+const AGRO_PDF = AGRO_BASE + `agromet_${AGRO_INFORME_NUM}.pdf`
+const AGRO_GRUPOS = [
+  { titulo: 'Situación actual', chips: [
+    { label: 'Lo que pasó y viene',   file: 'lo_que_paso_y_viene_full.png' },
+    { label: 'Balance hídrico',       file: 'agua_suelo_full.png' },
+    { label: 'Agua excedente',        file: 'agua_excedente_full.png' },
+    { label: 'Sequía',                file: 'sequia_full.png' },
+    { label: 'Conclusiones',          file: 'conclusiones_full.png' },
+  ]},
+  { titulo: 'Semana anterior', chips: [
+    { label: 'Precipitación',         file: 'precipitacion_full.png' },
+    { label: 'Temp. máximas',         file: 'temp_max_full.png' },
+    { label: 'Temp. mínimas',         file: 'temp_min_full.png' },
+  ]},
+  { titulo: 'Pronóstico', chips: [
+    { label: 'Precip. semanal',       file: 'precip_pronost_full.png' },
+    { label: 'Temp. máximas',         file: 'pronost_temp_max_full.png' },
+    { label: 'Temp. mínimas',         file: 'pronost_temp_min_full.png' },
+    { label: 'Heladas',               file: 'pronost_heladas_full.png' },
+    { label: 'El Niño',               file: 'enso_full.png' },
+  ]},
+]
+
+function iniciarAgromet() {
+  const nav = document.getElementById('agro-nav')
+  const visor = document.getElementById('agro-visor')
+  if (!nav || !visor) return
+
+  // Botón "Reporte completo" arriba + grupos abajo
+  const btnReporte = `<div class="agro-grupo agro-grupo-solo">
+    <a class="agro-mapa-chip" href="${AGRO_PDF}" target="_blank" rel="noopener" style="text-decoration:none">
+      📊 Reporte completo
+    </a>
+  </div>`
+  const grupos = AGRO_GRUPOS.map((g, gi) => {
+    const chips = g.chips.map((c, ci) => {
+      const activo = (gi === 0 && ci === 0) ? 'activo' : ''
+      return `<button class="agro-mapa-chip ${activo}" data-file="${c.file}" data-label="${c.label}">${c.label}</button>`
+    }).join('')
+    return `<div class="agro-grupo">
+      <span class="agro-grupo-titulo">${g.titulo}</span>
+      <div class="agro-grupo-chips">${chips}</div>
+    </div>`
+  }).join('')
+  nav.innerHTML = btnReporte + grupos
+
+  // Cargar primera imagen por default ("Lo que pasó y viene")
+  const first = AGRO_GRUPOS[0].chips[0]
+  agroMostrarImagen(first.file, first.label)
+
+  // Listeners de chips (los que tienen data-file)
+  nav.querySelectorAll('.agro-mapa-chip[data-file]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      nav.querySelectorAll('.agro-mapa-chip[data-file]').forEach(b => b.classList.remove('activo'))
+      btn.classList.add('activo')
+      agroMostrarImagen(btn.dataset.file, btn.dataset.label)
+    })
+  })
+}
+
+function agroMostrarImagen(file, label) {
+  const visor = document.getElementById('agro-visor')
+  if (!visor) return
+  const src = AGRO_BASE + file
+  visor.innerHTML = `<img src="${src}" alt="${label}" class="agro-mapa-img"
+    style="width:100%; max-width:1100px; display:block; margin:1rem auto; border:1px solid var(--border); border-radius:var(--r2); cursor:zoom-in"
+    onclick="agroAbrirModal('${src}', '${label}')">`
+}
+
+function agroAbrirModal(src, alt) {
+  const overlay = document.getElementById('agro-modal')
+  const img = document.getElementById('agro-modal-img')
+  if (!overlay || !img) return
+  img.src = src
+  img.alt = alt || ''
+  overlay.classList.add('activo')
+}
+
+/* ─── Funciones rm* adicionales rescatadas del backup 260427 ─── */
+
+function rmAbrirModal(id) {
+  const r = rmData.find(x => x.id === id)
+  if (!r) return
+  rmRemate = r
+
+  const consig  = rmConsigMap[r.consignataria_id]
+  const overlay = document.getElementById('rm-modal-overlay')
+  const title   = document.getElementById('rm-modal-title')
+  const body    = document.getElementById('rm-modal-body')
+
+  title.textContent = r.nombre || (consig?.nombre || 'Remate de hacienda')
+
+  const fila = (key, val) => val
+    ? `<div class="rm-modal-row">
+        <span class="rm-modal-key">${key}</span>
+        <span class="rm-modal-val">${val}</span>
+       </div>`
+    : ''
+
+  const [anio, mes, dia] = r.fecha.split('-')
+  const fechaFmt = `${parseInt(dia, 10)} de ${RM_MESES_LARGO[parseInt(mes, 10) - 1]} de ${anio}`
+
+  // Flyer inline
+  let flyerHTML = ''
+  if (r.url_flyer) {
+    if (r.flyer_tipo === 'pdf') {
+      flyerHTML = `<div class="rm-flyer-wrap">
+        <a class="rm-flyer-link" href="${r.url_flyer}" target="_blank">📄 Ver PDF del flyer</a>
+      </div>`
+    } else {
+      flyerHTML = `<div class="rm-flyer-wrap">
+        <img class="rm-flyer-img" src="${r.url_flyer}" alt="Flyer"
+             onerror="this.parentElement.style.display='none'"
+             onclick="this.classList.toggle('expandido')">
+      </div>`
+    }
+  }
+
+  body.innerHTML = [
+    flyerHTML,
+    fila('Fecha',         fechaFmt + (r.hora ? ` · ${r.hora.slice(0, 5)} hs` : '')),
+    fila('Consignataria', consig?.nombre || ''),
+    fila('Lugar',         r.lugar || ''),
+    fila('Localidad',     [r.localidad, r.provincia].filter(Boolean).join(', ')),
+    fila('Tipo',          [...(r._tipos || []), r.tipo_venta].filter(Boolean).join(' · ')),
+    fila('Modalidad',     (r._modalidad || []).join(', ')),
+    fila('Canal TV',      r.canal_tv || ''),
+    fila('Streaming',     r.url_streaming
+      ? `<a href="${r.url_streaming}" target="_blank" style="color:var(--brand-lt)">${r.url_streaming}</a>`
+      : ''),
+    fila('Razas',         (r.razas || []).join(', ')),
+    fila('Total cabezas', r.total_cabezas
+      ? r.total_cabezas.toLocaleString('es-AR') : ''),
+    fila('Descripción',   r.descripcion || ''),
+    fila('Fuente',        r.url_fuente
+      ? `<a href="${r.url_fuente}" target="_blank" style="color:var(--brand-lt)">${r.url_fuente}</a>`
+      : ''),
+  ].join('')
+
+  // Botón Ver flyer: solo si hay url_flyer
+  const btnFlyer = document.getElementById('rm-btn-flyer')
+  if (btnFlyer) {
+    if (r.url_flyer) {
+      btnFlyer.style.display = ''
+      btnFlyer.onclick = () => window.open(r.url_flyer, '_blank')
+    } else {
+      btnFlyer.style.display = 'none'
+    }
+  }
+
+  overlay.classList.add('activo')
+}
+
+function rmActualizarLocalidades(provincia) {
+  const fuente = provincia ? rmData.concat(rmDataPasados).filter(r => r.provincia === provincia) : []
+  const locs   = [...new Set(fuente.map(r => r.localidad).filter(Boolean))].sort()
+  const sel    = document.getElementById('rm-f-localidad')
+  sel.innerHTML = '<option value="">Ciudad</option>' +
+    locs.map(l => `<option value="${l}">${l}</option>`).join('')
+}
+
+function rmBadges(r) {
+  const tags = []
+  if (r.tipo_venta) {
+    const cls = { Invernada:'invernada', Cría:'cria', Cria:'cria', Faena:'faena', Mixto:'mixto' }
+    tags.push(`<span class="rm-badge rm-badge-${cls[r.tipo_venta] || 'mixto'}">${r.tipo_venta}</span>`)
+  }
+  if ((r._tipos || []).includes('Cabañas')) {
+    tags.push(`<span class="rm-badge rm-badge-cabana">Cabaña</span>`)
+  }
+  if ((r._tipos || []).includes('Feria')) {
+    tags.push(`<span class="rm-badge rm-badge-region">Feria</span>`)
+  }
+  ;(r._modalidad || []).forEach(m => {
+    const cls = { Online:'streaming', Físico:'presencial' }[m] || 'region'
+    tags.push(`<span class="rm-badge rm-badge-${cls}">${m}</span>`)
+  })
+  return tags.join('')
+}
+
+function rmCalNavegar(delta) {
+  rmCalWeekOffset += delta
+  rmRender()
+}
+
+function rmConsigActualizarBtn() {
+  const badge = document.getElementById('rm-consig-badge')
+  const label = document.getElementById('rm-consig-label')
+  const btn   = document.getElementById('rm-consig-btn')
+  if (rmConsigSel.size === 0) {
+    label.textContent = 'Todas las consignatarias'
+    badge.style.display = 'none'
+    btn.classList.remove('activo')
+  } else {
+    label.textContent = rmConsigSel.size === 1
+      ? rmConsigTodos.find(c => rmConsigSel.has(String(c.id)))?.nombre_corto
+        || rmConsigTodos.find(c => rmConsigSel.has(String(c.id)))?.nombre || '1 seleccionada'
+      : 'Consignatarias'
+    badge.textContent = rmConsigSel.size
+    badge.style.display = ''
+    btn.classList.add('activo')
+  }
+}
+
+function rmConsigLogoHTML(consig) {
+  if (!consig) return ''
+  const nombre   = consig.nombre || ''
+  const initials = nombre.split(/\s+/).filter(Boolean).slice(0, 2)
+    .map(w => w[0]).join('').toUpperCase()
+
+  // Fallback chain: base64 embebido → favicon del sitio → avatar con iniciales
+  const logos = window.RM_LOGOS || {}
+  let logoHTML
+  if (logos[consig.id]) {
+    // Logo embebido en logos_data.js — siempre funciona
+    logoHTML = `<img class="rm-consig-logo" src="${logos[consig.id]}" alt="${nombre}">`
+  } else {
+    // Sin logo local: intentar favicon del sitio, sino avatar
+    let faviconSrc = ''
+    if (consig.url_remates) {
+      try { faviconSrc = `https://www.google.com/s2/favicons?domain=${new URL(consig.url_remates).hostname}&sz=64` } catch {}
+    }
+    const avatarFallback = `this.style.display='none';this.nextElementSibling.style.display='flex'`
+    if (faviconSrc) {
+      logoHTML = `<img class="rm-consig-logo" src="${faviconSrc}"
+        onerror="${avatarFallback}" alt="${nombre}">
+        <div class="rm-consig-avatar" style="display:none">${initials}</div>`
+    } else {
+      logoHTML = `<div class="rm-consig-avatar">${initials}</div>`
+    }
+  }
+
+  const etiqueta = consig.nombre_corto || nombre.split(/\s+/).slice(0, 2).join(' ')
+  return `<div class="rm-card-consig">
+    <div class="rm-consig-logo-wrap">${logoHTML}</div>
+    <div class="rm-consig-nombre">${etiqueta}</div>
+  </div>`
+}
+
+function rmConsigToggleItem(id) {
+  const sid = String(id)
+  if (rmConsigSel.has(sid)) rmConsigSel.delete(sid)
+  else rmConsigSel.add(sid)
+  rmConsigActualizarBtn()
+  rmAplicarFiltros()
+}
+
+function rmFiltrar(modo) {
+  const tipoPpal  = document.getElementById('rm-f-tipo-ppal').value
+  const tipoVenta = document.getElementById('rm-f-tipo-venta').value
+  const provincia = document.getElementById('rm-f-provincia').value
+  const localidad = document.getElementById('rm-f-localidad').value
+  const modalidad = document.getElementById('rm-f-modalidad').value
+  const raza      = document.getElementById('rm-f-raza').value
+  const desde     = document.getElementById('rm-f-desde').value
+  const hasta     = document.getElementById('rm-f-hasta').value
+
+  const fuente = modo === 'todos'
+    ? rmData.concat(rmDataPasados)
+    : rmVista === 'pasados' ? rmDataPasados : rmData
+  return fuente.filter(r => {
+    if (tipoPpal  && !(r._tipos     || []).includes(tipoPpal))            return false
+    if (tipoVenta && r.tipo_venta   !== tipoVenta)                        return false
+    if (provincia && r.provincia    !== provincia)                         return false
+    if (localidad && r.localidad    !== localidad)                         return false
+    if (modalidad && !(r._modalidad || []).includes(modalidad))            return false
+    if (rmConsigSel.size && !rmConsigSel.has(String(r.consignataria_id))) return false
+    if (raza      && !(r._razas     || []).includes(raza))                 return false
+    if (desde     && r.fecha < desde)                                      return false
+    if (hasta     && r.fecha > hasta)                                      return false
+    return true
+  })
+}
+
+function rmNombreCortoCalendario(nombre) {
+  if (!nombre) return ''
+  // Overrides exactos (case-insensitive)
+  const override = RM_NOMBRE_OVERRIDES[nombre.trim().toLowerCase()]
+  if (override) return override
+  // Separar en "|" o " - " (con espacios para no cortar palabras con guión)
+  const SEP = /\s*\|\s*|\s+-\s+/
+  const partes = nombre.split(SEP).map(p => p.trim()).filter(Boolean)
+  if (partes.length <= 1) return nombre.trim()
+
+  const PREFIJOS_TV = /^(remate\s+tv|faenar\s+tv|remate\s+televisado|tv\s+remate)/i
+  if (PREFIJOS_TV.test(partes[0])) {
+    return partes[1]  // usar lo que va DESPUÉS del primer separador
+  }
+  return partes[0].replace(/SOCIEDAD RURAL/gi, 'SOC. RURAL')
+}
+
+function rmRenderCalendario(remates) {
+  const cont = document.getElementById('rm-cal-container')
+  if (!cont) return
+
+  const hoy    = new Date(); hoy.setHours(0, 0, 0, 0)
+  const hoyStr = hoy.toISOString().slice(0, 10)
+  const logos  = window.RM_LOGOS || {}
+
+  // Calcular el lunes de la semana mostrada
+  const dow     = hoy.getDay()                         // 0=Dom … 6=Sáb
+  const diffLun = dow === 0 ? -6 : 1 - dow            // cuántos días al lunes
+  const lunes   = new Date(hoy)
+  lunes.setDate(lunes.getDate() + diffLun + rmCalWeekOffset * 7)
+
+  // Generar los 7 días de la semana (Lun–Dom)
+  const diasSemana = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(lunes)
+    d.setDate(d.getDate() + i)
+    return d.toISOString().slice(0, 10)
+  })
+  const fechaSet = new Set(diasSemana)
+
+  // Agrupar remates por fecha para esa semana
+  const porFecha = {}
+  remates.forEach(r => {
+    if (!fechaSet.has(r.fecha)) return
+    if (!porFecha[r.fecha]) porFecha[r.fecha] = []
+    porFecha[r.fecha].push(r)
+  })
+
+  // ¿Hay remates en semanas anteriores / siguientes?
+  const hayAnterior = rmCalWeekOffset > 0 || remates.some(r => r.fecha < diasSemana[0])
+  const hayProxima  = remates.some(r => r.fecha > diasSemana[6])
+
+  const DIAS_NOM = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']
+
+  function logoItemHTML(consig) {
+    if (!consig) return '<div class="rm-cal2-avatar">?</div>'
+    const initials = (consig.nombre || '').split(/\s+/).filter(Boolean)
+      .slice(0, 2).map(w => w[0]).join('').toUpperCase()
+    if (logos[consig.id]) {
+      return `<img class="rm-cal2-logo" src="${logos[consig.id]}" alt="">`
+    }
+    if (consig.url_remates) {
+      try {
+        const domain = new URL(consig.url_remates).hostname
+        return `<img class="rm-cal2-logo" src="https://www.google.com/s2/favicons?domain=${domain}&sz=32"
+          onerror="this.outerHTML='<div class=&quot;rm-cal2-avatar&quot;>${initials}</div>'" alt="">`
+      } catch {}
+    }
+    return `<div class="rm-cal2-avatar">${initials}</div>`
+  }
+
+  // Construir columnas (siempre los 7 días, con o sin remates)
+  const columnas = diasSemana.map(fecha => {
+    const [anio, mes, dia] = fecha.split('-')
+    const diaSem  = DIAS_NOM[new Date(fecha + 'T00:00:00').getDay()]
+    const mesStr  = RM_MESES_CORTO[parseInt(mes, 10) - 1]
+    const esHoy   = fecha === hoyStr
+    const esPasado = fecha < hoyStr
+
+    const items = (porFecha[fecha] || []).map(r => {
+      const consig = rmConsigMap[r.consignataria_id]
+      const nombre = rmNombreCortoCalendario(r.nombre) || consig?.nombre_corto
+        || (consig?.nombre || '').split(/\s+/).slice(0, 3).join(' ')
+        || 'Remate'
+      const sub = r.localidad || r.provincia || ''
+      return `<div class="rm-cal2-item" onclick="rmAbrirModal(${r.id})">
+        ${logoItemHTML(consig)}
+        <div>
+          <div class="rm-cal2-nombre">${nombre}</div>
+          ${sub ? `<div class="rm-cal2-sub">${sub}</div>` : ''}
+        </div>
+      </div>`
+    }).join('')
+
+    const clases = ['rm-cal2-col',
+      esHoy    ? 'rm-cal2-hoy'    : '',
+      esPasado ? 'rm-cal2-pasado' : '',
+    ].filter(Boolean).join(' ')
+
+    return `<div class="${clases}">
+      <div class="rm-cal2-header">
+        ${diaSem} ${mesStr}
+        <strong>${parseInt(dia, 10)}</strong>
+      </div>
+      ${items || ''}
+    </div>`
+  }).join('')
+
+  // Botones de navegación
+  const btnAtras = (rmCalWeekOffset > 0 || hayAnterior)
+    ? `<button class="rm-cal-nav rm-cal-nav-atras" onclick="rmCalNavegar(-1)">‹ Semana anterior</button>`
+    : ''
+  const btnSig = hayProxima
+    ? `<button class="rm-cal-nav rm-cal-nav-sig" onclick="rmCalNavegar(1)">Próxima semana ›</button>`
+    : ''
+
+  cont.innerHTML = `
+    <div style="display:flex;align-items:flex-start;gap:.4rem">
+      ${btnAtras ? `<div class="rm-cal-nav-wrap">${btnAtras}</div>` : ''}
+      <div class="rm-cal2" style="flex:1">${columnas}</div>
+      ${btnSig ? `<div class="rm-cal-nav-wrap">${btnSig}</div>` : ''}
+    </div>`
+}
+
+function rmRenderLista(remates) {
+  const cont = document.getElementById('rm-lista')
+  if (!remates.length) {
+    cont.innerHTML = '<div class="rm-empty">No hay remates próximos que coincidan con los filtros.</div>'
+    return
+  }
+  cont.innerHTML = remates.map(r => {
+    const [anio, mes, dia] = r.fecha.split('-')
+    const mesStr   = RM_MESES_CORTO[parseInt(mes, 10) - 1]
+    const consig   = rmConsigMap[r.consignataria_id]
+    const cNombre  = consig ? consig.nombre : ''
+    const loc      = [r.localidad, r.provincia].filter(Boolean).join(', ')
+    const cabezas  = r.total_cabezas
+      ? ` · ${r.total_cabezas.toLocaleString('es-AR')} cab.` : ''
+    return `<div class="rm-card" onclick="rmAbrirModal(${r.id})">
+      <div class="rm-card-date">
+        <div class="rm-date-day">${parseInt(dia, 10)}</div>
+        <div class="rm-date-mes">${mesStr} ${anio}</div>
+        ${r.hora ? `<div class="rm-date-hora">${r.hora.slice(0, 5)}</div>` : ''}
+      </div>
+      <div class="rm-card-body">
+        <div class="rm-card-title">${r.nombre || cNombre || 'Remate de hacienda'}</div>
+        <div class="rm-card-meta">
+          ${loc     ? `<span>📍 ${loc}</span>` : ''}
+          ${cabezas ? `<span class="rm-cabezas">${cabezas}</span>` : ''}
+        </div>
+        <div class="rm-card-badges">${rmBadges(r)}</div>
+      </div>
+      ${rmConsigLogoHTML(consig)}
+    </div>`
+  }).join('')
+}
+
+function rmSelMes(ym) {
+  if (rmMesActivo === ym) {
+    // Deseleccionar → sin filtro de fecha
+    rmMesActivo = null
+    document.getElementById('rm-f-desde').value = ''
+    document.getElementById('rm-f-hasta').value = ''
+    document.querySelectorAll('.rm-mes-pill').forEach(p => p.classList.remove('activo'))
+  } else {
+    rmMesActivo = ym
+    const [y, m] = ym.split('-').map(Number)
+    const desde  = `${y}-${String(m).padStart(2,'0')}-01`
+    const lastDay = new Date(y, m, 0).getDate()
+    const hasta  = `${y}-${String(m).padStart(2,'0')}-${String(lastDay).padStart(2,'0')}`
+    document.getElementById('rm-f-desde').value = desde
+    document.getElementById('rm-f-hasta').value = hasta
+    document.querySelectorAll('.rm-mes-pill').forEach(p =>
+      p.classList.toggle('activo', p.dataset.ym === ym)
+    )
+  }
+  rmAplicarFiltros()
+}
+
+/* ─── Constantes RM_* faltantes ─── */
+const RM_NOMBRE_OVERRIDES = {
+  'remate feria en sociedad rural de maría grande': 'Rem. Feria Soc. Rural M. Grande',
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   INSUMOS — Gas Oil Grado 2
+   Tablas Supabase:
+     · combustibles_provincia  → histórico mensual promedio por provincia
+     · combustibles_localidad  → precios vigentes por surtidor
+══════════════════════════════════════════════════════════════════════ */
+
+async function iniciarEstaciones() {
+  const subEl = document.getElementById('est-sub')
+
+  try {
+    // ── 1. Fetch desde Supabase view v_clima_actual ───────────────────────
+    //     Los nombres reales de la vista difieren — uso alias PostgREST
+    //     (alias:columna_real) para que el front-end reciba los nombres
+    //     que ya usa abajo en markers/popups.
+    const url = new URL(`${SUPABASE_URL}/rest/v1/v_clima_actual`)
+    url.searchParams.set('select', [
+      'nombre','provincia','localidad','fuente','url_fuente',
+      'latitud:lat','longitud:lon',
+      'temp_actual','temp_min','temp_max','sensacion_termica',
+      'humedad:humedad_actual','presion',
+      'viento_velocidad:viento_vel',
+      'viento_direccion:viento_dir_grados',
+      'viento_rafaga:viento_max_dia',
+      'lluvia_total_dia',
+      'lluvia_ayer',
+      'lluvia_acum_mes:lluvia_mensual',
+      'lluvia_acum_anio:lluvia_anual',
+      'fecha_obs:ultima_obs'
+    ].join(','))
+    url.searchParams.set('lat', 'not.is.null')
+    url.searchParams.set('lon', 'not.is.null')
+    url.searchParams.set('limit', '5000')
+
+    const r = await fetch(url, {
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
+    })
+    estaData = await r.json()
+
+    // ── 2. Inicializar mapa Leaflet (siempre, aunque no haya datos) ────────
+    if (!estaMap) {
+      estaMap = L.map('est-mapa', { zoomControl: true }).setView([-38, -63], 4)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+        maxZoom: 18
+      }).addTo(estaMap)
+    }
+
+    if (!Array.isArray(estaData) || !estaData.length) {
+      subEl.textContent = 'Sin estaciones en la base de datos aún.'
+      return
+    }
+
+    subEl.textContent = `${estaData.length.toLocaleString('es-AR')} estaciones`
+
+    // ── 2b. Cargar GeoJSON de departamentos y agregar capa de polígonos ──
+    const STYLE_NORMAL = { color: '#94a3b8', weight: 0.5, opacity: 0.55, fillColor: '#cbd5e1', fillOpacity: 0.05 }
+    const STYLE_HOVER  = { color: '#475569', weight: 1.6, opacity: 0.95, fillColor: '#64748b', fillOpacity: 0.20 }
+    const STYLE_PROV_ON  = { color: '#475569', weight: 0.9, opacity: 0.85, fillColor: '#94a3b8', fillOpacity: 0.10 }
+    const STYLE_PROV_OFF = { color: '#cbd5e1', weight: 0.2, opacity: 0.20, fillColor: '#cbd5e1', fillOpacity: 0    }
+
+    function _styleFor(feat) {
+      if (!estaProvSel) return STYLE_NORMAL
+      return provRawGeo(feat) === estaProvSel ? STYLE_PROV_ON : STYLE_PROV_OFF
+    }
+
+    if (!estaGeoLayer) {
+      try {
+        const geo = await fetchGeoJSON()
+        _initGeoKeys(geo)
+        estaGeoLayer = L.geoJSON(geo, {
+          style: _styleFor,
+          onEachFeature: (feat, layer) => {
+            const prov = provRawGeo(feat)
+            const dep  = deptoRawGeo(feat)
+            layer.bindTooltip(`${dep || '—'} · ${prov || '—'}`, { sticky: true, opacity: 0.9 })
+            layer.on('click', () => onClickFeatureEst(feat, layer))
+          },
+        }).addTo(estaMap)
+        // Mantener markers por encima de los polígonos
+        estaMarkers.forEach(m => m.bringToFront())
+      } catch (e) {
+        console.warn('estaciones GeoJSON:', e)
+      }
+    }
+
+    // ── 3. Poblar dropdowns provincia / localidad dinámicamente ──────────
+    const selProv = document.getElementById('est-filtro-provincia')
+    const selLoc  = document.getElementById('est-filtro-localidad')
+    const selFte  = document.getElementById('est-filtro-fuente')
+    const provs = [...new Set(estaData.map(e => e.provincia).filter(p => p && p.trim()))]
+      .sort((a,b) => a.localeCompare(b, 'es'))
+    selProv.innerHTML = '<option value="">Toda Argentina</option>' +
+      provs.map(p => `<option value="${p.replace(/"/g,'&quot;')}">${p}</option>`).join('')
+
+    function poblarLocalidades() {
+      const prov = selProv.value
+      if (!prov) {
+        selLoc.innerHTML = '<option value="">Toda la provincia</option>'
+        selLoc.disabled = true
+        return
+      }
+      selLoc.disabled = false
+      const locs = [...new Set(
+        estaData.filter(e => e.provincia === prov)
+                .map(e => e.localidad)
+                .filter(l => l && l.trim() && l !== '--')
+      )].sort((a,b) => a.localeCompare(b, 'es'))
+      selLoc.innerHTML = '<option value="">Toda la provincia</option>' +
+        locs.map(l => `<option value="${l.replace(/"/g,'&quot;')}">${l}</option>`).join('')
+    }
+    poblarLocalidades()
+
+    // ── 4. Aplicar filtros + zoom dinámico ────────────────────────────────
+    const btnVolver = document.getElementById('est-volver')
+
+    function _provFeatBounds(provincia) {
+      if (!estaGeoLayer || !provincia) return null
+      const matchs = estaGeoLayer.getLayers()
+        .filter(l => provRawGeo(l.feature) === provincia)
+      if (!matchs.length) return null
+      return L.featureGroup(matchs).getBounds()
+    }
+
+    function estaAplicarFiltros() {
+      const fuente     = selFte.value
+      const provincia  = selProv.value
+      const localidad  = selLoc.value
+      const mostrarSin = document.getElementById('est-ocultar-sin-lluvia').checked
+
+      // Provincia/localidad SOLO afectan el zoom — no filtran markers.
+      // Asi se ven tambien estaciones de provincias linderas cerca del borde.
+      let filtradas = estaData
+      if (fuente)      filtradas = filtradas.filter(e => e.fuente === fuente)
+      if (!mostrarSin) filtradas = filtradas.filter(e =>
+        e.lluvia_total_dia !== null && e.lluvia_total_dia !== undefined
+      )
+
+      estaRenderMarkers(filtradas)
+      subEl.textContent = `${filtradas.length.toLocaleString('es-AR')} estaciones`
+
+      // Sincronizar drilldown de provincia con dim de polígonos
+      estaProvSel = provincia || null
+      if (estaGeoLayer) estaGeoLayer.setStyle(_styleFor)
+
+      // Mostrar/ocultar botón "← Argentina"
+      if (btnVolver) btnVolver.style.display = provincia ? 'inline-block' : 'none'
+
+      // Zoom dinámico
+      if (!provincia && !localidad) {
+        estaMap.setView([-38, -63], 4)
+      } else {
+        // 1) Preferir bounds del polígono (más estable, área completa)
+        const provBounds = _provFeatBounds(provincia)
+        if (provBounds) {
+          estaMap.fitBounds(provBounds, { padding: [30, 30], maxZoom: 9 })
+        } else {
+          // 2) Fallback: bounds de markers
+          let zoomSet = estaData.filter(e => e.provincia === provincia)
+          if (localidad) zoomSet = zoomSet.filter(e => e.localidad === localidad)
+          const pts = zoomSet
+            .map(e => [parseFloat(e.latitud), parseFloat(e.longitud)])
+            .filter(([la, lo]) => !isNaN(la) && !isNaN(lo))
+          if (pts.length) {
+            estaMap.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 11 })
+          }
+        }
+      }
+      // Mantener markers por encima
+      estaMarkers.forEach(m => m.bringToFront && m.bringToFront())
+    }
+
+    // Click en polígono → drill SOLO a la provincia (no al depto)
+    function onClickFeatureEst(feat, layer) {
+      const prov = provRawGeo(feat)
+      if (!prov) return
+
+      // Si ya estoy drilleado a esta provincia → no hacer nada (no zoom al depto)
+      if (estaProvSel === prov) return
+
+      // Drill a la provincia: setear dropdown y disparar filtros
+      // Buscar opción case-insensitive (los nombres del dropdown vienen de
+      // estaData, los del polígono vienen de INDEC_PROV_MAP — pueden diferir
+      // sutilmente, ej. "Tierra del Fuego" vs nombre completo)
+      const opt = [...selProv.options].find(o =>
+        o.value.toLowerCase() === prov.toLowerCase()
+      )
+      if (opt) {
+        selProv.value = opt.value
+        poblarLocalidades()
+        estaAplicarFiltros()
+      } else {
+        // No hay estaciones de esa provincia en el dropdown — solo zoom al área
+        const provBounds = _provFeatBounds(prov)
+        if (provBounds) estaMap.fitBounds(provBounds, { padding: [30, 30], maxZoom: 9 })
+      }
+    }
+
+    if (btnVolver) btnVolver.onclick = () => {
+      selProv.value = ''
+      selLoc.value = ''
+      poblarLocalidades()
+      estaAplicarFiltros()
+    }
+
+    estaAplicarFiltros()
+    selFte.addEventListener('change', estaAplicarFiltros)
+    selProv.addEventListener('change', () => { poblarLocalidades(); estaAplicarFiltros() })
+    selLoc.addEventListener('change',  estaAplicarFiltros)
+    document.getElementById('est-ocultar-sin-lluvia').addEventListener('change', estaAplicarFiltros)
+
+  } catch(e) {
+    console.warn('estaciones:', e)
+    subEl.textContent = 'Error al cargar estaciones.'
+  }
+}
+
+function estaRenderMarkers(datos) {
+  // Limpiar markers anteriores
+  estaMarkers.forEach(m => m.remove())
+  estaMarkers = []
+
+  datos.forEach(est => {
+    const lat = parseFloat(est.latitud)
+    const lng = parseFloat(est.longitud)
+    if (isNaN(lat) || isNaN(lng)) return
+
+    // Color según dato de lluvia diaria
+    // Gris  → lluvia_total_dia es null (fuente no reporta lluvia)
+    // Azul  → llovió hoy (> 0 mm)
+    // Verde → sin lluvia hoy (= 0 mm con dato confirmado)
+    const lluvia = parseFloat(est.lluvia_total_dia)
+    const tieneDatoLluvia = est.lluvia_total_dia !== null && est.lluvia_total_dia !== undefined
+    let color, fillColor
+    if (!tieneDatoLluvia) {
+      // Sin datos de lluvia
+      color = '#64748b'; fillColor = '#94a3b8'
+    } else if (lluvia > 0) {
+      // Lluvia hoy
+      color = '#1d4ed8'; fillColor = '#3b82f6'
+    } else {
+      // Sin lluvia (0 mm confirmado)
+      color = '#15803d'; fillColor = '#22c55e'
+    }
+
+    const marker = L.circleMarker([lat, lng], {
+      radius: 7,
+      color,
+      fillColor,
+      fillOpacity: 0.55,
+      opacity: 0.9,
+      weight: 1.5
+    })
+
+    marker._styleNormal = { radius: 7, color, fillColor, fillOpacity: 0.55, opacity: 0.9, weight: 1.5 }
+    marker._styleSelected = { radius: 11, color: '#ffffff', fillColor, fillOpacity: 1, opacity: 1, weight: 2.5 }
+    marker.bindTooltip(est.nombre || '—', { sticky: false, direction: 'top', offset: [0, -8], opacity: 0.95 })
+
+    if (window.innerWidth <= 600) {
+      marker.on('click', () => {
+        // Reset marker anterior
+        if (window._estaSelected && window._estaSelected !== marker) {
+          window._estaSelected.setStyle(window._estaSelected._styleNormal)
+          window._estaSelected.setRadius(7)
+        }
+        // Destacar el nuevo
+        marker.setStyle(marker._styleSelected)
+        marker.setRadius(11)
+        window._estaSelected = marker
+
+        const panel = document.getElementById('est-info-panel')
+        panel.innerHTML = estaPopupHTML(est)
+        panel.style.display = 'block'
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      })
+    } else {
+      marker.bindPopup(() => estaPopupHTML(est), { maxWidth: 280, className: 'est-leaflet-popup' })
+    }
+    marker.addTo(estaMap)
+    estaMarkers.push(marker)
+  })
+}
+
+function estaPopupHTML(e) {
+  const fmt   = v => v !== null && v !== undefined ? v : null
+  const fmtN  = (v, dec=1, suf='') => v !== null && v !== undefined ? `${parseFloat(v).toFixed(dec)}${suf}` : '<span class="est-popup-nd">s/d</span>'
+  const fmtMm = v => v !== null && v !== undefined && parseFloat(v) >= 0 ? `${parseFloat(v).toFixed(1)} mm` : '<span class="est-popup-nd">s/d</span>'
+
+  const dir = e.viento_direccion !== null && e.viento_direccion !== undefined
+    ? ` · ${e.viento_direccion}°`
+    : ''
+
+  const fechaStr = e.fecha_obs
+    ? (() => {
+        const d = new Date(e.fecha_obs)
+        return d.toLocaleString('es-AR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' })
+      })()
+    : 'sin datos recientes'
+
+  const linkHTML = e.url_fuente
+    ? `<a class="est-popup-link" href="${e.url_fuente}" target="_blank" rel="noopener">→ Ver en fuente original</a>`
+    : ''
+
+  return `
+    <div class="est-popup">
+      <div class="est-popup-nombre">${e.nombre || 'Estación sin nombre'}</div>
+      <div><span class="est-popup-fuente">${e.fuente || '—'}</span></div>
+      <div style="font-size:.72rem;color:#64748b;margin-bottom:.5rem">${e.localidad || ''}${e.localidad && e.provincia ? ' · ' : ''}${e.provincia || ''}<br>${fechaStr}</div>
+      <div class="est-popup-grid">
+        <span class="est-popup-label">Temperatura</span>
+        <span class="est-popup-val">${fmtN(e.temp_actual,1,'°C')}</span>
+        <span class="est-popup-label">Mín / Máx</span>
+        <span class="est-popup-val">${fmtN(e.temp_min,1,'°')} / ${fmtN(e.temp_max,1,'°')}</span>
+        <span class="est-popup-label">Sensación</span>
+        <span class="est-popup-val">${fmtN(e.sensacion_termica,1,'°C')}</span>
+        <span class="est-popup-label">Humedad</span>
+        <span class="est-popup-val">${fmtN(e.humedad,0,'%')}</span>
+        <hr class="est-popup-sep">
+        <span class="est-popup-label">Lluvia hoy</span>
+        <span class="est-popup-val">${fmtMm(e.lluvia_total_dia)}</span>
+        <span class="est-popup-label">Lluvia ayer</span>
+        <span class="est-popup-val">${fmtMm(e.lluvia_ayer)}</span>
+        <span class="est-popup-label">Lluvia mes</span>
+        <span class="est-popup-val">${fmtMm(e.lluvia_acum_mes)}</span>
+        <span class="est-popup-label">Lluvia año</span>
+        <span class="est-popup-val">${fmtMm(e.lluvia_acum_anio)}</span>
+        <hr class="est-popup-sep">
+        <span class="est-popup-label">Viento</span>
+        <span class="est-popup-val">${fmtN(e.viento_velocidad,1,' km/h')}${dir}</span>
+        <span class="est-popup-label">Ráfaga</span>
+        <span class="est-popup-val">${fmtN(e.viento_rafaga,1,' km/h')}</span>
+        <span class="est-popup-label">Presión</span>
+        <span class="est-popup-val">${fmtN(e.presion,1,' hPa')}</span>
+      </div>
+      ${linkHTML}
+    </div>
+  `
+}
+
+
 </script>
 </body>
 </html>
