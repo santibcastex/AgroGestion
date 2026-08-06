@@ -1,0 +1,9 @@
+{
+  "name": "Agro Vision",
+  "short_name": "Agro Vision",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#14140F",
+  "theme_color": "#14140F",
+  "icons": []
+}
