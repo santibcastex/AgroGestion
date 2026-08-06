@@ -8,7 +8,7 @@ const typeToModel: Record<string, (id: string, farmId: string) => Promise<{ name
   crop: (id, farmId) =>
     prisma.crop.findFirst({ where: { id, farmId }, select: { name: true } }),
   transaction: (id, farmId) =>
-    prisma.financialTransaction.findFirst({
+    prisma.transaction.findFirst({
       where: { id, farmId },
       select: { description: true },
     }).then((r) => r ? { name: r.description } : null),

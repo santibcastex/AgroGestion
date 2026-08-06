@@ -40,7 +40,7 @@ export async function GET(
 
     const result = await fetchSatelliteImage(area.geojson, mode, date)
 
-    return new NextResponse(result.image, {
+    return new NextResponse(new Uint8Array(result.image), {
       headers: {
         "Content-Type": "image/png",
         "Cache-Control": "public, max-age=86400",
